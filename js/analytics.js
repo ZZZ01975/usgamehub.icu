@@ -7,8 +7,8 @@ function gtag(){dataLayer.push(arguments);}
 // 基础配置
 gtag('js', new Date());
 
-// 配置GA4 - 生产环境需要替换为真实的测量ID
-const GA_MEASUREMENT_ID = 'GA_MEASUREMENT_ID'; // 替换为实际的测量ID
+// 配置GA4 - 使用原仓库的测量ID
+const GA_MEASUREMENT_ID = 'G-P13WZKJZ3H'; // Monster Survivors 原仓库的Analytics ID
 
 gtag('config', GA_MEASUREMENT_ID, {
     // 基础设置
