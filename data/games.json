@@ -1,6 +1,25 @@
 {
   "games": [
     {
+      "id": "monster-survivors",
+      "title": "Monster Survivors - Roguelike Action",
+      "description": "Survive endless waves of monsters in this action-packed roguelike survival game! Choose from multiple characters, each with unique abilities and starting weapons. Level up your character, evolve weapons, and face increasingly difficult boss battles. Inspired by Vampire Survivors, this game combines fast-paced action with strategic character building. How long can you survive as the monsters get stronger?",
+      "shortDesc": "Survive endless monster waves in this roguelike action game",
+      "keywords": ["monster survivors", "roguelike", "survival game", "action", "vampire survivors"],
+      "category": "action",
+      "tags": ["survival", "roguelike", "monsters", "upgrades", "bosses"],
+      "iframeUrl": "https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html",
+      "thumbnail": "/assets/images/monster-survivors-thumbnail.jpg",
+      "rating": 4.7,
+      "playCount": 8520,
+      "featured": true,
+      "regionBlock": [],
+      "controls": "使用WASD或方向键移动角色，自动攻击怪物，升级时选择武器和技能",
+      "tips": "选择合适的武器组合，优先升级血量和移动速度，注意boss出现时间",
+      "createdAt": "2025-09-05T00:00:00Z",
+      "updatedAt": "2025-09-05T00:00:00Z"
+    },
+    {
       "id": "2048-game",
       "title": "2048 Game - Number Puzzle",
       "description": "Play the addictive 2048 number puzzle game online for free! Combine tiles with the same numbers to reach 2048. This classic math puzzle game challenges your strategic thinking and planning skills. Swipe to move tiles and combine identical numbers to create larger ones. Can you reach the elusive 2048 tile?",
