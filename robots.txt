@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://usgamehub.icu/sitemap.xml
+
+# Crawl-delay (be respectful to servers)
+Crawl-delay: 1
+
+# Block access to admin/config files
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /config/
+Disallow: /.env
+Disallow: /data/game-schema.json
+
+# Allow all game pages
+Allow: /game.html
+Allow: /category.html
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+
+# Block unnecessary files
+Disallow: *.json$
+Disallow: *.log$

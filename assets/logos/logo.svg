@@ -1,0 +1,24 @@
+<svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle for the icon -->
+  <circle cx="20" cy="20" r="16" fill="#4F46E5" stroke="#6366F1" stroke-width="2"/>
+  
+  <!-- Game controller icon -->
+  <g transform="translate(12, 12)">
+    <!-- Controller body -->
+    <rect x="2" y="6" width="12" height="6" rx="3" fill="white"/>
+    <!-- D-pad -->
+    <rect x="3.5" y="7" width="1.5" height="4" fill="#4F46E5"/>
+    <rect x="2.5" y="8" width="3.5" height="1.5" fill="#4F46E5"/>
+    <!-- Action buttons -->
+    <circle cx="11" cy="8" r="0.8" fill="#4F46E5"/>
+    <circle cx="12.5" cy="9.5" r="0.8" fill="#4F46E5"/>
+  </g>
+  
+  <!-- Brand name -->
+  <text x="44" y="16" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="700" fill="#1F2937">
+    GameVault
+  </text>
+  <text x="44" y="28" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#6B7280">
+    FREE ONLINE GAMES
+  </text>
+</svg>

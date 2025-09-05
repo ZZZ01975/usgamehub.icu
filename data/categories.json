@@ -1,0 +1,72 @@
+{
+  "categories": [
+    {
+      "id": "puzzle",
+      "name": "益智游戏",
+      "nameEn": "Puzzle Games",
+      "description": "挑战你的思维能力，包括数字游戏、拼图、记忆游戏等",
+      "descriptionEn": "Challenge your mind with number games, jigsaw puzzles, memory games and more",
+      "icon": "puzzle-piece",
+      "color": "#4CAF50",
+      "keywords": ["puzzle", "brain", "logic", "thinking", "mind"],
+      "featured": true
+    },
+    {
+      "id": "action",
+      "name": "动作游戏", 
+      "nameEn": "Action Games",
+      "description": "快节奏的动作游戏，包括射击、格斗、跑酷等",
+      "descriptionEn": "Fast-paced action games including shooters, fighting, and running games",
+      "icon": "zap",
+      "color": "#FF5722",
+      "keywords": ["action", "fast", "shooting", "fighting", "adventure"],
+      "featured": true
+    },
+    {
+      "id": "multiplayer",
+      "name": "双人游戏",
+      "nameEn": "Multiplayer Games", 
+      "description": "与朋友一起玩的双人或多人游戏",
+      "descriptionEn": "Games to play with friends, 2 player or multiplayer games",
+      "icon": "users",
+      "color": "#2196F3",
+      "keywords": ["2 player", "multiplayer", "friends", "together", "local"],
+      "featured": true
+    },
+    {
+      "id": "cards",
+      "name": "棋牌游戏",
+      "nameEn": "Card & Board Games",
+      "description": "经典的纸牌和棋类游戏",
+      "descriptionEn": "Classic card games and board games",
+      "icon": "spade",
+      "color": "#795548",
+      "keywords": ["cards", "solitaire", "chess", "board", "classic"],
+      "featured": true
+    },
+    {
+      "id": "sports",
+      "name": "体育游戏",
+      "nameEn": "Sports Games",
+      "description": "各种体育运动游戏",
+      "descriptionEn": "Various sports and athletic games",
+      "icon": "football",
+      "color": "#FF9800",
+      "keywords": ["sports", "soccer", "basketball", "racing", "athletic"],
+      "featured": false
+    },
+    {
+      "id": "strategy",
+      "name": "策略游戏",
+      "nameEn": "Strategy Games", 
+      "description": "需要策略思考的游戏",
+      "descriptionEn": "Games that require strategic thinking",
+      "icon": "target",
+      "color": "#9C27B0",
+      "keywords": ["strategy", "tactical", "planning", "tower defense", "simulation"],
+      "featured": false
+    }
+  ],
+  "totalCategories": 6,
+  "lastUpdated": "2025-09-05T00:00:00Z"
+}

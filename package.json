@@ -1,0 +1,46 @@
+{
+  "name": "us-game-hub",
+  "version": "1.0.0",
+  "description": "Free Online Games Hub - Play HTML5 games directly in your browser",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -c-1",
+    "dev": "npx http-server . -p 3000 -c-1 -o",
+    "test": "npm run lighthouse && npm run validate",
+    "lighthouse": "npx lighthouse-ci autorun",
+    "validate": "npx html-validate *.html",
+    "build": "echo 'Static site - no build required' && exit 0",
+    "deploy:preview": "echo 'Preview deployment ready'",
+    "deploy:production": "echo 'Production deployment ready'"
+  },
+  "keywords": [
+    "games",
+    "html5",
+    "online games",
+    "free games",
+    "browser games",
+    "puzzle games",
+    "action games",
+    "card games",
+    "multiplayer games"
+  ],
+  "author": "GameVault Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@lhci/cli": "^0.12.0",
+    "html-validate": "^8.7.4",
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/us-game-hub.git"
+  },
+  "homepage": "https://gamevault.pages.dev",
+  "bugs": {
+    "url": "https://github.com/your-username/us-game-hub/issues"
+  }
+}
