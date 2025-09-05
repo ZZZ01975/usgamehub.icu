@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Game Schema",
+  "description": "US Game Hub 游戏数据验证模式",
+  "type": "object",
+  "properties": {
+    "games": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "游戏唯一标识符",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "title": {
+            "type": "string",
+            "description": "游戏标题",
+            "minLength": 3,
+            "maxLength": 60
+          },
+          "description": {
+            "type": "string",
+            "description": "游戏详细描述，SEO优化",
+            "minLength": 100,
+            "maxLength": 500
+          },
+          "shortDesc": {
+            "type": "string",
+            "description": "游戏简短描述",
+            "minLength": 20,
+            "maxLength": 100
+          },
+          "keywords": {
+            "type": "array",
+            "description": "SEO关键词数组",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 3,
+            "maxItems": 10
+          },
+          "category": {
+            "type": "string",
+            "description": "游戏主分类",
+            "enum": ["puzzle", "action", "multiplayer", "cards", "sports", "strategy"]
+          },
+          "tags": {
+            "type": "array",
+            "description": "游戏标签",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 3,
+            "maxItems": 8
+          },
+          "iframeUrl": {
+            "type": "string",
+            "description": "游戏iframe地址",
+            "format": "uri"
+          },
+          "thumbnail": {
+            "type": "string",
+            "description": "游戏缩略图URL",
+            "format": "uri"
+          },
+          "rating": {
+            "type": "number",
+            "description": "游戏评分 1-5",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "playCount": {
+            "type": "integer",
+            "description": "游戏播放次数",
+            "minimum": 0
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "是否为热门推荐游戏"
+          },
+          "regionBlock": {
+            "type": "array",
+            "description": "区域屏蔽列表",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            }
+          },
+          "controls": {
+            "type": "string",
+            "description": "游戏操作说明",
+            "maxLength": 200
+          },
+          "tips": {
+            "type": "string",
+            "description": "游戏攻略提示",
+            "maxLength": 300
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "更新时间",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id", "title", "description", "shortDesc", "keywords", 
+          "category", "tags", "iframeUrl", "thumbnail", "rating", 
+          "playCount", "featured", "controls", "tips", "createdAt", "updatedAt"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "数据最后更新时间"
+    },
+    "totalCount": {
+      "type": "integer",
+      "description": "游戏总数量",
+      "minimum": 0
+    }
+  },
+  "required": ["games", "lastUpdated", "totalCount"],
+  "additionalProperties": false
+}

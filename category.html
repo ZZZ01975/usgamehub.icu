@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="categoryTitle">Category Games | GameVault</title>
+    <meta name="description" id="categoryDescription" content="Browse games by category">
+    <meta name="keywords" id="categoryKeywords" content="category, games, online, free">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/components.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script src="/js/analytics.js"></script>
+</head>
+<body>
+    <!-- Header (same structure as index.html) -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="/" class="brand-link">
+                        <img src="/assets/logos/logo.png" alt="US Game Hub Logo" class="brand-logo">
+                        <div class="brand-logo">
+                            <div class="logo-icon">🎮</div>
+                        </div>
+                        <span class="brand-text">GameVault</span>
+                        <span class="brand-tagline">Free Online Games</span>
+                    </a>
+                </div>
+                
+                <div class="nav-search">
+                    <form class="search-form" role="search">
+                        <input type="text" class="search-input" placeholder="Search games..." aria-label="Search games" data-i18n="search.placeholder">
+                        <button type="submit" class="search-btn" aria-label="Search">🔍</button>
+                    </form>
+                </div>
+                
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="/" class="nav-link" data-i18n="nav.home">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle active" data-i18n="nav.categories">Categories ▾</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/category.html?cat=puzzle" class="dropdown-link" data-i18n="categories.puzzle">Puzzle Games</a></li>
+                                <li><a href="/category.html?cat=action" class="dropdown-link" data-i18n="categories.action">Action Games</a></li>
+                                <li><a href="/category.html?cat=multiplayer" class="dropdown-link" data-i18n="categories.multiplayer">Multiplayer Games</a></li>
+                                <li><a href="/category.html?cat=cards" class="dropdown-link" data-i18n="categories.cards">Card Games</a></li>
+                                <li><a href="/category.html?cat=sports" class="dropdown-link" data-i18n="categories.sports">Sports Games</a></li>
+                                <li><a href="/category.html?cat=strategy" class="dropdown-link" data-i18n="categories.strategy">Strategy Games</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="/about.html" class="nav-link" data-i18n="nav.about">About</a></li>
+                        <li class="nav-item">
+                            <button class="lang-toggle" aria-label="Switch Language" title="Current: English">
+                                <span class="lang-text">🌐 EN</span>
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-toggle" aria-label="Toggle navigation">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content category-page">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="/" data-i18n="nav.home">Home</a></li>
+                    <li class="breadcrumb-item active" id="categoryBreadcrumb">Category</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- Category Header -->
+        <section class="category-header">
+            <div class="container">
+                <div class="category-header-content">
+                    <div class="category-icon" id="categoryIcon">🎮</div>
+                    <div class="category-info">
+                        <h1 class="category-title" id="categoryPageTitle">Category Games</h1>
+                        <p class="category-description" id="categoryDesc">Category description</p>
+                        <div class="category-stats">
+                            <span class="games-count" id="gamesCount">0 games</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters and Sorting -->
+        <section class="filters-section">
+            <div class="container">
+                <div class="filters-toolbar">
+                    <div class="filters-group">
+                        <label for="sortSelect" data-i18n="categoryPage.sortBy">Sort by:</label>
+                        <select id="sortSelect" class="filter-select">
+                            <option value="popular" data-i18n="categoryPage.mostPopular">Most Popular</option>
+                            <option value="newest" data-i18n="categoryPage.newest">Newest</option>
+                            <option value="rating" data-i18n="categoryPage.highestRated">Highest Rated</option>
+                            <option value="name" data-i18n="categoryPage.name">Name</option>
+                        </select>
+                    </div>
+                    
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid" aria-label="Grid view">⊞</button>
+                        <button class="view-btn" data-view="list" aria-label="List view">☰</button>
+                    </div>
+                    
+                    <div class="results-info">
+                        <span id="resultsCount" style="color: var(--text-primary); font-weight: 500;">Showing 0 games</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Grid -->
+        <section class="games-section">
+            <div class="container">
+                <div class="games-grid" id="categoryGamesGrid">
+                    <!-- Games will be loaded dynamically -->
+                </div>
+                
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <button class="btn btn-outline load-more-btn" id="loadMoreBtn">
+                        <span data-i18n="buttons.loadMore">Load More Games</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Categories -->
+        <section class="all-categories">
+            <div class="container">
+                <h2 class="section-title" data-i18n="categoryPage.allCategories">All Categories</h2>
+                <div class="categories-grid" id="allCategoriesGrid">
+                    <!-- All categories will be loaded -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GameVault</h3>
+                    <p>The best destination for free online games.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.categories">Game Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="/category.html?cat=puzzle" data-i18n="categories.puzzle">Puzzle Games</a></li>
+                        <li><a href="/category.html?cat=action" data-i18n="categories.action">Action Games</a></li>
+                        <li><a href="/category.html?cat=multiplayer" data-i18n="categories.multiplayer">Multiplayer Games</a></li>
+                        <li><a href="/category.html?cat=cards" data-i18n="categories.cards">Card Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.info">Site Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about.html" data-i18n="footer.about">About Us</a></li>
+                        <li><a href="/privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="/sitemap.xml" data-i18n="footer.sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GameVault. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/i18n.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/games.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const category = new URLSearchParams(window.location.search).get('cat');
+            const sort = new URLSearchParams(window.location.search).get('sort') || 'popular';
+            
+            if (category) {
+                loadCategoryPage(category, sort);
+            } else {
+                loadAllCategories();
+            }
+        });
+    </script>
+</body>
+</html>

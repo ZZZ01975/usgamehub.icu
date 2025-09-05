@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Development
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Test coverage
+coverage/
+
+# Deployment
+dist/
+build/
+
+# Local development
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Lighthouse reports
+lhci_reports/
+*.html.report.html
+
+# Claude Code specific
+.claude/
+
+# Screenshots and temporary files (keep documentation ones)
+test-games-script.js
+*.tmp
+
+# Keep important documentation and images for the project
+!README.md
+!progress_log.md
+!tasks.md
+!CLAUDE.md
+!PRD*.md
+!iframe_compatibility_analysis.md
+!game-availability-test-results.md
+!screenshot*.jpg
+!游戏*.jpg
+!网站*.jpg
+!字体*.jpg

@@ -1,0 +1,38 @@
+# Redirects and rewrites for GameVault
+# Cloudflare Pages / Netlify compatible
+
+# Game page routing - Handle game URLs with or without .html
+/game/:id             /game.html?id=:id    200
+/games/:id            /game.html?id=:id    301
+
+# Category page routing
+/category/:cat        /category.html?cat=:cat    200
+/categories/:cat      /category.html?cat=:cat    301
+
+# Legacy game URLs redirect
+/play/:id             /game.html?id=:id    301
+/g/:id                /game.html?id=:id    301
+
+# SEO-friendly category URLs
+/puzzle               /category.html?cat=puzzle         301
+/action               /category.html?cat=action         301
+/cards                /category.html?cat=cards          301
+/multiplayer          /category.html?cat=multiplayer    301
+/strategy             /category.html?cat=strategy       301
+/sports               /category.html?cat=sports         301
+
+# API endpoints (if needed in future)
+/api/games            /data/games.json      200
+/api/categories       /data/categories.json 200
+
+# Handle missing files - redirect to home
+/favicon.ico          /assets/logos/favicon.ico  301
+/apple-touch-icon*    /assets/logos/apple-touch-icon-180x180.png  301
+
+# Security headers for sensitive paths
+/admin/*              /404.html             404
+/config/*             /404.html             404
+/.env*                /404.html             404
+
+# Default fallback - preserve original path for SPA
+/*                    /index.html           200

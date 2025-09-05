@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="gameTitle">Game Title | GameVault</title>
+    <meta name="description" id="gameDescription" content="Game description will be loaded dynamically">
+    <meta name="keywords" id="gameKeywords" content="game, online, free, play">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" id="ogTitle" content="Game Title | GameVault">
+    <meta property="og:description" id="ogDescription" content="Game description">
+    <meta property="og:type" content="article">
+    <meta property="og:url" id="ogUrl" content="">
+    <meta property="og:image" id="ogImage" content="">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twitterTitle" content="Game Title">
+    <meta name="twitter:description" id="twitterDescription" content="Game description">
+    <meta name="twitter:image" id="twitterImage" content="">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/logos/favicon.ico">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/components.css">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script src="/js/analytics.js"></script>
+    
+    <!-- Schema.org Game Structured Data -->
+    <script type="application/ld+json" id="gameSchema">
+    {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "",
+        "description": "",
+        "url": "",
+        "image": "",
+        "genre": "",
+        "playMode": "SinglePlayer",
+        "applicationCategory": "Game"
+    }
+    </script>
+</head>
+<body>
+    <!-- Header Navigation (same as index.html) -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="/" class="brand-link">
+                        <div class="brand-logo">
+                            <div class="logo-icon">🎮</div>
+                        </div>
+                        <div class="brand-logo">
+                            <div class="logo-icon">🎮</div>
+                        </div>
+                        <span class="brand-text">GameVault</span>
+                        <span class="brand-tagline">Free Online Games</span>
+                    </a>
+                </div>
+                
+                <div class="nav-search">
+                    <form class="search-form" role="search">
+                        <input type="text" class="search-input" placeholder="Search games..." aria-label="Search games">
+                        <button type="submit" class="search-btn" aria-label="Search">
+                            <svg class="search-icon" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="/" class="nav-link" data-i18n="nav.home">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-i18n="nav.categories">Categories ▾</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/category.html?cat=puzzle" class="dropdown-link" data-i18n="categories.puzzle">Puzzle Games</a></li>
+                                <li><a href="/category.html?cat=action" class="dropdown-link" data-i18n="categories.action">Action Games</a></li>
+                                <li><a href="/category.html?cat=multiplayer" class="dropdown-link" data-i18n="categories.multiplayer">Multiplayer Games</a></li>
+                                <li><a href="/category.html?cat=cards" class="dropdown-link" data-i18n="categories.cards">Card Games</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="/about.html" class="nav-link" data-i18n="nav.about">About</a></li>
+                        <li class="nav-item">
+                            <button class="lang-toggle" aria-label="Switch Language">
+                                <span class="lang-text">EN</span>
+                            </button>
+                        </li>
+                    </ul>
+                    <button class="mobile-toggle" aria-label="Toggle navigation">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Game Content -->
+    <main class="main-content game-page">
+        <!-- Breadcrumb Navigation -->
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="/" data-i18n="nav.home">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" id="categoryBreadcrumb">分类</a></li>
+                    <li class="breadcrumb-item active" id="gameBreadcrumb">游戏名称</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- Game Header -->
+        <section class="game-header">
+            <div class="container">
+                <div class="game-header-content">
+                    <div class="game-info">
+                        <h1 class="game-title" id="gamePageTitle">Game Title</h1>
+                        <div class="game-meta">
+                            <div class="game-rating">
+                                <div class="stars" id="gameStars">
+                                    <!-- Stars will be generated dynamically -->
+                                </div>
+                                <span class="rating-text" id="ratingText">0.0</span>
+                            </div>
+                            <div class="game-stats">
+                                <span class="play-count" id="playCount">0 plays</span>
+                                <span class="game-category" id="gameCategory">Category</span>
+                            </div>
+                        </div>
+                        <div class="game-tags" id="gameTags">
+                            <!-- Tags will be loaded dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div class="game-actions">
+                        <button class="btn btn-fullscreen" id="fullscreenBtn" aria-label="Play Fullscreen">
+                            🔍 <span data-i18n="buttons.fullscreen">Fullscreen</span>
+                        </button>
+                        <div class="share-buttons">
+                            <span class="share-label" data-i18n="game.shareLabel">Share:</span>
+                            <button class="share-btn facebook" aria-label="Share on Facebook">📘</button>
+                            <button class="share-btn twitter" aria-label="Share on Twitter">🐦</button>
+                            <button class="share-btn copy" aria-label="Copy link">🔗</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Player -->
+        <section class="game-player">
+            <div class="container">
+                <div class="game-main-container">
+                    <!-- Left Panel: Game Window (65%) -->
+                    <div class="game-left-panel">
+                        <div class="game-iframe-wrapper">
+                            <iframe 
+                                id="gameIframe" 
+                                src="" 
+                                title="Game Player"
+                                sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-orientation-lock"
+                                loading="lazy"
+                                class="game-iframe">
+                            </iframe>
+                            <div class="game-loading" id="gameLoading">
+                                <div class="loading-spinner">
+                                    <div class="spinner"></div>
+                                </div>
+                                <p data-i18n="game.loading">Loading game...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Panel: Controls & Tips (35%) -->
+                    <div class="game-right-panel">
+                        <!-- Game Controls Help -->
+                        <div class="game-controls" id="gameControls">
+                            <h3 data-i18n="game.gameControls">Game Controls</h3>
+                            <p id="controlsText">Loading controls...</p>
+                        </div>
+                        
+                        <!-- How to Play Section -->
+                        <div class="game-tips-section">
+                            <h3 data-i18n="game.gameTips">How to Play</h3>
+                            <div class="game-tips" id="gameTips">
+                                Loading game tips...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Information -->
+        <section class="game-content">
+            <div class="container">
+                <div class="game-info-grid">
+                    <!-- Game Description (40%) -->
+                    <div class="game-about">
+                        <h2 data-i18n="game.gameDescription">About This Game</h2>
+                        <div class="description-text" id="gameDescriptionText">
+                            Loading game description...
+                        </div>
+                    </div>
+                    
+                    <!-- Similar Games (30%) -->
+                    <div class="similar-games">
+                        <h3 data-i18n="game.similarGames">Similar Games</h3>
+                        <div class="similar-games-list" id="similarGamesList">
+                            <!-- Similar games will be loaded dynamically -->
+                        </div>
+                    </div>
+                    
+                    <!-- Category Games (30%) -->
+                    <div class="category-games">
+                        <h3 data-i18n="game.categoryHot">Popular in Category</h3>
+                        <div class="category-games-list" id="categoryGamesList">
+                            <!-- Category games will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comments Section (Optional) -->
+        <section class="comments-section">
+            <div class="container">
+                <h2 data-i18n="game.comments">Comments</h2>
+                <div class="comments-wrapper">
+                    <div class="comment-form">
+                        <textarea placeholder="Share your gaming experience..." class="comment-input" data-i18n="game.writeComment"></textarea>
+                        <button class="btn btn-primary comment-submit" data-i18n="buttons.postComment">Post Comment</button>
+                    </div>
+                    <div class="comments-list" id="commentsList">
+                        <!-- Comments will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Games -->
+        <section class="related-games">
+            <div class="container">
+                <h2 class="section-title" data-i18n="game.relatedGames">Related Games</h2>
+                <div class="games-grid" id="relatedGamesGrid">
+                    <!-- Related games will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GameVault</h3>
+                    <p>The best destination for free online games.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.categories">Game Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="/category.html?cat=puzzle" data-i18n="categories.puzzle">Puzzle Games</a></li>
+                        <li><a href="/category.html?cat=action" data-i18n="categories.action">Action Games</a></li>
+                        <li><a href="/category.html?cat=multiplayer" data-i18n="categories.multiplayer">Multiplayer Games</a></li>
+                        <li><a href="/category.html?cat=cards" data-i18n="categories.cards">Card Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.info">Site Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about.html" data-i18n="footer.about">About Us</a></li>
+                        <li><a href="/privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="/sitemap.xml" data-i18n="footer.sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GameVault. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="/js/i18n.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/games.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+        // Initialize game page
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameId = new URLSearchParams(window.location.search).get('id');
+            if (gameId) {
+                loadGamePage(gameId);
+            } else {
+                window.location.href = '/';
+            }
+        });
+    </script>
+</body>
+</html>

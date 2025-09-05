@@ -1,0 +1,575 @@
+/* US Game Hub - 响应式样式 */
+/* 移动优先，渐进式增强 */
+
+/* 大屏幕设备 (1200px+) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* 大屏幕游戏页面完整布局 */
+    .game-main-container {
+        grid-template-columns: 65% 35%;
+    }
+    
+    .game-info-grid {
+        grid-template-columns: 40% 30% 30%;
+    }
+}
+
+/* 中等屏幕设备 (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container {
+        max-width: 992px;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .nav-search {
+        max-width: 300px;
+    }
+    
+    /* 中等屏幕游戏页面布局 */
+    .game-main-container {
+        grid-template-columns: 60% 40%;
+        gap: var(--spacing-lg);
+    }
+    
+    .game-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .game-about {
+        grid-column: 1 / -1;
+    }
+}
+
+/* 平板设备 (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    /* 导航调整 */
+    .nav-container {
+        flex-wrap: wrap;
+    }
+    
+    .nav-search {
+        order: 3;
+        width: 100%;
+        max-width: none;
+        margin: var(--spacing-sm) 0 0 0;
+    }
+    
+    .nav-menu {
+        order: 2;
+    }
+    
+    /* 游戏卡片调整 */
+    .game-thumbnail {
+        height: 160px;
+    }
+    
+    .game-info {
+        padding: var(--spacing-sm);
+    }
+    
+    .game-title {
+        font-size: 1rem;
+    }
+}
+
+/* 手机设备 (320px - 480px) */
+@media (max-width: 480px) {
+    :root {
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.75rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+    }
+    
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* 标题调整 */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+    
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    /* 导航栏移动端 */
+    .nav-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-sm);
+    }
+    
+    .nav-brand {
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .brand-text {
+        font-size: 1.2rem;
+    }
+    
+    .mobile-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        width: 100%;
+    }
+    
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        background: var(--bg-light);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-sm);
+        margin-top: var(--spacing-sm);
+    }
+    
+    .nav-list.active {
+        display: flex;
+    }
+    
+    .nav-item {
+        width: 100%;
+    }
+    
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: var(--spacing-sm);
+        text-align: center;
+        border-radius: var(--radius-sm);
+    }
+    
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: transparent;
+        margin-top: var(--spacing-xs);
+    }
+    
+    .dropdown-link {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+    
+    /* 搜索栏移动端 */
+    .nav-search {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .search-input {
+        font-size: 16px; /* 防止 iOS 缩放 */
+    }
+    
+    /* 轮播移动端 */
+    .featured-carousel {
+        margin: 0 -var(--spacing-sm);
+        border-radius: 0;
+    }
+    
+    .carousel-item img {
+        height: 180px;
+    }
+    
+    .carousel-content {
+        padding: var(--spacing-md) var(--spacing-sm) var(--spacing-sm);
+    }
+    
+    .carousel-title {
+        font-size: 1rem;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .carousel-btn.prev {
+        left: 10px;
+    }
+    
+    .carousel-btn.next {
+        right: 10px;
+    }
+    
+    /* 网格布局移动端 */
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    /* 游戏卡片移动端 */
+    .game-card {
+        border-radius: var(--radius-md);
+    }
+    
+    .game-thumbnail {
+        height: 180px;
+    }
+    
+    .game-info {
+        padding: var(--spacing-sm);
+    }
+    
+    .game-title {
+        font-size: 0.95rem;
+        -webkit-line-clamp: 1;
+    }
+    
+    .game-description {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 2;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .game-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    .game-tags {
+        gap: 4px;
+    }
+    
+    .game-tag {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+    }
+    
+    /* 分类卡片移动端 */
+    .category-card {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+    
+    .category-icon {
+        font-size: 2.5rem;
+    }
+    
+    .category-name {
+        font-size: 1rem;
+    }
+    
+    .category-description {
+        font-size: 0.85rem;
+        display: none; /* 隐藏描述节省空间 */
+    }
+    
+    /* 标签云移动端 */
+    .tags-cloud {
+        gap: var(--spacing-xs);
+    }
+    
+    .tag-item {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+    
+    /* 页脚移动端 */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .footer-section {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    /* 按钮移动端 */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        min-height: 44px; /* iOS 触摸目标最小尺寸 */
+    }
+    
+    .view-more-btn {
+        width: 100%;
+        text-align: center;
+        margin-top: var(--spacing-md);
+    }
+    
+    /* Cookie 提示移动端 */
+    .cookie-notice {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+    
+    .cookie-notice p {
+        font-size: 0.9rem;
+        margin: 0;
+    }
+    
+    .cookie-accept {
+        min-height: 44px;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    /* 面包屑移动端 */
+    .breadcrumb-list {
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+    }
+    
+    .breadcrumb-item a,
+    .breadcrumb-item.active {
+        font-size: 0.85rem;
+    }
+    
+    /* 加载动画移动端 */
+    .loading-spinner {
+        background: rgba(255,255,255,0.95);
+    }
+    
+    .spinner {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* 超小屏幕设备 (< 320px) */
+@media (max-width: 319px) {
+    .container {
+        padding: 0 8px;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .brand-text {
+        font-size: 1rem;
+    }
+    
+    .game-thumbnail {
+        height: 150px;
+    }
+    
+    .category-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .category-icon {
+        font-size: 2rem;
+    }
+}
+
+/* 横屏移动设备 */
+@media (max-width: 767px) and (orientation: landscape) {
+    .hero-section {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .carousel-item img {
+        height: 150px;
+    }
+    
+    .game-thumbnail {
+        height: 140px;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 高分辨率屏幕 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .brand-logo,
+    .game-thumbnail img,
+    .category-icon {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* 减少动画（用户偏好） */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .carousel-container {
+        transition: none;
+    }
+    
+    .game-card:hover,
+    .category-card:hover,
+    .btn:hover {
+        transform: none;
+    }
+}
+
+/* 深色主题支持 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-white: #121212;
+        --bg-light: #1e1e1e;
+        --bg-dark: #2d2d2d;
+        --text-dark: #ffffff;
+        --text-light: #b3b3b3;
+        --text-muted: #757575;
+    }
+    
+    .header {
+        background: var(--bg-light);
+        border-bottom: 1px solid #333;
+    }
+    
+    .search-input {
+        background: var(--bg-dark);
+        border-color: #333;
+        color: var(--text-dark);
+    }
+    
+    .game-card,
+    .category-card {
+        background: var(--bg-light);
+        border: 1px solid #333;
+    }
+    
+    .dropdown-menu {
+        background: var(--bg-dark);
+        border: 1px solid #333;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .header,
+    .footer,
+    .cookie-notice,
+    .loading-spinner,
+    .carousel-btn,
+    .carousel-indicators {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-top: 0;
+    }
+    
+    .game-card,
+    .category-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+    
+    .hero-section {
+        background: none !important;
+        color: #000 !important;
+    }
+}
