@@ -256,8 +256,31 @@ def batch_check_games():
 if __name__ == "__main__":
     # 确保在正确的目录下运行
     if not os.path.exists('data/games.json'):
-        print("Please run this script from project root directory")
-        print("   cd /path/to/games-0905 && python scripts/check_games.py")
-        exit(1)
+        print("Warning: data/games.json not found in current directory")
+        print("Attempting to find the file...")
+        
+        # 尝试寻找正确的路径
+        possible_paths = [
+            'data/games.json',
+            '../data/games.json',
+            '../../data/games.json',
+            './data/games.json'
+        ]
+        
+        found = False
+        for path in possible_paths:
+            if os.path.exists(path):
+                print(f"Found games.json at: {path}")
+                # 切换到包含data目录的目录
+                if '/' in path:
+                    os.chdir(os.path.dirname(path.replace('/data/games.json', '')))
+                found = True
+                break
+        
+        if not found:
+            print("Error: Could not locate data/games.json file")
+            print("Current directory:", os.getcwd())
+            print("Directory contents:", os.listdir('.'))
+            exit(1)
     
     batch_check_games()

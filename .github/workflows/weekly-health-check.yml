@@ -63,6 +63,7 @@ jobs:
         fi
         
     - name: Upload health report artifact
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: health-report-${{ github.run_number }}
