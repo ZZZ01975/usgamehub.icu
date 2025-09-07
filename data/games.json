@@ -779,7 +779,7 @@
         "brain teaser",
         "logic"
       ],
-      "iframeUrl": "https://html5.gamedistribution.com/9cc53fd9cbba4dc8bcb40f72fd9325cf/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=save-the-daddy-gd",
+      "iframeUrl": "https://html5.gamedistribution.com/9cc53fd9cbba4dc8bcb40f72fd9325cf/",
       "thumbnail": "/assets/images/save-the-daddy-gd-thumbnail.jpg",
       "rating": 4.5,
       "playCount": 0,
@@ -789,13 +789,15 @@
       "tips": "Read the game instructions before starting for better gameplay experience",
       "createdAt": "2025-09-07T05:44:18.528281+00:00",
       "updatedAt": "2025-09-07T05:44:18.528281+00:00",
-      "embeddable": true,
+      "embeddable": false,
       "verified_date": "2025-09-07",
       "license": "commercial_allowed",
       "commercial_use": true,
       "ad_allowed": true,
       "source_url": "https://gamedistribution.com/games/save-the-daddy-gd/",
-      "provider": "gamedistribution"
+      "provider": "gamedistribution",
+      "openInNewWindow": true,
+      "openInNewWindowReason": "GameDistribution domain restriction - opens in new window for better compatibility"
     },
     {
       "id": "geometry-arrow-2-gd",
