@@ -50,11 +50,11 @@ jobs:
         if [ -n "$(git status --porcelain)" ]; then
           echo "Games data updated - committing changes"
           git add data/games.json data/inactive_games.json scripts/results/
-          git commit -m "🤖 Weekly health check: Auto-disable failed games
+          git commit -m "Weekly health check: Auto-disable failed games
 
           $(cat health_report.md)
           
-          🤖 Generated with [Claude Code](https://claude.ai/code)
+          Generated with [Claude Code](https://claude.ai/code)
           
           Co-Authored-By: Claude <noreply@anthropic.com>"
           git push
