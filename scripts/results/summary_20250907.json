@@ -1,9 +1,9 @@
 {
-  "check_time": "20250907_140519",
-  "total_games": 34,
-  "available_count": 32,
-  "unavailable_count": 2,
-  "success_rate": "94.1%",
+  "check_time": "20250907_141220",
+  "total_games": 42,
+  "available_count": 42,
+  "unavailable_count": 0,
+  "success_rate": "100.0%",
   "available_games": [
     {
       "id": "monster-survivors",
@@ -196,20 +196,67 @@
       "title": "Alphabet Lore Maze",
       "url": "https://html5.gamedistribution.com/d7ff6011917d4fb98589e5087f00795d/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=alphabet-lore-maze-gd",
       "category": "puzzle"
-    }
-  ],
-  "unavailable_games": [
+    },
     {
-      "id": "snake-adventure-gd",
-      "title": "Snake Adventure - Classic Arcade",
-      "reason": "HTTP 404 Error",
+      "id": "merge-the-numbers-gd",
+      "title": "Merge the Numbers",
+      "url": "https://html5.gamedistribution.com/b29c057bedf0482b858f004fb61b1b44/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=merge-the-numbers-gd",
+      "category": "puzzle"
+    },
+    {
+      "id": "math-rockets-division-gd",
+      "title": "Math Rockets Division",
+      "url": "https://html5.gamedistribution.com/e8853f6d4f2f49d68a7af7142077f7ab/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=math-rockets-division-gd",
+      "category": "puzzle"
+    },
+    {
+      "id": "math-runner-gd",
+      "title": "Math Runner",
+      "url": "https://html5.gamedistribution.com/a8870b5a6a76492db5cb8ca599f64843/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=math-runner-gd",
+      "category": "puzzle"
+    },
+    {
+      "id": "hair-salon-beauty-salon-gd",
+      "title": "Hair Salon: Beauty Salon",
+      "url": "https://html5.gamedistribution.com/551fb5282e0042f692221fb6e427e269/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=hair-salon-beauty-salon-gd",
+      "category": "simulation"
+    },
+    {
+      "id": "words-with-owl-gd",
+      "title": "Words with Owl",
+      "url": "https://html5.gamedistribution.com/f44a159d660b4b9289f9add40a3cd7c0/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=words-with-owl-gd",
+      "category": "puzzle"
+    },
+    {
+      "id": "magic-princess-dress-up-doll-gd",
+      "title": "Magic Princess: Dress Up Doll",
+      "url": "https://html5.gamedistribution.com/4dfe529f898544ecab4d3682199bcaf5/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=magic-princess-dress-up-doll-gd",
+      "category": "simulation"
+    },
+    {
+      "id": "weird-dance-on-wednesday-gd",
+      "title": "Weird Dance on Wednesday",
+      "url": "https://html5.gamedistribution.com/5fb340f644374ca09be7d35a90f62ba9/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=weird-dance-on-wednesday-gd",
       "category": "action"
     },
     {
-      "id": "tic-tac-toe-pro-gd",
-      "title": "Tic Tac Toe Pro - Strategy Game",
-      "reason": "HTTP 404 Error",
-      "category": "multiplayer"
+      "id": "wednesday-dark-academia-gd",
+      "title": "Wednesday Dark Academia",
+      "url": "https://html5.gamedistribution.com/37e2c1f9866e4864aa67164768af4f8d/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=wednesday-dark-academia-gd",
+      "category": "action"
+    },
+    {
+      "id": "paper-doll-diary-dress-up-diy-gd",
+      "title": "Paper Doll Diary: Dress Up DIY",
+      "url": "https://html5.gamedistribution.com/6fcaa70b796547a698ddd10808527345/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=paper-doll-diary-dress-up-diy-gd",
+      "category": "simulation"
+    },
+    {
+      "id": "worms-zone-a-slithery-snake-gd",
+      "title": "Worms Zone a Slithery Snake",
+      "url": "https://html5.gamedistribution.com/5dd0b18fb81d49da82ff459f08737390/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=worms-zone-a-slithery-snake-gd",
+      "category": "action"
     }
-  ]
+  ],
+  "unavailable_games": []
 }

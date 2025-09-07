@@ -1156,10 +1156,329 @@
       "thumbnailUrl": "assets/images/alphabet-lore-maze-gd.jpg",
       "createdAt": "2025-09-07T06:04:55.504421+00:00",
       "updatedAt": "2025-09-07T06:04:55.504421+00:00"
+    },
+    {
+      "id": "merge-the-numbers-gd",
+      "title": "Merge the Numbers",
+      "description": "Merge the numbers and reach the highest score!",
+      "shortDesc": "Merge the numbers and reach the highest score!...",
+      "iframeUrl": "https://html5.gamedistribution.com/b29c057bedf0482b858f004fb61b1b44/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=merge-the-numbers-gd",
+      "category": "puzzle",
+      "tags": [
+        "merge",
+        "score",
+        "numbers",
+        "highest",
+        "reach"
+      ],
+      "keywords": [
+        "merge",
+        "score",
+        "numbers",
+        "highest",
+        "reach"
+      ],
+      "controls": "Drag the same numbers and merge them to reach the highest score",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/merge-the-numbers-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
+    },
+    {
+      "id": "math-rockets-division-gd",
+      "title": "Math Rockets Division",
+      "description": "This is a math puzzle game where the player needs to tap the rocket, showing the correct answer to the given division expression. In each level, you will have 10 expressions to solve. Complete all 8 challenges and enhance your math skills.",
+      "shortDesc": "This is a math puzzle game where the player needs to tap the rocket, showing the correct answer to the given division expression.",
+      "iframeUrl": "https://html5.gamedistribution.com/e8853f6d4f2f49d68a7af7142077f7ab/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=math-rockets-division-gd",
+      "category": "puzzle",
+      "tags": [
+        "skills",
+        "rockets",
+        "needs",
+        "answer",
+        "where"
+      ],
+      "keywords": [
+        "skills",
+        "rockets",
+        "needs",
+        "answer",
+        "where",
+        "puzzle"
+      ],
+      "controls": "Use a mouse or touchpad to play this game.",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/math-rockets-division-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
+    },
+    {
+      "id": "math-runner-gd",
+      "title": "Math Runner",
+      "description": "Challenge your mind and reflexes in this fast-paced arithmetic adventure! Solve math problems on the run, dodge obstacles, and race against time to achieve the highest score. Perfect for players of all ages looking to sharpen their math skills while enjoying thrilling gameplay.",
+      "shortDesc": "Challenge your mind and reflexes in this fast-paced arithmetic adventure! Solve math problems on the run, dodge obstacles, and race against time to achieve the highest score.",
+      "iframeUrl": "https://html5.gamedistribution.com/a8870b5a6a76492db5cb8ca599f64843/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=math-runner-gd",
+      "category": "puzzle",
+      "tags": [
+        "race",
+        "their",
+        "skills",
+        "problems",
+        "ages"
+      ],
+      "keywords": [
+        "race",
+        "their",
+        "skills",
+        "problems",
+        "ages",
+        "against"
+      ],
+      "controls": "1. Start Running: Your character begins sprinting through dynamic environments. 2. Solve Math Problems: Encounter math challenges that you must solve quickly to continue. 3. Choose the Correct Path: Select the right answer to keep running; a wrong choice ends the game. 4. Collect Rewards: Gather coins and power-ups to boost your score and unlock new features. 5. Aim for High Scores: The faster and more accurately you solve problems, the higher your score.",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/math-runner-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
+    },
+    {
+      "id": "hair-salon-beauty-salon-gd",
+      "title": "Hair Salon: Beauty Salon",
+      "description": "Get ready to unleash your inner hairstylist with the adorable and entertaining game Hair Salon: Beauty Salon Spa! This charming simulation game allows you to run your very own hair salon, where you can give your cute and quirky customers the hair style of their dreams. From washing, styling hair and providing luxurious jewelry & makeup accessories, there's never a dull moment in this delightful game.",
+      "shortDesc": "Get ready to unleash your inner hairstylist with the adorable and entertaining game Hair Salon: Beauty Salon Spa! This charming simulation game allows you to run your very own hair salon, where you can give your cute and quirky customers the hair style of their dreams.",
+      "iframeUrl": "https://html5.gamedistribution.com/551fb5282e0042f692221fb6e427e269/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=hair-salon-beauty-salon-gd",
+      "category": "simulation",
+      "tags": [
+        "entertaining",
+        "moment",
+        "ready",
+        "their",
+        "where"
+      ],
+      "keywords": [
+        "entertaining",
+        "moment",
+        "ready",
+        "their",
+        "where",
+        "style"
+      ],
+      "controls": "With a wide range of hairstyles and makeup accessories to choose from, you can let your creativity run wild and give your clients a look that's uniquely their own.",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/hair-salon-beauty-salon-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
+    },
+    {
+      "id": "words-with-owl-gd",
+      "title": "Words with Owl",
+      "description": "Test your spelling skills and word recognition in this fun and challenging game! Complete words by filling in the missing letters and aim for the highest score. Unlock exciting new stages as you progress and enjoy a rewarding wordplay experience.",
+      "shortDesc": "Test your spelling skills and word recognition in this fun and challenging game! Complete words by filling in the missing letters and aim for the highest score.",
+      "iframeUrl": "https://html5.gamedistribution.com/f44a159d660b4b9289f9add40a3cd7c0/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=words-with-owl-gd",
+      "category": "puzzle",
+      "tags": [
+        "challenging",
+        "unlock",
+        "skills",
+        "stages",
+        "score"
+      ],
+      "keywords": [
+        "challenging",
+        "unlock",
+        "skills",
+        "stages",
+        "score",
+        "words"
+      ],
+      "controls": "You'll be given incomplete words with missing letters—your goal is to click the letters in the correct order to complete them. Think fast and act quickly to earn more stars before time runs out. The faster you are, the higher your score!",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/words-with-owl-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
+    },
+    {
+      "id": "magic-princess-dress-up-doll-gd",
+      "title": "Magic Princess: Dress Up Doll",
+      "description": "Magic Princess - Dress up & Character Maker game, come and design the cutest doll! Magic Princess is a fashionable ultra-casual simulation girl game with a strong anime chibi style, suitable for all unique girls to play. Design dolls and let your imagination soar! Dress up your doll in your own unique way now!",
+      "shortDesc": "Magic Princess - Dress up & Character Maker game, come and design the cutest doll! Magic Princess is a fashionable ultra-casual simulation girl game with a strong anime chibi style, suitable for all unique girls to play.",
+      "iframeUrl": "https://html5.gamedistribution.com/4dfe529f898544ecab4d3682199bcaf5/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=magic-princess-dress-up-doll-gd",
+      "category": "simulation",
+      "tags": [
+        "soar",
+        "unique",
+        "come",
+        "magic",
+        "style"
+      ],
+      "keywords": [
+        "soar",
+        "unique",
+        "come",
+        "magic",
+        "style",
+        "design"
+      ],
+      "controls": "Click to makeover with your finger, Put on suitable cosmetics, Dress up in a variety of clothing and items, Arrange the scenario, Create an unique photographic memory",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/magic-princess-dress-up-doll-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
+    },
+    {
+      "id": "weird-dance-on-wednesday-gd",
+      "title": "Weird Dance on Wednesday",
+      "description": "A goth girl is going to a school prom. She wants to make a splash with her new dance. Rogue rehearsed this dance for a whole month. She came up with it herself, inspired by classic films. The gothic girl has prepared a gorgeous black dress, but something is missing. Certainly! How can you go to a ball without makeup? Help the goth girl to choose a make-up that reflects her inner world. Use bold and dark shades to emphasize the eyes and lips. A few freckles will make the look a little more romantic. Go to the ball - have fun and dance a weird dance on Wednesday!",
+      "shortDesc": "A goth girl is going to a school prom.",
+      "iframeUrl": "https://html5.gamedistribution.com/5fb340f644374ca09be7d35a90f62ba9/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=weird-dance-on-wednesday-gd",
+      "category": "action",
+      "tags": [
+        "wednesday",
+        "whole",
+        "wants",
+        "reflects",
+        "choose"
+      ],
+      "keywords": [
+        "wednesday",
+        "whole",
+        "wants",
+        "reflects",
+        "choose",
+        "gothic"
+      ],
+      "controls": "Depending on the gaming device, a computer mouse click or a simple touch on touch screens is used for control.",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/weird-dance-on-wednesday-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
+    },
+    {
+      "id": "wednesday-dark-academia-gd",
+      "title": "Wednesday Dark Academia",
+      "description": "With Wednesday Dark Academia, you can choose from various unique and stylish outfits, accessories, and makeup options. Start with her makeup, creating a look that's perfect for school or the ballroom. Play dark lipstick and eyeshadow, and with a little bit of imagination, you can create a look that's all your own. Next, dress her up for a fun day at school, and then see what party look you can put together for her. Style her hair and pick the right accessories for a complete look.",
+      "shortDesc": "With Wednesday Dark Academia, you can choose from various unique and stylish outfits, accessories, and makeup options.",
+      "iframeUrl": "https://html5.gamedistribution.com/37e2c1f9866e4864aa67164768af4f8d/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=wednesday-dark-academia-gd",
+      "category": "action",
+      "tags": [
+        "wednesday",
+        "various",
+        "unique",
+        "academia",
+        "choose"
+      ],
+      "keywords": [
+        "wednesday",
+        "various",
+        "unique",
+        "academia",
+        "choose",
+        "from"
+      ],
+      "controls": "Use your mouse to play the game on a desktop, tap to play on mobile devices.",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/wednesday-dark-academia-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
+    },
+    {
+      "id": "paper-doll-diary-dress-up-diy-gd",
+      "title": "Paper Doll Diary: Dress Up DIY",
+      "description": "Welcome to Paper Doll Diary: Doll DressUp, where the timeless charm of DIY paper dolls meets the exhilarating world of fashion dress up! Step into a realm of creativity and style where you become the master stylist of your enchanting paper doll dress up. With an expansive wardrobe featuring over 1000 fashion items, including the latest in trendy attire, distinctive accessories, diverse hairstyles, and soothing ASMR makeup touches, your creative potential is limitless.",
+      "shortDesc": "Welcome to Paper Doll Diary: Doll DressUp, where the timeless charm of DIY paper dolls meets the exhilarating world of fashion dress up! Step into a realm of creativity and style where you become the master stylist of your enchanting paper doll dress up.",
+      "iframeUrl": "https://html5.gamedistribution.com/6fcaa70b796547a698ddd10808527345/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=paper-doll-diary-dress-up-diy-gd",
+      "category": "simulation",
+      "tags": [
+        "step",
+        "master",
+        "featuring",
+        "charm",
+        "fashion"
+      ],
+      "keywords": [
+        "step",
+        "master",
+        "featuring",
+        "charm",
+        "fashion",
+        "wardrobe"
+      ],
+      "controls": "Unleash your inner fashionista and transform your paper doll into a beacon of style. Whether you're assembling chic outfits or selecting the perfect accessories, each decision propels your paper doll into the spotlight, making her a true fashion icon. Your styling choices not only reflect your unique taste but also guide your doll's journey through thrilling adventures and challenges.",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/paper-doll-diary-dress-up-diy-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
+    },
+    {
+      "id": "worms-zone-a-slithery-snake-gd",
+      "title": "Worms Zone a Slithery Snake",
+      "description": "Worms Zone is a game with a dynamic storyline. Start growing your worm right now. Having tried to get a real anaconda, a small worm never gets stuck in one place – he's ready to bite everyone. However, there is a danger to be eaten by a more successful player. The Worms are real gourmets. They love trying various gelatinous goodies and everything they meet on their route.",
+      "shortDesc": "Worms Zone is a game with a dynamic storyline.",
+      "iframeUrl": "https://html5.gamedistribution.com/5dd0b18fb81d49da82ff459f08737390/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=worms-zone-a-slithery-snake-gd",
+      "category": "action",
+      "tags": [
+        "various",
+        "ready",
+        "stuck",
+        "everything",
+        "their"
+      ],
+      "keywords": [
+        "various",
+        "ready",
+        "stuck",
+        "everything",
+        "their",
+        "route"
+      ],
+      "controls": "Use the mouse to control the worm's direction and space bar to speed up it.",
+      "rating": 4.5,
+      "plays": 0,
+      "featured": false,
+      "trending": false,
+      "new": true,
+      "thumbnailUrl": "assets/images/worms-zone-a-slithery-snake-gd.jpg",
+      "createdAt": "2025-09-07T06:11:56.163456+00:00",
+      "updatedAt": "2025-09-07T06:11:56.163456+00:00"
     }
   ],
   "totalCount": 24,
-  "lastUpdated": "2025-09-07T06:07:26.936098+00:00",
-  "version": "2.6-removed-2-broken-games",
-  "note": "Removed 2 broken games with 404 errors"
+  "lastUpdated": "2025-09-07T06:11:56.163456+00:00",
+  "version": "2.7-added-final-10-games",
+  "note": "Added final 10 GameDistribution games from EMBED.md entries 21-30"
 }
