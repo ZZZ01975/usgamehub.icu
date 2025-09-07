@@ -140,49 +140,49 @@ jobs:
       run: |
         echo "生成 sitemap.xml..."
         python3 -c "
-import json
-import datetime
+        import json
+        import datetime
 
-with open('data/games.json', 'r') as f:
-    data = json.load(f)
+        with open('data/games.json', 'r') as f:
+            data = json.load(f)
 
-sitemap = '''<?xml version='1.0' encoding='UTF-8'?>
-<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
-  <url>
-    <loc>https://usgamehub.icu/</loc>
-    <lastmod>{}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>'''.format(datetime.datetime.now().strftime('%Y-%m-%d'))
+        sitemap = '''<?xml version='1.0' encoding='UTF-8'?>
+        <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+          <url>
+            <loc>https://usgamehub.icu/</loc>
+            <lastmod>{}</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>1.0</priority>
+          </url>'''.format(datetime.datetime.now().strftime('%Y-%m-%d'))
 
-# Add game pages
-for game in data['games']:
-    sitemap += f'''
-  <url>
-    <loc>https://usgamehub.icu/game.html?id={game['id']}</loc>
-    <lastmod>{game['updatedAt'][:10]}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>'''
+        # Add game pages
+        for game in data['games']:
+            sitemap += f'''
+          <url>
+            <loc>https://usgamehub.icu/game.html?id={game['id']}</loc>
+            <lastmod>{game['updatedAt'][:10]}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+          </url>'''
 
-# Add category pages
-categories = ['puzzle', 'action', 'multiplayer', 'cards', 'sports', 'strategy']
-for cat in categories:
-    sitemap += f'''
-  <url>
-    <loc>https://usgamehub.icu/category.html?cat={cat}</loc>
-    <lastmod>{datetime.datetime.now().strftime('%Y-%m-%d')}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>'''
+        # Add category pages
+        categories = ['puzzle', 'action', 'multiplayer', 'cards', 'sports', 'strategy']
+        for cat in categories:
+            sitemap += f'''
+          <url>
+            <loc>https://usgamehub.icu/category.html?cat={cat}</loc>
+            <lastmod>{datetime.datetime.now().strftime('%Y-%m-%d')}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.7</priority>
+          </url>'''
 
-sitemap += '\n</urlset>'
+        sitemap += '\n</urlset>'
 
-with open('sitemap.xml', 'w') as f:
-    f.write(sitemap)
-    
-print('Sitemap generated successfully')
-"
+        with open('sitemap.xml', 'w') as f:
+            f.write(sitemap)
+            
+        print('Sitemap generated successfully')
+        "
         
     - name: Deploy to Cloudflare Pages
       uses: cloudflare/wrangler-action@v3
