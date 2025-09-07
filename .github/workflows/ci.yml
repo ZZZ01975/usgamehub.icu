@@ -112,20 +112,20 @@ jobs:
         echo "检查外部链接..."
         # Extract and validate key external URLs
         python3 -c "
-import json
-with open('data/games.json', 'r') as f:
-    data = json.load(f)
-    
-urls = [game['iframeUrl'] for game in data['games']]
-print(f'Found {len(urls)} game URLs to validate')
+        import json
+        with open('data/games.json', 'r') as f:
+            data = json.load(f)
+            
+        urls = [game['iframeUrl'] for game in data['games']]
+        print(f'Found {len(urls)} game URLs to validate')
 
-# Check for suspicious domains
-suspicious = ['localhost', '127.0.0.1', 'file://']
-for url in urls:
-    for sus in suspicious:
-        if sus in url:
-            print(f'Warning: Suspicious URL found: {url}')
-"
+        # Check for suspicious domains
+        suspicious = ['localhost', '127.0.0.1', 'file://']
+        for url in urls:
+            for sus in suspicious:
+                if sus in url:
+                    print(f'Warning: Suspicious URL found: {url}')
+        "
         
   deploy:
     name: 部署到 Cloudflare Pages
