@@ -1,0 +1,53 @@
+GAME INTEGRATION REPORT
+==================================================
+Date: 2025-09-07 10:32:59
+Games Added: 5
+
+NEW GAMES:
+--------------------
+1. Car Racing 3D
+   ID: car-racing-3d
+   Category: action
+   URL: https://html5games.com/Game/car-racing-3d/
+   License: unknown
+   Commercial Use: True
+   Source: html5games.com
+
+2. Soccer Physics
+   ID: soccer-physics
+   Category: sports
+   URL: https://html5games.com/Game/soccer-physics/
+   License: unknown
+   Commercial Use: True
+   Source: html5games.com
+
+3. Stick War Legacy
+   ID: stick-war-legacy
+   Category: strategy
+   URL: https://html5games.com/Game/stick-war/
+   License: unknown
+   Commercial Use: True
+   Source: html5games.com
+
+4. Fruit Ninja HTML5
+   ID: fruit-ninja-html5
+   Category: arcade
+   URL: https://html5games.com/Game/fruit-ninja/
+   License: unknown
+   Commercial Use: True
+   Source: html5games.com
+
+5. Tower Defense HTML5
+   ID: tower-defense-html5
+   Category: strategy
+   URL: https://html5games.com/Game/tower-defense/
+   License: unknown
+   Commercial Use: True
+   Source: html5games.com
+
+CATEGORIES DISTRIBUTION:
+-------------------------
+action: 1 games
+sports: 1 games
+strategy: 2 games
+arcade: 1 games

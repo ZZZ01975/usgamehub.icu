@@ -1,0 +1,7 @@
+# Python依赖包
+requests>=2.25.0
+playwright>=1.20.0
+
+# 可选：用于更好的命令行输出
+colorama>=0.4.0
+tqdm>=4.60.0

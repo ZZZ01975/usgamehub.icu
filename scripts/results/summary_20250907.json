@@ -1,0 +1,197 @@
+{
+  "check_time": "20250907_095721",
+  "total_games": 31,
+  "available_count": 6,
+  "unavailable_count": 25,
+  "success_rate": "19.4%",
+  "available_games": [
+    {
+      "id": "monster-survivors",
+      "title": "Monster Survivors - Roguelike Action",
+      "url": "https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html",
+      "category": "action"
+    },
+    {
+      "id": "2048-game",
+      "title": "2048 Game - Number Puzzle",
+      "url": "https://2048game.com/",
+      "category": "puzzle"
+    },
+    {
+      "id": "bubble-shooter",
+      "title": "Bubble Shooter Classic Free",
+      "url": "https://bubbleshooter.net/",
+      "category": "puzzle"
+    },
+    {
+      "id": "endless-runner",
+      "title": "Endless Runner Games 3D",
+      "url": "https://html5games.com/Game/endless-runner/",
+      "category": "action"
+    },
+    {
+      "id": "racing-car",
+      "title": "Car Racing Games Unblocked",
+      "url": "https://html5games.com/Game/racing-cars/",
+      "category": "action"
+    },
+    {
+      "id": "racing-rivals",
+      "title": "Racing Games Split Screen",
+      "url": "https://html5games.com/Game/drift-racing/",
+      "category": "multiplayer"
+    }
+  ],
+  "unavailable_games": [
+    {
+      "id": "tetris-classic",
+      "title": "Tetris Classic - Free Online",
+      "reason": "HTTP 403 Error",
+      "category": "puzzle"
+    },
+    {
+      "id": "sudoku-puzzle",
+      "title": "Sudoku Puzzle - Easy Medium Hard",
+      "reason": "HTTP 404 Error",
+      "category": "puzzle"
+    },
+    {
+      "id": "minesweeper-classic",
+      "title": "Minesweeper Classic Online",
+      "reason": "HTTP 404 Error",
+      "category": "puzzle"
+    },
+    {
+      "id": "mahjong-connect",
+      "title": "Mahjong Connect - Free Tile Matching",
+      "reason": "HTTP 403 Error",
+      "category": "puzzle"
+    },
+    {
+      "id": "zuma-deluxe",
+      "title": "Zuma Deluxe Online Play",
+      "reason": "HTTP 403 Error",
+      "category": "puzzle"
+    },
+    {
+      "id": "match-3-puzzle",
+      "title": "Match 3 Puzzle Games Free",
+      "reason": "HTTP 403 Error",
+      "category": "puzzle"
+    },
+    {
+      "id": "jigsaw-puzzles",
+      "title": "Jigsaw Puzzles Online Free",
+      "reason": "HTTP 404 Error",
+      "category": "puzzle"
+    },
+    {
+      "id": "memory-game",
+      "title": "Memory Card Matching Game",
+      "reason": "HTTP 403 Error",
+      "category": "puzzle"
+    },
+    {
+      "id": "stickman-fighter",
+      "title": "Stickman Fighting Games 2 Player",
+      "reason": "HTTP 403 Error",
+      "category": "action"
+    },
+    {
+      "id": "tank-battle",
+      "title": "Tank Battle Multiplayer Online",
+      "reason": "HTTP 403 Error",
+      "category": "action"
+    },
+    {
+      "id": "air-combat",
+      "title": "Airplane Shooting Games Free",
+      "reason": "HTTP 403 Error",
+      "category": "action"
+    },
+    {
+      "id": "ninja-run",
+      "title": "Ninja Run Jump Game",
+      "reason": "HTTP 403 Error",
+      "category": "action"
+    },
+    {
+      "id": "zombie-survival",
+      "title": "Zombie Survival Games Browser",
+      "reason": "HTTP 403 Error",
+      "category": "action"
+    },
+    {
+      "id": "platform-jump",
+      "title": "Platform Jumping Games",
+      "reason": "HTTP 403 Error",
+      "category": "action"
+    },
+    {
+      "id": "space-shooter",
+      "title": "Space Shooter Retro Arcade",
+      "reason": "HTTP 403 Error",
+      "category": "action"
+    },
+    {
+      "id": "archery-master",
+      "title": "Archery Bow Arrow Games",
+      "reason": "HTTP 403 Error",
+      "category": "action"
+    },
+    {
+      "id": "tic-tac-toe",
+      "title": "Tic Tac Toe 2 Player",
+      "reason": "HTTP 403 Error",
+      "category": "multiplayer"
+    },
+    {
+      "id": "gomoku-online",
+      "title": "Gomoku Online With Friend",
+      "reason": "HTTP 403 Error",
+      "category": "multiplayer"
+    },
+    {
+      "id": "tank-duo",
+      "title": "2 Player Tank Games Same Keyboard",
+      "reason": "HTTP 403 Error",
+      "category": "multiplayer"
+    },
+    {
+      "id": "soccer-heads",
+      "title": "Soccer Games 2 Player Local",
+      "reason": "HTTP 403 Error",
+      "category": "multiplayer"
+    },
+    {
+      "id": "solitaire-classic",
+      "title": "Solitaire Card Games Free",
+      "reason": "HTTP 404 Error",
+      "category": "cards"
+    },
+    {
+      "id": "freecell",
+      "title": "FreeCell Solitaire Online",
+      "reason": "HTTP 404 Error",
+      "category": "cards"
+    },
+    {
+      "id": "spider-solitaire",
+      "title": "Spider Solitaire 2 Suits",
+      "reason": "HTTP 404 Error",
+      "category": "cards"
+    },
+    {
+      "id": "chess-master",
+      "title": "Chess Online vs Computer",
+      "reason": "HTTP 403 Error",
+      "category": "cards"
+    },
+    {
+      "id": "checkers-game",
+      "title": "Checkers Board Game Online",
+      "reason": "HTTP 403 Error",
+      "category": "cards"
+    }
+  ]
+}

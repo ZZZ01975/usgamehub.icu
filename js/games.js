@@ -469,12 +469,69 @@ function updateGamePageContent(game) {
     loadGameIframe(game);
 }
 
-// Load game iframe
+// Load game iframe or show new window mode
 function loadGameIframe(game) {
+    const iframeWrapper = document.getElementById('gameIframeWrapper');
+    const newWindowWrapper = document.getElementById('gameNewWindowWrapper');
     const iframe = document.getElementById('gameIframe');
     const loading = document.getElementById('gameLoading');
+    const openNewWindowBtn = document.getElementById('openNewWindowBtn');
+    
+    // Check if game is embeddable
+    if (game.embeddable === false) {
+        // Show new window mode
+        if (iframeWrapper) iframeWrapper.classList.add('hidden');
+        if (newWindowWrapper) newWindowWrapper.classList.remove('hidden');
+        
+        // Set up new window button
+        if (openNewWindowBtn) {
+            openNewWindowBtn.onclick = () => {
+                // Track new window mode attempt
+                if (window.Analytics) {
+                    Analytics.trackGameMode(game.id, game.title, 'new_window', false);
+                }
+                
+                // Open game in new window
+                const newWindow = window.open(
+                    game.iframeUrl, 
+                    '_blank',
+                    'width=1024,height=768,scrollbars=yes,resizable=yes,toolbar=no,location=no,directories=no,status=no,menubar=no'
+                );
+                
+                if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                    // Popup was blocked
+                    if (window.Analytics) {
+                        Analytics.trackPopupBlocked(game.id, game.title);
+                        Analytics.trackError('popup_blocked', 'New window popup was blocked', 'game_page', game.id);
+                    }
+                    alert('Popup blocked! Please allow popups for this site and try again.');
+                } else {
+                    // Success - track new window mode success
+                    if (window.Analytics) {
+                        Analytics.trackGameMode(game.id, game.title, 'new_window', true);
+                    }
+                    
+                    // Record game start event
+                    if (window.GameAnalytics) {
+                        GameAnalytics.startGameSession(game.id);
+                    }
+                    console.log('Game opened in new window:', game.title);
+                }
+            };
+        }
+        return;
+    }
+    
+    // Show iframe mode (embeddable games)
+    if (iframeWrapper) iframeWrapper.classList.remove('hidden');
+    if (newWindowWrapper) newWindowWrapper.classList.add('hidden');
     
     if (!iframe) return;
+    
+    // Track iframe mode attempt
+    if (window.Analytics) {
+        Analytics.trackGameMode(game.id, game.title, 'iframe', false);
+    }
     
     // 设置iframe属性
     iframe.src = game.iframeUrl;
@@ -483,6 +540,10 @@ function loadGameIframe(game) {
     // Set loading timeout
     const timeout = setTimeout(() => {
         if (loading && !loading.classList.contains('hidden')) {
+            // Track timeout error
+            if (window.Analytics) {
+                Analytics.trackError('iframe_timeout', `Game loading timeout: ${game.title}`, 'game_page', game.id);
+            }
             showGameLoadingError(game, loading, 'timeout');
         }
     }, 8000);
@@ -492,6 +553,12 @@ function loadGameIframe(game) {
         if (loading) {
             loading.classList.add('hidden');
         }
+        
+        // Track iframe mode success
+        if (window.Analytics) {
+            Analytics.trackGameMode(game.id, game.title, 'iframe', true);
+        }
+        
         console.log('Game loaded successfully:', game.title);
         
         // Record game start event
@@ -502,6 +569,12 @@ function loadGameIframe(game) {
     
     iframe.onerror = () => {
         clearTimeout(timeout);
+        
+        // Track iframe error
+        if (window.Analytics) {
+            Analytics.trackError('iframe_error', `Game loading failed: ${game.title}`, 'game_page', game.id);
+        }
+        
         if (loading) {
             showGameLoadingError(game, loading, 'error');
         }
@@ -676,6 +749,47 @@ function loadCategoryGames(categoryId, sortBy = 'popular') {
 
 // 获取游戏控制说明（英文）
 function getGameControlsInEnglish(game) {
+    // 如果游戏有个性化控制说明，优先使用（需要翻译）
+    if (game.controls) {
+        // 简单的中英文映射转换
+        const chineseToEnglish = {
+            '使用WASD或方向键移动角色，自动攻击怪物，升级时选择武器和技能': 'Use WASD or arrow keys to move character, auto-attack monsters, choose weapons and skills when leveling up',
+            '使用方向键或滑动屏幕来移动数字方块': 'Use arrow keys or swipe screen to move number tiles',
+            '方向键控制方块移动，上键旋转，下键快速下落': 'Arrow keys control block movement, up key to rotate, down key to drop fast',
+            '点击空格输入数字1-9，使用铅笔模式做标记': 'Click empty cells to input numbers 1-9, use pencil mode for notes',
+            '左键点击打开格子，右键插旗标记地雷': 'Left click to open cells, right click to flag mines',
+            '点击两个相同的麻将牌进行连接消除': 'Click two matching mahjong tiles to connect and remove them',
+            '鼠标瞄准并点击发射泡泡，匹配3个或更多相同颜色': 'Aim with mouse and click to shoot bubbles, match 3 or more same colors',
+            '鼠标瞄准射击彩球，匹配3个相同颜色消除': 'Aim with mouse to shoot colored balls, match 3 same colors to eliminate',
+            '点击并拖拽宝石进行交换，匹配3个或更多相同宝石': 'Click and drag gems to swap, match 3 or more identical gems',
+            '拖拽拼图块到正确位置，双击旋转拼图块': 'Drag puzzle pieces to correct positions, double-click to rotate pieces',
+            '点击卡片翻开，记住图案位置，匹配相同的卡片对': 'Click cards to flip, remember pattern positions, match identical card pairs',
+            '左右键转向，上键跳跃，下键滑铲，空格键使用道具': 'Left/right to turn, up to jump, down to slide, spacebar to use items',
+            '玩家1: WASD移动 + G攻击，玩家2: 方向键移动 + L攻击': 'Player 1: WASD to move + G to attack, Player 2: Arrow keys to move + L to attack',
+            '玩家1: WASD移动 + Q射击，玩家2: 方向键移动 + 空格射击': 'Player 1: WASD to move + Q to shoot, Player 2: Arrow keys to move + Spacebar to shoot',
+            '玩家1: A/D移动 + W跳跃，玩家2: 左右键移动 + 上键跳跃': 'Player 1: A/D to move + W to jump, Player 2: Left/Right to move + Up to jump',
+            '玩家1: WASD控制，玩家2: 方向键控制，空格键刹车': 'Player 1: WASD controls, Player 2: Arrow key controls, Spacebar to brake',
+            'WASD控制移动，鼠标瞄准射击，空格键使用特殊武器': 'WASD to move, mouse to aim and shoot, spacebar to use special weapons',
+            'WASD移动，鼠标瞄准射击，E键拾取物品，Tab键查看物品栏': 'WASD to move, mouse to aim and shoot, E to pick up items, Tab to view inventory',
+            '方向键控制飞机，空格键射击，Shift键加速飞行': 'Arrow keys control aircraft, spacebar to shoot, Shift to accelerate',
+            '方向键移动，空格键跳跃，下键滑铲，S键使用忍术': 'Arrow keys to move, spacebar to jump, down key to slide, S key to use ninja skills',
+            '方向键或WASD控制赛车，空格键手刹，Shift键氮气加速': 'Arrow keys or WASD to control car, spacebar for handbrake, Shift for nitro boost',
+            '方向键移动，空格键或上键跳跃，长按跳跃键可跳更高': 'Arrow keys to move, spacebar or up key to jump, hold jump key for higher jumps',
+            '方向键控制飞船，空格键射击，Z键使用特殊武器': 'Arrow keys control spaceship, spacebar to shoot, Z key for special weapons',
+            '按住鼠标拉弓，瞄准目标后释放射箭': 'Hold mouse to draw bow, aim at target then release to shoot arrow',
+            '点击空格放置X或O，轮流进行游戏': 'Click empty spaces to place X or O, take turns playing',
+            '点击棋盘放置棋子，先连成五子一线者获胜': 'Click board to place pieces, first to connect five in a row wins',
+            '点击拖拽纸牌到合适位置，双击自动移动到基础堆': 'Click and drag cards to suitable positions, double-click to auto-move to foundation',
+            '点击选择纸牌，再点击目标位置移动，善用四个空格暂存': 'Click to select cards, click target position to move, use four free cells for temporary storage',
+            '点击拖拽纸牌移动，完成K到A同花色序列可移除': 'Click and drag cards to move, complete K to A same-suit sequences to remove',
+            '点击棋子选择，再点击目标格子移动，特殊走法会自动提示': 'Click pieces to select, click target square to move, special moves auto-prompted',
+            '点击棋子选择，点击有效位置移动，强制吃子时必须执行': 'Click pieces to select, click valid positions to move, mandatory captures must be executed'
+        };
+        
+        return chineseToEnglish[game.controls] || game.controls;
+    }
+    
+    // 否则使用通用分类说明
     const controlsByCategory = {
         'puzzle': 'Use arrow keys or swipe to move tiles/pieces. Click to select and interact with game elements.',
         'action': 'Use WASD or arrow keys to move. Mouse to aim and click to shoot/attack. Spacebar for special actions.',
@@ -690,6 +804,47 @@ function getGameControlsInEnglish(game) {
 
 // 获取游戏攻略提示（英文）
 function getGameTipsInEnglish(game) {
+    // 如果游戏有个性化提示，优先使用（需要翻译）
+    if (game.tips) {
+        // 简单的中英文映射转换
+        const chineseToEnglish = {
+            '选择合适的武器组合，优先升级血量和移动速度，注意boss出现时间': 'Choose suitable weapon combinations, prioritize upgrading health and movement speed, watch for boss spawn times',
+            '规划移动路线，保持最大数字在角落，避免随意移动造成死局': 'Plan movement routes, keep largest numbers in corners, avoid random moves that create dead ends',
+            '保持底部平整，学会T-spin技巧，及时清除多余方块避免堆积过高': 'Keep bottom level flat, learn T-spin techniques, clear excess blocks to avoid stacking too high',
+            '从简单区域开始填写，利用排除法，标记可能的数字选项': 'Start filling from simple areas, use elimination method, mark possible number options',
+            '从数字入手分析，合理使用标旗，先解决确定的区域再推测': 'Start analysis from numbers, use flags wisely, solve certain areas before guessing',
+            '优先消除外层牌，留意连接路径，合理规划消除顺序': 'Prioritize removing outer tiles, watch connection paths, plan elimination order wisely',
+            '瞄准准确，利用反弹角度，优先消除上层泡泡制造连锁反应': 'Aim accurately, use bounce angles, prioritize removing upper bubbles for chain reactions',
+            '观察球链移动速度，优先打断长链，利用反弹制造精准匹配': 'Watch ball chain movement speed, prioritize breaking long chains, use bounces for precise matches',
+            '寻找4连或5连匹配制造特殊宝石，合理使用道具完成关卡目标': 'Look for 4-5 matches to create special gems, use power-ups wisely to complete level objectives',
+            '先拼边缘，按颜色和图案分类拼图块，使用预览图参考': 'Start with edges, sort pieces by color and pattern, use preview image for reference',
+            '系统化记忆卡片位置，先翻开角落和边缘的卡片，保持专注': 'Systematically memorize card positions, flip corner and edge cards first, stay focused',
+            '提前预判障碍物，收集金币购买角色和道具，保持节奏感': 'Anticipate obstacles early, collect coins to buy characters and items, maintain rhythm',
+            '掌握连击组合，利用跳跃攻击，学会防御和反击时机': 'Master combo chains, use jump attacks, learn defense and counter-attack timing',
+            '利用掩体保护，瞄准敌方薄弱点，与队友协作包围敌人': 'Use cover for protection, aim at enemy weak points, coordinate with teammates to surround enemies',
+            '保持机动性避免敌火，瞄准敌机引擎部位，合理使用导弹攻击': 'Stay mobile to avoid enemy fire, target aircraft engines, use missiles strategically',
+            '掌握跳跃时机，利用墙壁跳跃到达高处，合理使用忍术能力': 'Master jump timing, use wall jumps to reach high places, use ninja abilities wisely',
+            '节约弹药瞄准头部，寻找安全地点休息，合理分配资源生存更久': 'Conserve ammo by aiming for headshots, find safe spots to rest, manage resources wisely for longer survival',
+            '掌握过弯技巧，合理使用氮气加速，熟悉赛道布局抢占先机': 'Master cornering techniques, use nitro boost wisely, learn track layouts to gain advantage',
+            '观察平台移动规律，控制跳跃力度，耐心等待最佳时机': 'Observe platform movement patterns, control jump force, wait patiently for optimal timing',
+            '躲避敌方子弹，收集道具增强火力，瞄准BOSS的弱点攻击': 'Dodge enemy bullets, collect power-ups to enhance firepower, target boss weak points',
+            '考虑风向影响，瞄准靶心高分区域，保持稳定的射箭节奏': 'Consider wind effects, aim for bullseye high-score zones, maintain steady shooting rhythm',
+            '控制中心格子优势最大，阻止对手连成三个，制造多重威胁': 'Control center square for maximum advantage, prevent opponent from connecting three, create multiple threats',
+            '攻守兼备，既要制造连子威胁，也要阻挡对手的连线': 'Balance offense and defense, create connecting threats while blocking opponent connections',
+            '利用墙壁反弹炮弹，收集道具增强火力，预判对手移动轨迹': 'Use wall bounces for cannonballs, collect power-ups for enhanced firepower, predict opponent movement patterns',
+            '掌握跳跃时机进行头球，利用弹墙改变球的方向进球': 'Master jump timing for headers, use wall bounces to change ball direction for goals',
+            '熟悉赛道弯道，合理使用漂移过弯，卡位阻挡对手超车': 'Learn track curves, use drift turning wisely, position to block opponent overtaking',
+            '优先翻开隐藏牌，合理规划移牌顺序，善用空列存放国王': 'Prioritize revealing hidden cards, plan card movement order wisely, use empty columns for kings',
+            '规划移牌序列，充分利用自由格，先清理阻挡牌的路径': 'Plan card move sequences, fully utilize free cells, clear blocking card paths first',
+            '优先建立同花色序列，尽量不要阻挡其他牌，合理使用发牌': 'Prioritize building same-suit sequences, avoid blocking other cards, use deal wisely',
+            '控制中心区域，保护国王安全，发展子力配合，计算战术变化': 'Control center area, protect king safety, develop piece coordination, calculate tactical variations',
+            '争取率先成王，控制棋盘中心，连续跳吃获得优势，保护后排棋子': 'Strive to crown pieces first, control board center, use consecutive jumps for advantage, protect back row pieces'
+        };
+        
+        return chineseToEnglish[game.tips] || game.tips;
+    }
+    
+    // 否则使用通用分类提示
     const tipsByCategory = {
         'puzzle': 'Take your time to plan moves ahead. Look for patterns and combinations. Practice makes perfect!',
         'action': 'Stay mobile and use cover. Collect power-ups when possible. Learn enemy patterns for better strategy.',

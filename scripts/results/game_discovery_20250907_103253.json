@@ -1,0 +1,316 @@
+{
+  "discovery_date": "2025-09-07T10:32:53.314390",
+  "total_discovered": 7,
+  "total_verified": 5,
+  "discovered_games": [
+    {
+      "id": "car-racing-3d",
+      "title": "Car Racing 3D",
+      "description": "Fast-paced 3D car racing with realistic physics and multiple tracks",
+      "shortDesc": "Fast-paced 3D car racing with realistic physics and multiple tracks",
+      "category": "action",
+      "iframeUrl": "https://html5games.com/Game/car-racing-3d/",
+      "tags": [
+        "racing",
+        "3d",
+        "cars",
+        "speed",
+        "tracks"
+      ],
+      "keywords": [
+        "car racing 3d",
+        "racing",
+        "3d",
+        "cars",
+        "speed"
+      ],
+      "source": "html5games.com",
+      "license": "unknown",
+      "commercial_use": true,
+      "ad_allowed": true,
+      "discovered_date": "2025-09-07T10:32:36.939822",
+      "verified": true,
+      "embeddable": true,
+      "verified_date": "2025-09-07",
+      "thumbnail": "/assets/images/car-racing-3d-thumbnail.jpg",
+      "rating": 4.8,
+      "playCount": 4319,
+      "featured": false,
+      "regionBlock": [],
+      "controls": "方向键或WASD移动，鼠标点击操作，空格键特殊技能",
+      "tips": "保持移动避免敌人攻击，合理使用技能，注意血量管理",
+      "createdAt": "2025-09-07T10:32:39.186959",
+      "updatedAt": "2025-09-07T10:32:39.186959"
+    },
+    {
+      "id": "soccer-physics",
+      "title": "Soccer Physics",
+      "description": "Hilarious physics-based soccer game with quirky controls",
+      "shortDesc": "Hilarious physics-based soccer game with quirky controls",
+      "category": "sports",
+      "iframeUrl": "https://html5games.com/Game/soccer-physics/",
+      "tags": [
+        "soccer",
+        "physics",
+        "funny",
+        "sports",
+        "multiplayer"
+      ],
+      "keywords": [
+        "soccer physics",
+        "soccer",
+        "physics",
+        "funny",
+        "sports"
+      ],
+      "source": "html5games.com",
+      "license": "unknown",
+      "commercial_use": true,
+      "ad_allowed": true,
+      "discovered_date": "2025-09-07T10:32:36.939822",
+      "verified": true,
+      "embeddable": true,
+      "verified_date": "2025-09-07",
+      "thumbnail": "/assets/images/soccer-physics-thumbnail.jpg",
+      "rating": 3.9,
+      "playCount": 2992,
+      "featured": false,
+      "regionBlock": [],
+      "controls": "方向键控制移动，空格键跳跃/踢球，鼠标瞄准",
+      "tips": "掌握时机很重要，练习精准操作，观察对手动向",
+      "createdAt": "2025-09-07T10:32:41.491851",
+      "updatedAt": "2025-09-07T10:32:41.491851"
+    },
+    {
+      "id": "stick-war-legacy",
+      "title": "Stick War Legacy",
+      "description": "Strategic warfare game with stick figures and army management",
+      "shortDesc": "Strategic warfare game with stick figures and army management",
+      "category": "strategy",
+      "iframeUrl": "https://html5games.com/Game/stick-war/",
+      "tags": [
+        "strategy",
+        "war",
+        "army",
+        "stickman",
+        "management"
+      ],
+      "keywords": [
+        "stick war legacy",
+        "strategy",
+        "war",
+        "army",
+        "stickman"
+      ],
+      "source": "html5games.com",
+      "license": "unknown",
+      "commercial_use": true,
+      "ad_allowed": true,
+      "discovered_date": "2025-09-07T10:32:36.939822",
+      "verified": true,
+      "embeddable": true,
+      "verified_date": "2025-09-07",
+      "thumbnail": "/assets/images/stick-war-legacy-thumbnail.jpg",
+      "rating": 4.6,
+      "playCount": 2305,
+      "featured": false,
+      "regionBlock": [],
+      "controls": "鼠标点击选择单位，拖拽移动，右键取消操作",
+      "tips": "合理分配资源，建立防御体系，适时进攻",
+      "createdAt": "2025-09-07T10:32:43.764155",
+      "updatedAt": "2025-09-07T10:32:43.764155"
+    },
+    {
+      "id": "fruit-ninja-html5",
+      "title": "Fruit Ninja HTML5",
+      "description": "Slice fruits with your finger in this addictive arcade game",
+      "shortDesc": "Slice fruits with your finger in this addictive arcade game",
+      "category": "arcade",
+      "iframeUrl": "https://html5games.com/Game/fruit-ninja/",
+      "tags": [
+        "fruit",
+        "ninja",
+        "arcade",
+        "slice",
+        "touch"
+      ],
+      "keywords": [
+        "fruit ninja html5",
+        "fruit",
+        "ninja",
+        "arcade",
+        "slice"
+      ],
+      "source": "html5games.com",
+      "license": "unknown",
+      "commercial_use": true,
+      "ad_allowed": true,
+      "discovered_date": "2025-09-07T10:32:36.939822",
+      "verified": true,
+      "embeddable": true,
+      "verified_date": "2025-09-07",
+      "thumbnail": "/assets/images/fruit-ninja-html5-thumbnail.jpg",
+      "rating": 5.1,
+      "playCount": 2742,
+      "featured": false,
+      "regionBlock": [],
+      "controls": "方向键移动，空格键跳跃，鼠标点击交互",
+      "tips": "熟练掌握操作，记住关卡模式，收集道具增强能力",
+      "createdAt": "2025-09-07T10:32:46.058431",
+      "updatedAt": "2025-09-07T10:32:46.058431"
+    },
+    {
+      "id": "tower-defense-html5",
+      "title": "Tower Defense HTML5",
+      "description": "Defend your base with strategic tower placement and upgrades",
+      "shortDesc": "Defend your base with strategic tower placement and upgrades",
+      "category": "strategy",
+      "iframeUrl": "https://html5games.com/Game/tower-defense/",
+      "tags": [
+        "tower defense",
+        "strategy",
+        "defense",
+        "upgrade",
+        "waves"
+      ],
+      "keywords": [
+        "tower defense html5",
+        "tower defense",
+        "strategy",
+        "defense",
+        "upgrade"
+      ],
+      "source": "html5games.com",
+      "license": "unknown",
+      "commercial_use": true,
+      "ad_allowed": true,
+      "discovered_date": "2025-09-07T10:32:36.939822",
+      "verified": true,
+      "embeddable": true,
+      "verified_date": "2025-09-07",
+      "thumbnail": "/assets/images/tower-defense-html5-thumbnail.jpg",
+      "rating": 4.4,
+      "playCount": 2230,
+      "featured": false,
+      "regionBlock": [],
+      "controls": "鼠标点击选择单位，拖拽移动，右键取消操作",
+      "tips": "合理分配资源，建立防御体系，适时进攻",
+      "createdAt": "2025-09-07T10:32:48.340827",
+      "updatedAt": "2025-09-07T10:32:48.340827"
+    },
+    {
+      "id": "asteroids-html5",
+      "title": "Asteroids HTML5",
+      "description": "Classic asteroids space shooter game with modern HTML5 graphics",
+      "shortDesc": "Classic asteroids space shooter game with modern HTML5 graphics",
+      "category": "action",
+      "iframeUrl": "https://playtictactoe.org/asteroids",
+      "tags": [
+        "asteroids",
+        "space",
+        "shooter",
+        "classic",
+        "arcade"
+      ],
+      "keywords": [
+        "asteroids html5",
+        "asteroids",
+        "space",
+        "shooter",
+        "classic"
+      ],
+      "source": "open_source",
+      "license": "MIT",
+      "commercial_use": true,
+      "ad_allowed": true,
+      "discovered_date": "2025-09-07T10:32:36.939822",
+      "verified": false
+    },
+    {
+      "id": "memory-cards-game",
+      "title": "Memory Cards Game",
+      "description": "Test your memory by matching pairs of cards in this classic brain training game",
+      "shortDesc": "Test your memory by matching pairs of cards in this classic brain training game",
+      "category": "puzzle",
+      "iframeUrl": "https://playtictactoe.org/memory",
+      "tags": [
+        "memory",
+        "cards",
+        "brain training",
+        "concentration",
+        "pairs"
+      ],
+      "keywords": [
+        "memory cards game",
+        "memory",
+        "cards",
+        "brain training",
+        "concentration"
+      ],
+      "source": "open_source",
+      "license": "CC0",
+      "commercial_use": true,
+      "ad_allowed": true,
+      "discovered_date": "2025-09-07T10:32:36.939822",
+      "verified": false
+    }
+  ],
+  "verification_results": [
+    {
+      "game_id": "car-racing-3d",
+      "title": "Car Racing 3D",
+      "url": "https://html5games.com/Game/car-racing-3d/",
+      "compatible": true,
+      "reason": "OK - iframe compatible",
+      "verified_date": "2025-09-07T10:32:39.186959"
+    },
+    {
+      "game_id": "soccer-physics",
+      "title": "Soccer Physics",
+      "url": "https://html5games.com/Game/soccer-physics/",
+      "compatible": true,
+      "reason": "OK - iframe compatible",
+      "verified_date": "2025-09-07T10:32:41.491851"
+    },
+    {
+      "game_id": "stick-war-legacy",
+      "title": "Stick War Legacy",
+      "url": "https://html5games.com/Game/stick-war/",
+      "compatible": true,
+      "reason": "OK - iframe compatible",
+      "verified_date": "2025-09-07T10:32:43.764155"
+    },
+    {
+      "game_id": "fruit-ninja-html5",
+      "title": "Fruit Ninja HTML5",
+      "url": "https://html5games.com/Game/fruit-ninja/",
+      "compatible": true,
+      "reason": "OK - iframe compatible",
+      "verified_date": "2025-09-07T10:32:46.058431"
+    },
+    {
+      "game_id": "tower-defense-html5",
+      "title": "Tower Defense HTML5",
+      "url": "https://html5games.com/Game/tower-defense/",
+      "compatible": true,
+      "reason": "OK - iframe compatible",
+      "verified_date": "2025-09-07T10:32:48.340827"
+    },
+    {
+      "game_id": "asteroids-html5",
+      "title": "Asteroids HTML5",
+      "url": "https://playtictactoe.org/asteroids",
+      "compatible": false,
+      "reason": "X-Frame-Options: SAMEORIGIN",
+      "verified_date": "2025-09-07T10:32:50.536437"
+    },
+    {
+      "game_id": "memory-cards-game",
+      "title": "Memory Cards Game",
+      "url": "https://playtictactoe.org/memory",
+      "compatible": false,
+      "reason": "X-Frame-Options: SAMEORIGIN",
+      "verified_date": "2025-09-07T10:32:52.305394"
+    }
+  ]
+}

@@ -58,12 +58,12 @@
           "iframeUrl": {
             "type": "string",
             "description": "游戏iframe地址",
-            "format": "uri"
+            "pattern": "^https?://.*|^/.*"
           },
           "thumbnail": {
             "type": "string",
             "description": "游戏缩略图URL",
-            "format": "uri"
+            "pattern": "^https?://.*|^/.*"
           },
           "rating": {
             "type": "number",
@@ -101,31 +101,66 @@
           "createdAt": {
             "type": "string",
             "description": "创建时间",
-            "format": "date-time"
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z?$"
           },
           "updatedAt": {
             "type": "string",
             "description": "更新时间",
-            "format": "date-time"
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z?$"
+          },
+          "embeddable": {
+            "type": "boolean",
+            "description": "是否支持iframe嵌入"
+          },
+          "verified_date": {
+            "type": "string",
+            "description": "验证日期",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "license": {
+            "type": "string",
+            "description": "许可证类型",
+            "enum": ["MIT", "Apache", "CC0", "custom", "unknown"]
+          },
+          "commercial_use": {
+            "type": "boolean",
+            "description": "是否允许商业使用"
+          },
+          "ad_allowed": {
+            "type": "boolean",
+            "description": "是否允许投放广告"
+          },
+          "source_url": {
+            "type": "string",
+            "description": "源代码或官网链接"
           }
         },
         "required": [
           "id", "title", "description", "shortDesc", "keywords", 
           "category", "tags", "iframeUrl", "thumbnail", "rating", 
-          "playCount", "featured", "controls", "tips", "createdAt", "updatedAt"
+          "playCount", "featured", "controls", "tips", "createdAt", "updatedAt",
+          "embeddable", "verified_date", "license", "commercial_use", "ad_allowed", "source_url"
         ],
         "additionalProperties": false
       }
     },
     "lastUpdated": {
       "type": "string",
-      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?$",
       "description": "数据最后更新时间"
     },
     "totalCount": {
       "type": "integer",
       "description": "游戏总数量",
       "minimum": 0
+    },
+    "version": {
+      "type": "string",
+      "description": "数据版本"
+    },
+    "note": {
+      "type": "string",
+      "description": "版本说明"
     }
   },
   "required": ["games", "lastUpdated", "totalCount"],

@@ -1,0 +1,75 @@
+{
+  "report_date": "2025-09-07 10:12:04",
+  "ga_measurement_id": "G-P13WZKJZ3H",
+  "health_checks": {
+    "ga_id_configured": true,
+    "tracking_code_present": true,
+    "game_events_mapped": true,
+    "error_handling_enabled": true,
+    "performance_tracking": true
+  },
+  "tracking_analysis": {
+    "total_games": 9,
+    "embeddable_games": 9,
+    "external_games": 0,
+    "self_hosted_games": 3,
+    "categories": {
+      "action": 4,
+      "puzzle": 3,
+      "multiplayer": 2
+    }
+  },
+  "recommendations": [
+    {
+      "category": "Event Tracking",
+      "priority": "High",
+      "recommendation": "Ensure game_start events fire for both iframe and new window modes",
+      "implementation": "Add tracking to new window button click handler"
+    },
+    {
+      "category": "User Engagement",
+      "priority": "Medium",
+      "recommendation": "Track scroll depth and time spent on game pages",
+      "implementation": "Scroll depth tracking already implemented"
+    },
+    {
+      "category": "Error Monitoring",
+      "priority": "High",
+      "recommendation": "Track iframe loading failures and popup blocking",
+      "implementation": "Add error tracking to loadGameIframe function"
+    },
+    {
+      "category": "Performance",
+      "priority": "Medium",
+      "recommendation": "Monitor game loading times and iframe response times",
+      "implementation": "Add performance.timing measurements"
+    },
+    {
+      "category": "Conversion Tracking",
+      "priority": "Low",
+      "recommendation": "Track successful game completions and user retention",
+      "implementation": "Implement game session duration tracking"
+    }
+  ],
+  "dashboard_metrics": {
+    "timestamp": "2025-09-07T10:12:04.531231",
+    "games_status": {
+      "total_games": 9,
+      "operational_games": 9,
+      "external_games": 0,
+      "categories": 3
+    },
+    "tracking_status": {
+      "ga_configured": true,
+      "events_mapped": true,
+      "error_handling": true
+    },
+    "recommendations_count": 5,
+    "next_check": "2025-09-08T10:12:04.531231"
+  },
+  "summary": {
+    "overall_health": "Good",
+    "total_games": 9,
+    "tracking_coverage": "9/9 iframe compatible"
+  }
+}

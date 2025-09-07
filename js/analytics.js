@@ -110,16 +110,43 @@ const Analytics = {
     },
     
     // 错误事件
-    trackError: function(errorType, errorMessage, page) {
+    trackError: function(errorType, errorMessage, page, gameId = null) {
         gtag('event', 'exception', {
             'description': errorMessage,
             'fatal': false,
             'error_type': errorType,
             'page': page,
+            'game_id': gameId,
             'event_category': 'Errors'
         });
         
         console.log('Analytics: 错误 -', errorType, errorMessage);
+    },
+    
+    // 游戏模式追踪 (iframe vs new window)
+    trackGameMode: function(gameId, gameName, mode, success = true) {
+        gtag('event', 'game_mode', {
+            'game_id': gameId,
+            'game_name': gameName,
+            'display_mode': mode, // 'iframe' or 'new_window'
+            'success': success,
+            'event_category': 'Game Display',
+            'event_label': mode
+        });
+        
+        console.log('Analytics: 游戏模式 -', gameName, mode, success ? '成功' : '失败');
+    },
+    
+    // 弹窗拦截追踪
+    trackPopupBlocked: function(gameId, gameName) {
+        gtag('event', 'popup_blocked', {
+            'game_id': gameId,
+            'game_name': gameName,
+            'event_category': 'User Experience',
+            'event_label': 'popup_blocked'
+        });
+        
+        console.log('Analytics: 弹窗被拦截 -', gameName);
     },
     
     // 页面浏览时间
