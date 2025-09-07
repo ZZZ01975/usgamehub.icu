@@ -156,6 +156,12 @@ async function initHomePage() {
     try {
         await loadGameData();
         
+        // 🚀 启动图片预加载优化
+        if (window.gamesData && window.gamesData.games) {
+            // 预加载首页显示的游戏缩略图
+            Utils.preloadGameImages(window.gamesData.games, 15);
+        }
+        
         // 渲染轮播图
         renderFeaturedCarousel();
         
@@ -174,19 +180,25 @@ async function initHomePage() {
         // 初始化搜索功能
         initSearch();
         
+        // 🚀 优化后续图片加载
+        setTimeout(() => {
+            Utils.optimizeImageLoading();
+        }, 1000);
+        
     } catch (error) {
         console.error('Homepage initialization failed:', error);
     }
 }
 
-// 渲染轮播图
+// 渲染轮播图 - 增强版
 function renderFeaturedCarousel() {
     const container = document.getElementById('featuredCarousel');
     const indicators = document.getElementById('carouselIndicators');
     
     if (!container || !indicators) return;
     
-    const featuredGames = getFeaturedGames(5);
+    // 🎮 增加轮播游戏数量到10个
+    const featuredGames = getFeaturedGames(10);
     
     // 确保有足够的热门游戏
     if (featuredGames.length === 0) {
@@ -194,33 +206,127 @@ function renderFeaturedCarousel() {
         return;
     }
     
-    // 为每个游戏创建不同的渐变色
+    // 扩展渐变色数组，支持更多游戏
     const gradients = [
         'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
         'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
         'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-        'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+        'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+        'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+        'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+        'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+        'linear-gradient(135deg, #ff8a80 0%, #ea4c89 100%)',
+        'linear-gradient(135deg, #8fd3f4 0%, #84fab0 100%)'
     ];
     
-    container.innerHTML = featuredGames.map((game, index) => `
+    container.innerHTML = featuredGames.map((game, index) => {
+        // 🖼️ 使用真实游戏缩略图
+        const imageUrl = game.thumbnailUrl || game.iconUrl;
+        const hasImage = Boolean(imageUrl);
+        
+        return `
         <div class="carousel-item ${index === 0 ? 'active' : ''}" data-slide="${index}">
-            <div class="carousel-bg" style="background: ${gradients[index % gradients.length]}; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></div>
-            <div class="game-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; color: white; opacity: 0.4;">${getCategoryIcon(game.category)}</div>
-            <div class="carousel-content">
-                <h3 class="carousel-title">${game.title}</h3>
-                <p>${game.shortDesc}</p>
-                <a href="/game.html?id=${game.id}" class="btn btn-primary" data-i18n="buttons.playNow">🎮 Play Now</a>
+            ${hasImage ? `
+                <!-- 真实游戏背景图 -->
+                <div class="carousel-bg-image" style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url('${imageUrl}');
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                "></div>
+                <!-- 深色遮罩提升文字可读性 -->
+                <div class="carousel-overlay" style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(
+                        135deg,
+                        rgba(0,0,0,0.7) 0%,
+                        rgba(0,0,0,0.4) 50%,
+                        rgba(0,0,0,0.7) 100%
+                    );
+                "></div>
+            ` : `
+                <!-- 渐变背景 fallback -->
+                <div class="carousel-bg" style="
+                    background: ${gradients[index % gradients.length]};
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                "></div>
+                <div class="game-icon" style="
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    font-size: 4rem;
+                    color: white;
+                    opacity: 0.4;
+                ">${getCategoryIcon(game.category)}</div>
+            `}
+            
+            <div class="carousel-content" style="position: relative; z-index: 10;">
+                <div class="game-source-tag" style="
+                    display: inline-block;
+                    background: rgba(255,255,255,0.2);
+                    color: white;
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                    margin-bottom: 8px;
+                    backdrop-filter: blur(10px);
+                ">Powered by ${game.source || 'Partner'}</div>
+                
+                <h3 class="carousel-title" style="
+                    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+                    margin-bottom: 8px;
+                ">${game.title}</h3>
+                
+                <p style="
+                    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+                    margin-bottom: 16px;
+                    line-height: 1.4;
+                ">${game.shortDesc}</p>
+                
+                <div class="carousel-actions">
+                    <a href="/game.html?id=${game.id}" 
+                       class="btn btn-primary carousel-play-btn" 
+                       style="
+                           background: rgba(76, 175, 80, 0.9);
+                           backdrop-filter: blur(10px);
+                           border: none;
+                           padding: 12px 24px;
+                           font-weight: 600;
+                           text-shadow: none;
+                           transition: all 0.3s ease;
+                       "
+                       data-i18n="buttons.playNow">🎮 Play Now</a>
+                </div>
             </div>
         </div>
-    `).join('');
+        `;
+    }).join('');
     
+    // 生成指示器，支持10个游戏
     indicators.innerHTML = featuredGames.map((_, index) => `
-        <span class="indicator ${index === 0 ? 'active' : ''}" data-slide="${index}"></span>
+        <span class="indicator ${index === 0 ? 'active' : ''}" 
+              data-slide="${index}"
+              style="margin: 0 4px;"
+              title="${featuredGames[index].title}"></span>
     `).join('');
     
-    console.log('轮播图渲染完成，游戏数量:', featuredGames.length);
-    console.log('Featured games:', featuredGames.map(g => g.title));
+    console.log('🎮 轮播图渲染完成，游戏数量:', featuredGames.length);
+    console.log('Featured games:', featuredGames.map(g => `${g.title} (${g.source})`));
     
     // 延迟初始化轮播，确保DOM已完全渲染
     setTimeout(() => {
@@ -537,7 +643,21 @@ function loadGameIframe(game) {
     iframe.src = game.iframeUrl;
     iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-orientation-lock allow-presentation');
     
-    // Set loading timeout
+    // 优化加载体验 - 显示更友好的加载提示
+    if (loading) {
+        loading.innerHTML = `
+            <div class="loading-spinner"></div>
+            <div class="loading-text">
+                <h3>正在加载 ${game.title}</h3>
+                <p>首次加载可能需要几秒钟...</p>
+                <div class="loading-tips">
+                    <small>💡 提示：游戏由 ${game.source || 'third party'} 提供，加载速度取决于网络状况</small>
+                </div>
+            </div>
+        `;
+    }
+
+    // 减少超时时间，提供更快的反馈
     const timeout = setTimeout(() => {
         if (loading && !loading.classList.contains('hidden')) {
             // Track timeout error
@@ -546,7 +666,7 @@ function loadGameIframe(game) {
             }
             showGameLoadingError(game, loading, 'timeout');
         }
-    }, 8000);
+    }, 15000); // 增加到15秒，给游戏更多加载时间
     
     iframe.onload = () => {
         clearTimeout(timeout);

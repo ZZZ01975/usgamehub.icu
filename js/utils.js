@@ -33,28 +33,58 @@ function generateStars(rating) {
 
 // 创建游戏卡片HTML
 function createGameCard(game) {
+    // 使用真实缩略图，fallback到占位符
+    const thumbnailUrl = game.thumbnailUrl || game.iconUrl || '/assets/images/game-placeholder.jpg';
+    const hasRealImage = game.thumbnailUrl || game.iconUrl;
+    
     return `
         <a href="/game.html?id=${game.id}" class="game-card" data-game-id="${game.id}">
             <div class="game-thumbnail">
-                <div class="game-placeholder" style="
-                    width: 100%; 
-                    height: 200px; 
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-                    color: white;
-                    position: relative;
-                ">
-                    <!-- Dark overlay for better text contrast -->
-                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4);"></div>
-                    <div class="category-icon-display" style="font-size: 3rem; margin-bottom: 0.5rem; position: relative; z-index: 1; transition: opacity 0.3s ease;">${getCategoryIcon(game.category)}</div>
-                    <div style="font-size: 0.9rem; font-weight: 600; position: relative; z-index: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.8); transition: opacity 0.3s ease;" data-i18n="game.clickToPlay">Click to Play</div>
-                </div>
+                ${hasRealImage ? `
+                    <img class="game-image" 
+                         src="${thumbnailUrl}" 
+                         alt="${game.title}"
+                         loading="lazy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                         style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <div class="game-placeholder-fallback" style="
+                        display: none;
+                        width: 100%; 
+                        height: 200px; 
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        color: white;
+                        position: relative;
+                        border-radius: 8px;
+                    ">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); border-radius: 8px;"></div>
+                        <div class="category-icon-display" style="font-size: 3rem; margin-bottom: 0.5rem; position: relative; z-index: 1;">${getCategoryIcon(game.category)}</div>
+                        <div style="font-size: 0.9rem; font-weight: 600; position: relative; z-index: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.8);" data-i18n="game.clickToPlay">Click to Play</div>
+                    </div>
+                ` : `
+                    <div class="game-placeholder" style="
+                        width: 100%; 
+                        height: 200px; 
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        color: white;
+                        position: relative;
+                        border-radius: 8px;
+                    ">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); border-radius: 8px;"></div>
+                        <div class="category-icon-display" style="font-size: 3rem; margin-bottom: 0.5rem; position: relative; z-index: 1;">${getCategoryIcon(game.category)}</div>
+                        <div style="font-size: 0.9rem; font-weight: 600; position: relative; z-index: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.8);" data-i18n="game.clickToPlay">Click to Play</div>
+                    </div>
+                `}
                 <div class="game-overlay" style="z-index: 10;">
                     <button class="play-btn" style="position: relative; z-index: 11;" data-i18n="buttons.startGame">▶ Start Game</button>
                 </div>
+                ${game.source ? `<div class="game-source-badge" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.8); color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; z-index: 12;">Powered by ${game.source}</div>` : ''}
             </div>
             <div class="game-info">
                 <h3 class="game-title">${game.title}</h3>
@@ -295,6 +325,69 @@ function formatDate(dateString) {
     }
 }
 
+// 图片预加载函数
+function preloadGameImages(games, limit = 12) {
+    if (!games || !Array.isArray(games)) return;
+    
+    // 预加载前12个游戏的缩略图
+    const imagesToPreload = games.slice(0, limit)
+        .filter(game => game.thumbnailUrl || game.iconUrl)
+        .map(game => game.thumbnailUrl || game.iconUrl);
+    
+    imagesToPreload.forEach(imageUrl => {
+        if (imageUrl) {
+            const img = new Image();
+            img.src = imageUrl;
+            // 预加载让浏览器缓存，提升后续显示速度
+        }
+    });
+    
+    console.log(`Preloading ${imagesToPreload.length} game thumbnails for faster display`);
+}
+
+// 优化图片加载性能 - 智能加载
+function optimizeImageLoading() {
+    // 使用 Intersection Observer 实现更精确的懒加载
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        // 添加淡入效果
+                        img.style.opacity = '0';
+                        img.src = img.dataset.src;
+                        img.onload = () => {
+                            img.style.transition = 'opacity 0.3s ease';
+                            img.style.opacity = '1';
+                        };
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                }
+            });
+        }, {
+            rootMargin: '50px 0px', // 提前50px开始加载
+            threshold: 0.1
+        });
+
+        // 观察所有懒加载图片
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+}
+
+// 图片加载错误处理
+function handleImageLoadError(img, fallbackUrl = '/assets/images/game-placeholder.jpg') {
+    if (!img.dataset.errorHandled) {
+        img.dataset.errorHandled = 'true';
+        img.src = fallbackUrl;
+        img.style.filter = 'grayscale(0.5)';
+        console.log('Image load failed, using fallback:', img.src);
+    }
+}
+
 // 导出到全局
 window.Utils = {
     getUrlParameter,
@@ -314,5 +407,8 @@ window.Utils = {
     Device,
     scrollToElement,
     copyToClipboard,
-    formatDate
+    formatDate,
+    preloadGameImages,
+    optimizeImageLoading,
+    handleImageLoadError
 };
