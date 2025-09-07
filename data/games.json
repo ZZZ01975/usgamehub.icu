@@ -242,7 +242,7 @@
         "brain training",
         "self hosted"
       ],
-      "iframeUrl": "/games/hosted/2048/index.html",
+      "iframeUrl": "https://usgamehub.icu/games/hosted/2048/index.html",
       "thumbnail": "/assets/images/2048-classic-thumbnail.jpg",
       "rating": 4.8,
       "playCount": 0,
@@ -279,7 +279,7 @@
         "retro",
         "self hosted"
       ],
-      "iframeUrl": "/games/hosted/snake/src/index.html",
+      "iframeUrl": "https://usgamehub.icu/games/hosted/snake/src/index.html",
       "thumbnail": "/assets/images/snake-classic-thumbnail.jpg",
       "rating": 4.6,
       "playCount": 0,
@@ -316,7 +316,7 @@
         "classic",
         "self hosted"
       ],
-      "iframeUrl": "/games/hosted/tic-tac-toe/index.html",
+      "iframeUrl": "https://usgamehub.icu/games/hosted/tic-tac-toe/index.html",
       "thumbnail": "/assets/images/tic-tac-toe-thumbnail.jpg",
       "rating": 4.4,
       "playCount": 0,

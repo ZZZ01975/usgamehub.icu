@@ -1,0 +1,25 @@
+{
+  "inactive_games": [],
+  "failure_history": {
+    "2048-classic-hosted": {
+      "count": 1,
+      "first_failure": "2025-09-07T12:17:56.953288",
+      "last_failure": "2025-09-07T12:17:56.953288",
+      "last_success": null
+    },
+    "snake-classic-hosted": {
+      "count": 1,
+      "first_failure": "2025-09-07T12:17:56.953288",
+      "last_failure": "2025-09-07T12:17:56.953288",
+      "last_success": null
+    },
+    "tic-tac-toe-hosted": {
+      "count": 1,
+      "first_failure": "2025-09-07T12:17:56.953288",
+      "last_failure": "2025-09-07T12:17:56.953288",
+      "last_success": null
+    }
+  },
+  "last_updated": "2025-09-07T12:17:56.953288",
+  "auto_disable_threshold": 3
+}

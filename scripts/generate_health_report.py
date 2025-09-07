@@ -33,12 +33,12 @@ def generate_health_report():
     
     # Start building report
     report = []
-    report.append("# 🎮 Weekly Game Health Report")
+    report.append("# Weekly Game Health Report")
     report.append(f"**Date:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}")
     report.append("")
     
     # === SUMMARY SECTION ===
-    report.append("## 📊 Summary")
+    report.append("## Summary")
     if games_data and health_results:
         total_active = len(games_data['games'])
         total_inactive = len(inactive_data.get('inactive_games', [])) if inactive_data else 0
@@ -55,7 +55,7 @@ def generate_health_report():
     
     # === HEALTH STATUS ===
     if health_results:
-        report.append("## ✅ Available Games")
+        report.append("## Available Games")
         available_games = health_results.get('available_games', [])
         if available_games:
             for game in available_games:
@@ -68,7 +68,7 @@ def generate_health_report():
         # Failed games
         unavailable_games = health_results.get('unavailable_games', [])
         if unavailable_games:
-            report.append("## ❌ Failed Games")
+            report.append("## Failed Games")
             for game in unavailable_games:
                 reason = game.get('reason', 'Unknown error')
                 report.append(f"- **{game['title']}** ({game['category']}) - `{reason}`")
@@ -88,7 +88,7 @@ def generate_health_report():
                 pass
         
         if recent_disabled:
-            report.append("## 🚫 Recently Auto-Disabled")
+            report.append("## Recently Auto-Disabled")
             for game in recent_disabled:
                 failure_count = game.get('failure_count', 'Unknown')
                 reason = game.get('last_failure_reason', 'Multiple failures')
@@ -97,13 +97,13 @@ def generate_health_report():
     
     # === ANALYTICS STATUS ===
     if analytics_report:
-        report.append("## 📈 Analytics Status")
+        report.append("## Analytics Status")
         health_checks = analytics_report.get('health_checks', {})
         tracking_analysis = analytics_report.get('tracking_analysis', {})
         
         # Health status
         all_healthy = all(health_checks.values())
-        health_icon = "✅" if all_healthy else "⚠️"
+        health_icon = "[OK]" if all_healthy else "[WARNING]"
         report.append(f"{health_icon} **Overall Health:** {'Good' if all_healthy else 'Needs Attention'}")
         
         # Game tracking
@@ -114,12 +114,12 @@ def generate_health_report():
         report.append("")
     
     # === RECOMMENDATIONS ===
-    report.append("## 🎯 Recommendations")
+    report.append("## Recommendations")
     
     # Game count recommendation
     current_games = len(games_data['games']) if games_data else 0
     if current_games < 10:
-        report.append(f"- **🔍 Content Expansion:** Currently {current_games} active games. Consider adding 5-10 new verified games.")
+        report.append(f"- **Content Expansion:** Currently {current_games} active games. Consider adding 5-10 new verified games.")
     
     # Failure pattern analysis
     if health_results:
@@ -130,17 +130,17 @@ def generate_health_report():
         
         if failure_reasons:
             most_common = max(failure_reasons.items(), key=lambda x: x[1])
-            report.append(f"- **🔧 Primary Issue:** {most_common[0]} ({most_common[1]} games affected)")
+            report.append(f"- **Primary Issue:** {most_common[0]} ({most_common[1]} games affected)")
     
     # Auto-disable threshold check
     if inactive_data:
         threshold = inactive_data.get('auto_disable_threshold', 3)
-        report.append(f"- **⚙️ Auto-Disable:** Threshold set to {threshold} consecutive failures")
+        report.append(f"- **Auto-Disable:** Threshold set to {threshold} consecutive failures")
     
     report.append("")
     
     # === NEXT ACTIONS ===
-    report.append("## 🚀 Next Actions")
+    report.append("## Next Actions")
     report.append("1. Review failed games for potential URL updates")
     report.append("2. Monitor auto-disabled games for service restoration")
     report.append("3. Consider adding new games if active count < 10")

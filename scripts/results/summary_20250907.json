@@ -1,9 +1,9 @@
 {
-  "check_time": "20250907_095721",
-  "total_games": 31,
-  "available_count": 6,
-  "unavailable_count": 25,
-  "success_rate": "19.4%",
+  "check_time": "20250907_121705",
+  "total_games": 14,
+  "available_count": 11,
+  "unavailable_count": 3,
+  "success_rate": "78.6%",
   "available_games": [
     {
       "id": "monster-survivors",
@@ -40,158 +40,56 @@
       "title": "Racing Games Split Screen",
       "url": "https://html5games.com/Game/drift-racing/",
       "category": "multiplayer"
+    },
+    {
+      "id": "car-racing-3d",
+      "title": "Car Racing 3D",
+      "url": "https://html5games.com/Game/car-racing-3d/",
+      "category": "action"
+    },
+    {
+      "id": "soccer-physics",
+      "title": "Soccer Physics",
+      "url": "https://html5games.com/Game/soccer-physics/",
+      "category": "sports"
+    },
+    {
+      "id": "stick-war-legacy",
+      "title": "Stick War Legacy",
+      "url": "https://html5games.com/Game/stick-war/",
+      "category": "strategy"
+    },
+    {
+      "id": "fruit-ninja-html5",
+      "title": "Fruit Ninja HTML5",
+      "url": "https://html5games.com/Game/fruit-ninja/",
+      "category": "action"
+    },
+    {
+      "id": "tower-defense-html5",
+      "title": "Tower Defense HTML5",
+      "url": "https://html5games.com/Game/tower-defense/",
+      "category": "strategy"
     }
   ],
   "unavailable_games": [
     {
-      "id": "tetris-classic",
-      "title": "Tetris Classic - Free Online",
-      "reason": "HTTP 403 Error",
+      "id": "2048-classic-hosted",
+      "title": "2048 Classic - Self Hosted",
+      "reason": "Error: Invalid URL '/games/hosted/2048/index.html': No scheme supplied. Perhaps you meant https:///games/ho",
       "category": "puzzle"
     },
     {
-      "id": "sudoku-puzzle",
-      "title": "Sudoku Puzzle - Easy Medium Hard",
-      "reason": "HTTP 404 Error",
-      "category": "puzzle"
-    },
-    {
-      "id": "minesweeper-classic",
-      "title": "Minesweeper Classic Online",
-      "reason": "HTTP 404 Error",
-      "category": "puzzle"
-    },
-    {
-      "id": "mahjong-connect",
-      "title": "Mahjong Connect - Free Tile Matching",
-      "reason": "HTTP 403 Error",
-      "category": "puzzle"
-    },
-    {
-      "id": "zuma-deluxe",
-      "title": "Zuma Deluxe Online Play",
-      "reason": "HTTP 403 Error",
-      "category": "puzzle"
-    },
-    {
-      "id": "match-3-puzzle",
-      "title": "Match 3 Puzzle Games Free",
-      "reason": "HTTP 403 Error",
-      "category": "puzzle"
-    },
-    {
-      "id": "jigsaw-puzzles",
-      "title": "Jigsaw Puzzles Online Free",
-      "reason": "HTTP 404 Error",
-      "category": "puzzle"
-    },
-    {
-      "id": "memory-game",
-      "title": "Memory Card Matching Game",
-      "reason": "HTTP 403 Error",
-      "category": "puzzle"
-    },
-    {
-      "id": "stickman-fighter",
-      "title": "Stickman Fighting Games 2 Player",
-      "reason": "HTTP 403 Error",
+      "id": "snake-classic-hosted",
+      "title": "Snake Game Classic - Self Hosted",
+      "reason": "Error: Invalid URL '/games/hosted/snake/src/index.html': No scheme supplied. Perhaps you meant https:///gam",
       "category": "action"
     },
     {
-      "id": "tank-battle",
-      "title": "Tank Battle Multiplayer Online",
-      "reason": "HTTP 403 Error",
-      "category": "action"
-    },
-    {
-      "id": "air-combat",
-      "title": "Airplane Shooting Games Free",
-      "reason": "HTTP 403 Error",
-      "category": "action"
-    },
-    {
-      "id": "ninja-run",
-      "title": "Ninja Run Jump Game",
-      "reason": "HTTP 403 Error",
-      "category": "action"
-    },
-    {
-      "id": "zombie-survival",
-      "title": "Zombie Survival Games Browser",
-      "reason": "HTTP 403 Error",
-      "category": "action"
-    },
-    {
-      "id": "platform-jump",
-      "title": "Platform Jumping Games",
-      "reason": "HTTP 403 Error",
-      "category": "action"
-    },
-    {
-      "id": "space-shooter",
-      "title": "Space Shooter Retro Arcade",
-      "reason": "HTTP 403 Error",
-      "category": "action"
-    },
-    {
-      "id": "archery-master",
-      "title": "Archery Bow Arrow Games",
-      "reason": "HTTP 403 Error",
-      "category": "action"
-    },
-    {
-      "id": "tic-tac-toe",
-      "title": "Tic Tac Toe 2 Player",
-      "reason": "HTTP 403 Error",
+      "id": "tic-tac-toe-hosted",
+      "title": "Tic Tac Toe - Self Hosted",
+      "reason": "Error: Invalid URL '/games/hosted/tic-tac-toe/index.html': No scheme supplied. Perhaps you meant https:///g",
       "category": "multiplayer"
-    },
-    {
-      "id": "gomoku-online",
-      "title": "Gomoku Online With Friend",
-      "reason": "HTTP 403 Error",
-      "category": "multiplayer"
-    },
-    {
-      "id": "tank-duo",
-      "title": "2 Player Tank Games Same Keyboard",
-      "reason": "HTTP 403 Error",
-      "category": "multiplayer"
-    },
-    {
-      "id": "soccer-heads",
-      "title": "Soccer Games 2 Player Local",
-      "reason": "HTTP 403 Error",
-      "category": "multiplayer"
-    },
-    {
-      "id": "solitaire-classic",
-      "title": "Solitaire Card Games Free",
-      "reason": "HTTP 404 Error",
-      "category": "cards"
-    },
-    {
-      "id": "freecell",
-      "title": "FreeCell Solitaire Online",
-      "reason": "HTTP 404 Error",
-      "category": "cards"
-    },
-    {
-      "id": "spider-solitaire",
-      "title": "Spider Solitaire 2 Suits",
-      "reason": "HTTP 404 Error",
-      "category": "cards"
-    },
-    {
-      "id": "chess-master",
-      "title": "Chess Online vs Computer",
-      "reason": "HTTP 403 Error",
-      "category": "cards"
-    },
-    {
-      "id": "checkers-game",
-      "title": "Checkers Board Game Online",
-      "reason": "HTTP 403 Error",
-      "category": "cards"
     }
   ]
 }

@@ -1,32 +1,15 @@
 id,title,category,original_url,final_url,can_embed,reason,status_code,check_time,featured
-monster-survivors,Monster Survivors - Roguelike Action,action,https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html,https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html,True,OK - iframe compatible,200,20250907_095721,True
-2048-game,2048 Game - Number Puzzle,puzzle,https://2048game.com/,https://2048game.com/,True,OK - iframe compatible,200,20250907_095721,True
-tetris-classic,Tetris Classic - Free Online,puzzle,https://www.gameflare.com/embed/tetris/,https://www.gameflare.com/embed/tetris/,False,HTTP 403 Error,403,20250907_095721,True
-sudoku-puzzle,Sudoku Puzzle - Easy Medium Hard,puzzle,https://sudoku.com/embed,https://sudoku.com/embed/,False,HTTP 404 Error,404,20250907_095721,False
-minesweeper-classic,Minesweeper Classic Online,puzzle,https://minesweeperonline.com/game/minesweeper,https://minesweeperonline.com/game/minesweeper,False,HTTP 404 Error,404,20250907_095721,False
-mahjong-connect,Mahjong Connect - Free Tile Matching,puzzle,https://www.gameflare.com/embed/mahjong-connect/,https://www.gameflare.com/embed/mahjong-connect/,False,HTTP 403 Error,403,20250907_095721,False
-bubble-shooter,Bubble Shooter Classic Free,puzzle,https://bubbleshooter.net/,https://www.bubbleshooter.net/,True,OK - iframe compatible,200,20250907_095721,True
-zuma-deluxe,Zuma Deluxe Online Play,puzzle,https://www.gameflare.com/embed/zuma-boom/,https://www.gameflare.com/embed/zuma-boom/,False,HTTP 403 Error,403,20250907_095721,False
-match-3-puzzle,Match 3 Puzzle Games Free,puzzle,https://www.gameflare.com/embed/match3-puzzle/,https://www.gameflare.com/embed/match3-puzzle/,False,HTTP 403 Error,403,20250907_095721,True
-jigsaw-puzzles,Jigsaw Puzzles Online Free,puzzle,https://jigsawpuzzles.io/embed/jigsaw-puzzle,https://jigsawpuzzles.io/embed/jigsaw-puzzle,False,HTTP 404 Error,404,20250907_095721,False
-memory-game,Memory Card Matching Game,puzzle,https://www.gameflare.com/embed/memory-match/,https://www.gameflare.com/embed/memory-match/,False,HTTP 403 Error,403,20250907_095721,False
-endless-runner,Endless Runner Games 3D,action,https://html5games.com/Game/endless-runner/,https://html5games.com/,True,OK - iframe compatible,200,20250907_095721,True
-stickman-fighter,Stickman Fighting Games 2 Player,action,https://www.gameflare.com/embed/stickman-fighter/,https://www.gameflare.com/embed/stickman-fighter/,False,HTTP 403 Error,403,20250907_095721,False
-tank-battle,Tank Battle Multiplayer Online,action,https://www.gameflare.com/embed/tank-battle/,https://www.gameflare.com/embed/tank-battle/,False,HTTP 403 Error,403,20250907_095721,True
-air-combat,Airplane Shooting Games Free,action,https://www.gameflare.com/embed/air-combat/,https://www.gameflare.com/embed/air-combat/,False,HTTP 403 Error,403,20250907_095721,False
-ninja-run,Ninja Run Jump Game,action,https://www.gameflare.com/embed/ninja-run/,https://www.gameflare.com/embed/ninja-run/,False,HTTP 403 Error,403,20250907_095721,False
-zombie-survival,Zombie Survival Games Browser,action,https://www.gameflare.com/embed/zombie-survival/,https://www.gameflare.com/embed/zombie-survival/,False,HTTP 403 Error,403,20250907_095721,False
-racing-car,Car Racing Games Unblocked,action,https://html5games.com/Game/racing-cars/,https://html5games.com/,True,OK - iframe compatible,200,20250907_095721,True
-platform-jump,Platform Jumping Games,action,https://www.gameflare.com/embed/platform-jump/,https://www.gameflare.com/embed/platform-jump/,False,HTTP 403 Error,403,20250907_095721,False
-space-shooter,Space Shooter Retro Arcade,action,https://www.gameflare.com/embed/space-shooter/,https://www.gameflare.com/embed/space-shooter/,False,HTTP 403 Error,403,20250907_095721,False
-archery-master,Archery Bow Arrow Games,action,https://www.gameflare.com/embed/archery-master/,https://www.gameflare.com/embed/archery-master/,False,HTTP 403 Error,403,20250907_095721,False
-tic-tac-toe,Tic Tac Toe 2 Player,multiplayer,https://www.gameflare.com/embed/tic-tac-toe/,https://www.gameflare.com/embed/tic-tac-toe/,False,HTTP 403 Error,403,20250907_095721,False
-gomoku-online,Gomoku Online With Friend,multiplayer,https://www.gameflare.com/embed/gomoku/,https://www.gameflare.com/embed/gomoku/,False,HTTP 403 Error,403,20250907_095721,False
-tank-duo,2 Player Tank Games Same Keyboard,multiplayer,https://www.gameflare.com/embed/tank-trouble/,https://www.gameflare.com/embed/tank-trouble/,False,HTTP 403 Error,403,20250907_095721,True
-soccer-heads,Soccer Games 2 Player Local,multiplayer,https://www.gameflare.com/embed/soccer-heads/,https://www.gameflare.com/embed/soccer-heads/,False,HTTP 403 Error,403,20250907_095721,False
-racing-rivals,Racing Games Split Screen,multiplayer,https://html5games.com/Game/drift-racing/,https://html5games.com/,True,OK - iframe compatible,200,20250907_095721,True
-solitaire-classic,Solitaire Card Games Free,cards,https://solitaired.com/embed/klondike,https://solitaired.com/embed/klondike,False,HTTP 404 Error,404,20250907_095721,True
-freecell,FreeCell Solitaire Online,cards,https://solitaired.com/embed/freecell,https://solitaired.com/embed/freecell,False,HTTP 404 Error,404,20250907_095721,False
-spider-solitaire,Spider Solitaire 2 Suits,cards,https://solitaired.com/embed/spider,https://solitaired.com/embed/spider,False,HTTP 404 Error,404,20250907_095721,False
-chess-master,Chess Online vs Computer,cards,https://www.gameflare.com/embed/chess/,https://www.gameflare.com/embed/chess/,False,HTTP 403 Error,403,20250907_095721,True
-checkers-game,Checkers Board Game Online,cards,https://www.gameflare.com/embed/checkers/,https://www.gameflare.com/embed/checkers/,False,HTTP 403 Error,403,20250907_095721,False
+monster-survivors,Monster Survivors - Roguelike Action,action,https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html,https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html,True,OK - iframe compatible,200,20250907_121705,True
+2048-game,2048 Game - Number Puzzle,puzzle,https://2048game.com/,https://2048game.com/,True,OK - iframe compatible,200,20250907_121705,True
+bubble-shooter,Bubble Shooter Classic Free,puzzle,https://bubbleshooter.net/,https://www.bubbleshooter.net/,True,OK - iframe compatible,200,20250907_121705,True
+endless-runner,Endless Runner Games 3D,action,https://html5games.com/Game/endless-runner/,https://html5games.com/,True,OK - iframe compatible,200,20250907_121705,True
+racing-car,Car Racing Games Unblocked,action,https://html5games.com/Game/racing-cars/,https://html5games.com/,True,OK - iframe compatible,200,20250907_121705,True
+racing-rivals,Racing Games Split Screen,multiplayer,https://html5games.com/Game/drift-racing/,https://html5games.com/,True,OK - iframe compatible,200,20250907_121705,True
+2048-classic-hosted,2048 Classic - Self Hosted,puzzle,/games/hosted/2048/index.html,/games/hosted/2048/index.html,False,Error: Invalid URL '/games/hosted/2048/index.html': No scheme supplied. Perhaps you meant https:///games/ho,0,20250907_121705,False
+snake-classic-hosted,Snake Game Classic - Self Hosted,action,/games/hosted/snake/src/index.html,/games/hosted/snake/src/index.html,False,Error: Invalid URL '/games/hosted/snake/src/index.html': No scheme supplied. Perhaps you meant https:///gam,0,20250907_121705,False
+tic-tac-toe-hosted,Tic Tac Toe - Self Hosted,multiplayer,/games/hosted/tic-tac-toe/index.html,/games/hosted/tic-tac-toe/index.html,False,Error: Invalid URL '/games/hosted/tic-tac-toe/index.html': No scheme supplied. Perhaps you meant https:///g,0,20250907_121705,False
+car-racing-3d,Car Racing 3D,action,https://html5games.com/Game/car-racing-3d/,https://html5games.com/,True,OK - iframe compatible,200,20250907_121705,False
+soccer-physics,Soccer Physics,sports,https://html5games.com/Game/soccer-physics/,https://html5games.com/,True,OK - iframe compatible,200,20250907_121705,False
+stick-war-legacy,Stick War Legacy,strategy,https://html5games.com/Game/stick-war/,https://html5games.com/,True,OK - iframe compatible,200,20250907_121705,False
+fruit-ninja-html5,Fruit Ninja HTML5,action,https://html5games.com/Game/fruit-ninja/,https://html5games.com/,True,OK - iframe compatible,200,20250907_121705,False
+tower-defense-html5,Tower Defense HTML5,strategy,https://html5games.com/Game/tower-defense/,https://html5games.com/,True,OK - iframe compatible,200,20250907_121705,False
