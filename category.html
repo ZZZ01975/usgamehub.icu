@@ -6,7 +6,6 @@
     <title id="categoryTitle">Category Games | GameVault</title>
     <meta name="description" id="categoryDescription" content="Browse games by category">
     <meta name="keywords" id="categoryKeywords" content="category, games, online, free">
-    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P13WZKJZ3H"></script>
     <script>
@@ -15,12 +14,10 @@
       gtag('js', new Date());
       gtag('config', 'G-P13WZKJZ3H');
     </script>
-    
     <!-- CSS Files -->
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/components.css">
-    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script src="/js/analytics.js"></script>
@@ -28,7 +25,7 @@
 <body>
     <!-- Header (same structure as index.html) -->
     <header class="header">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Navigation">
             <div class="nav-container">
                 <div class="nav-brand">
                     <a href="/" class="brand-link">
@@ -47,7 +44,6 @@
                         <button type="submit" class="search-btn" aria-label="Search">🔍</button>
                     </form>
                 </div>
-                
                 <div class="nav-menu">
                     <ul class="nav-list">
                         <li class="nav-item"><a href="/" class="nav-link" data-i18n="nav.home">Home</a></li>
@@ -64,14 +60,13 @@
                         </li>
                         <li class="nav-item"><a href="/about.html" class="nav-link" data-i18n="nav.about">About</a></li>
                         <li class="nav-item">
-                            <button class="lang-toggle" aria-label="Switch Language" title="Current: English">
+                            <button type="button" class="lang-toggle" aria-label="Switch Language" title="Current: English">
                                 <span class="lang-text">🌐 EN</span>
                             </button>
                         </li>
                     </ul>
-                    
                     <!-- Mobile Menu Toggle -->
-                    <button class="mobile-toggle" aria-label="Toggle navigation">
+                    <button type="button" class="mobile-toggle" aria-label="Toggle navigation">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -126,7 +121,6 @@
                         <button class="view-btn active" data-view="grid" aria-label="Grid view">⊞</button>
                         <button class="view-btn" data-view="list" aria-label="List view">☰</button>
                     </div>
-                    
                     <div class="results-info">
                         <span id="resultsCount" style="color: var(--text-primary); font-weight: 500;">Showing 0 games</span>
                     </div>

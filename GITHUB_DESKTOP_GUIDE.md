@@ -17,7 +17,7 @@ GitHub Desktop最新版本可能暂时不支持中文，但操作很简单，我
 
 1. 启动GitHub Desktop
 2. 点击 **"Sign in to GitHub.com"** (登录到GitHub.com)
-3. 输入你的GitHub用户名和密码
+3. 输入你的GitHub用户名和登录凭证
 4. 完成两步验证（如果开启了的话）
 
 ## 第三步：克隆你的仓库
@@ -100,7 +100,7 @@ GitHub Desktop最新版本可能暂时不支持中文，但操作很简单，我
 
 ### 问题2：找不到仓库
 **解决**:
-1. 确认GitHub用户名密码正确
+1. 确认GitHub用户名和登录凭证正确
 2. 确认仓库URL: `https://github.com/ZZZ01975/usgamehub.icu.git`
 3. 检查网络连接
 
