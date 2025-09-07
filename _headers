@@ -2,14 +2,13 @@
 # Cloudflare Pages / Netlify compatible
 
 /*
-  # Security Headers
-  X-Frame-Options: SAMEORIGIN
+  # Security Headers (iframe-friendly)
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   
-  # Content Security Policy (relaxed for iframe games)
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://www.gameflare.com https://html5games.com https://2048game.com https://bubbleshooter.net https://cloud.onlinegames.io https://sudoku.com https://minesweeperonline.com https://jigsawpuzzles.io https://solitaired.com; connect-src 'self' https://www.google-analytics.com; object-src 'none';
+  # Content Security Policy (iframe-optimized for GameDistribution)
+  Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; style-src 'self' 'unsafe-inline' https: data:; font-src 'self' https: data:; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:; frame-src 'self' https: data:; child-src 'self' https: data: blob:; worker-src 'self' blob:; connect-src 'self' https: data: blob: wss: ws:; object-src 'self' https: data:;
   
   # Performance Headers
   Cache-Control: public, max-age=31536000, immutable
