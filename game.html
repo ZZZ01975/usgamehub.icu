@@ -25,19 +25,15 @@
     <meta name="twitter:title" id="twitterTitle" content="Game Title">
     <meta name="twitter:description" id="twitterDescription" content="Game description">
     <meta name="twitter:image" id="twitterImage" content="">
-    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/logos/favicon.ico">
-    
     <!-- CSS Files -->
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/components.css">
-    
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script src="/js/analytics.js"></script>
-    
     <!-- Schema.org Game Structured Data -->
     <script type="application/ld+json" id="gameSchema">
     {
@@ -56,7 +52,7 @@
 <body>
     <!-- Header Navigation (same as index.html) -->
     <header class="header">
-        <nav class="navbar">
+        <nav class="navbar" aria-label="Navigation">
             <div class="nav-container">
                 <div class="nav-brand">
                     <a href="/" class="brand-link">
@@ -70,7 +66,6 @@
                         <span class="brand-tagline">Free Online Games</span>
                     </a>
                 </div>
-                
                 <div class="nav-search">
                     <form class="search-form" role="search">
                         <input type="text" class="search-input" placeholder="Search games..." aria-label="Search games">
@@ -81,7 +76,6 @@
                         </button>
                     </form>
                 </div>
-                
                 <div class="nav-menu">
                     <ul class="nav-list">
                         <li class="nav-item"><a href="/" class="nav-link" data-i18n="nav.home">Home</a></li>
@@ -96,12 +90,12 @@
                         </li>
                         <li class="nav-item"><a href="/about.html" class="nav-link" data-i18n="nav.about">About</a></li>
                         <li class="nav-item">
-                            <button class="lang-toggle" aria-label="Switch Language">
+                            <button type="button" class="lang-toggle" aria-label="Switch Language">
                                 <span class="lang-text">EN</span>
                             </button>
                         </li>
                     </ul>
-                    <button class="mobile-toggle" aria-label="Toggle navigation">
+                    <button type="button" class="mobile-toggle" aria-label="Toggle navigation">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -146,7 +140,6 @@
                             <!-- Tags will be loaded dynamically -->
                         </div>
                     </div>
-                    
                     <div class="game-actions">
                         <button class="btn btn-fullscreen" id="fullscreenBtn" aria-label="Play Fullscreen">
                             🔍 <span data-i18n="buttons.fullscreen">Fullscreen</span>
@@ -170,9 +163,9 @@
                     <div class="game-left-panel">
                         <!-- Iframe Mode (for embeddable games) -->
                         <div class="game-iframe-wrapper" id="gameIframeWrapper">
-                            <iframe 
-                                id="gameIframe" 
-                                src="" 
+                            <iframe
+                                id="gameIframe"
+                                src=""
                                 title="Game Player"
                                 sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-orientation-lock"
                                 loading="lazy"
@@ -206,7 +199,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <!-- Right Panel: Controls & Tips (35%) -->
                     <div class="game-right-panel">
                         <!-- Game Controls Help -->
@@ -214,7 +206,6 @@
                             <h3 data-i18n="game.gameControls">Game Controls</h3>
                             <p id="controlsText">Loading controls...</p>
                         </div>
-                        
                         <!-- How to Play Section -->
                         <div class="game-tips-section">
                             <h3 data-i18n="game.gameTips">How to Play</h3>
@@ -238,7 +229,6 @@
                             Loading game description...
                         </div>
                     </div>
-                    
                     <!-- Similar Games (30%) -->
                     <div class="similar-games">
                         <h3 data-i18n="game.similarGames">Similar Games</h3>
@@ -246,7 +236,6 @@
                             <!-- Similar games will be loaded dynamically -->
                         </div>
                     </div>
-                    
                     <!-- Category Games (30%) -->
                     <div class="category-games">
                         <h3 data-i18n="game.categoryHot">Popular in Category</h3>
