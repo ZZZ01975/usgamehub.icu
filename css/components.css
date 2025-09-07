@@ -1040,3 +1040,9 @@
         border: 1px solid var(--text-dark);
     }
 }
+
+/* Results count styling */
+.results-count {
+    color: var(--text-primary);
+    font-weight: 500;
+}

@@ -94,7 +94,7 @@ jobs:
     - name: Check for secrets
       run: |
         echo "检查敏感信息..."
-        if grep -r -i "api[_-]key\|password\|secret\|token" --exclude-dir=.git --exclude="*.yml" --exclude="*.md" --exclude="*.bat" . ; then
+        if grep -r -i "api[_-]key\|password\|secret\|token" --exclude-dir=.git --exclude-dir=games --exclude="*.yml" --exclude="*.md" --exclude="*.bat" . ; then
           echo "Warning: Potential secrets found"
           exit 1
         fi

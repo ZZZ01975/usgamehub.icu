@@ -37,7 +37,6 @@
                         <span class="brand-tagline">Free Online Games</span>
                     </a>
                 </div>
-                
                 <div class="nav-search">
                     <form class="search-form" role="search">
                         <input type="text" class="search-input" placeholder="Search games..." aria-label="Search games" data-i18n="search.placeholder">
@@ -116,13 +115,12 @@
                             <option value="name" data-i18n="categoryPage.name">Name</option>
                         </select>
                     </div>
-                    
                     <div class="view-toggle">
-                        <button class="view-btn active" data-view="grid" aria-label="Grid view">⊞</button>
-                        <button class="view-btn" data-view="list" aria-label="List view">☰</button>
+                        <button type="button" class="view-btn active" data-view="grid" aria-label="Grid view">⊞</button>
+                        <button type="button" class="view-btn" data-view="list" aria-label="List view">☰</button>
                     </div>
                     <div class="results-info">
-                        <span id="resultsCount" style="color: var(--text-primary); font-weight: 500;">Showing 0 games</span>
+                        <span id="resultsCount" class="results-count">Showing 0 games</span>
                     </div>
                 </div>
             </div>
@@ -134,10 +132,9 @@
                 <div class="games-grid" id="categoryGamesGrid">
                     <!-- Games will be loaded dynamically -->
                 </div>
-                
                 <!-- Load More Button -->
                 <div class="load-more-container">
-                    <button class="btn btn-outline load-more-btn" id="loadMoreBtn">
+                    <button type="button" class="btn btn-outline load-more-btn" id="loadMoreBtn">
                         <span data-i18n="buttons.loadMore">Load More Games</span>
                     </button>
                 </div>
