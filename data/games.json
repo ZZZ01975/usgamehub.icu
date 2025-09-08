@@ -1,4 +1,7 @@
 {
+  "version": "1.0",
+  "lastUpdated": "2025-09-08T16:30:00",
+  "totalCount": 51,
   "games": [
     {
       "id": "body-drop-3d-gamepix",
@@ -1467,6 +1470,112 @@
       "featured": false,
       "quality": 0.9070632,
       "dateAdded": "2025-09-08T08:40:53Z"
+    },
+    {
+      "id": "buckshot-roulette-gd",
+      "title": "Buckshot Roulette",
+      "description": "Do you dare to bet your life on an exciting roulette wheel showdown? Buckshot Roulette is a gun simulator that combines strategy, shooting and survival. Instead of a pistol, a powerful shotgun was used. Every pull of the trigger is a choice of fate. The winner lives, the loser dies. You will begin a Turn-Based shooting roulette game. Each round will have a fixed number of bullets and blanks.",
+      "shortDesc": "Do you dare to bet your life on an exciting roulette wheel showdown? Buckshot Roulette combines strategy, shooting and survival...",
+      "keywords": [
+        "buckshot roulette",
+        "strategy",
+        "shooting",
+        "survival game",
+        "free online game"
+      ],
+      "category": "action",
+      "tags": [
+        "strategy",
+        "shooting",
+        "survival"
+      ],
+      "source": "GameDistribution",
+      "sourceUrl": "https://gamedistribution.com",
+      "developer": "GameDistribution Studios",
+      "attribution": "Powered by GameDistribution",
+      "iframeUrl": "https://html5.gamedistribution.com/87c6432822364f3f8ac0dddfcb41611e/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=buckshot-roulette-gd",
+      "thumbnailUrl": "/assets/images/game-placeholder.jpg",
+      "iconUrl": "/assets/images/game-placeholder.jpg",
+      "difficulty": "hard",
+      "rating": 4.5,
+      "featured": false,
+      "quality": 0.8,
+      "dateAdded": "2025-09-08T12:00:00Z",
+      "width": 1280,
+      "height": 720,
+      "embeddable": true
+    },
+    {
+      "id": "catch-the-goose-gd",
+      "title": "Catch The Goose",
+      "description": "Catch The Goose is a puzzle elimination mini-game. Players can tap identical items to automatically send them to the bottom slot - when three matching items gather, they get eliminated. When players successfully clear all items arranged in the grid, they get to \"catch\" a mischievous goose. Its addictive simplicity, stress-relieving design, and playful art style have made it a cultural phenomenon.",
+      "shortDesc": "Catch The Goose is a puzzle elimination mini-game where you tap identical items to eliminate them...",
+      "keywords": [
+        "catch the goose",
+        "puzzle",
+        "elimination game",
+        "match three",
+        "free online game"
+      ],
+      "category": "puzzle",
+      "tags": [
+        "puzzle",
+        "match-3",
+        "casual"
+      ],
+      "source": "GameDistribution",
+      "sourceUrl": "https://gamedistribution.com",
+      "developer": "GameDistribution Studios",
+      "attribution": "Powered by GameDistribution",
+      "iframeUrl": "https://html5.gamedistribution.com/698157ec8128471e91e2f32e4bc350ee/?gd_sdk_referrer_url=https://usgamehub.icu/game.html?id=catch-the-goose-gd",
+      "thumbnailUrl": "/assets/images/game-placeholder.jpg",
+      "iconUrl": "/assets/images/game-placeholder.jpg",
+      "difficulty": "easy",
+      "rating": 4.2,
+      "featured": false,
+      "quality": 0.75,
+      "dateAdded": "2025-09-08T12:00:00Z",
+      "width": 360,
+      "height": 640,
+      "embeddable": true
+    },
+    {
+      "id": "pixelcraft-animal-school-gm",
+      "title": "PixelCraft Animal School",
+      "description": "Welcome to PixelCraft Animal School, an exhilarating journey where survival meets adventure! In this vibrant pixelated world, your ultimate goal is to escape the clutches of perilous predators while navigating through a chilly, snow-laden forest. As you traverse the terrain, you can either team up with a friend or brave the wilderness solo as you collect sparkling gold scattered throughout the landscape. Each level culminates at a mysterious portal that you must reach safely.",
+      "shortDesc": "Welcome to PixelCraft Animal School, an exhilarating journey where survival meets adventure! In this vibrant pixelated world...",
+      "keywords": [
+        "pixelcraft animal school",
+        "adventure",
+        "survival game",
+        "multiplayer",
+        "free online game"
+      ],
+      "category": "action",
+      "tags": [
+        "adventure",
+        "survival",
+        "multiplayer",
+        "pixel-art"
+      ],
+      "source": "GameMonetize",
+      "sourceUrl": "https://gamemonetize.com",
+      "developer": "GameMonetize Studios",
+      "attribution": "Powered by GameMonetize",
+      "iframeUrl": "https://html5.gamemonetize.com/26ep0w2hgpmy22lsygextvvxv4as2kl0/",
+      "thumbnailUrl": "https://img.gamemonetize.com/26ep0w2hgpmy22lsygextvvxv4as2kl0/512x384.jpg",
+      "iconUrl": "https://img.gamemonetize.com/26ep0w2hgpmy22lsygextvvxv4as2kl0/512x384.jpg",
+      "videoUrl": "https://gamemonetize.video/video/26ep0w2hgpmy22lsygextvvxv4as2kl0-1724423948.mp4",
+      "difficulty": "medium",
+      "rating": 4.1,
+      "playCount": 6,
+      "featured": false,
+      "quality": 0.82,
+      "dateAdded": "2025-09-08T14:00:00Z",
+      "width": 800,
+      "height": 600,
+      "embeddable": true,
+      "instructions": "To begin, choose your character and hit the start button. Navigate through the snowy landscape using the arrow keys or joystick. Collect gold while avoiding lurking animals, and make sure to reach the portal before time runs out. Teamwork is key, so coordinate with your partner for optimal results!"
     }
   ]
 }

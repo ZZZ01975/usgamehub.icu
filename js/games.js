@@ -748,7 +748,117 @@ function loadGameIframe(game) {
         return;
     }
     
-    // 非GamePix游戏使用标准配置
+    // 检测并使用GameDistribution优化模块
+    if (game.source === 'GameDistribution' || game.iframeUrl.includes('gamedistribution.com')) {
+        console.log('检测到GameDistribution游戏，使用标准sandbox配置');
+        console.log('iframe当前src:', iframe.src);
+        console.log('准备设置的URL:', game.iframeUrl);
+        
+        // 设置iframe src
+        iframe.src = game.iframeUrl;
+        console.log('已设置iframe.src =', game.iframeUrl);
+        
+        // GameDistribution使用标准sandbox配置
+        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-pointer-lock allow-orientation-lock allow-presentation allow-top-navigation allow-modals');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; fullscreen; gyroscope; payment; microphone; camera; geolocation');
+        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        
+        console.log('GameDistribution iframe配置完成:');
+        console.log('- 最终src:', iframe.src);
+        console.log('- sandbox:', iframe.getAttribute('sandbox'));
+        console.log('- allow:', iframe.getAttribute('allow'));
+        
+        // 检查iframe是否真的在DOM中
+        console.log('iframe父元素:', iframe.parentElement?.id || '无父元素');
+        console.log('iframe是否在文档中:', document.contains(iframe));
+        
+        // 添加GameDistribution iframe加载事件监听
+        iframe.onload = function() {
+            console.log('GameDistribution iframe已加载完成');
+            if (loading) {
+                loading.classList.add('hidden');
+                console.log('加载提示已隐藏');
+            }
+            // 成功追踪
+            if (window.Analytics) {
+                Analytics.trackGameMode(game.id, game.title, 'iframe', true);
+            }
+        };
+        
+        iframe.onerror = function(error) {
+            console.log('GameDistribution iframe加载出错:', error);
+            if (loading && window.showGameLoadingError) {
+                showGameLoadingError(game, loading, 'load_error');
+            }
+        };
+        
+        // 设置超时隐藏加载提示
+        setTimeout(() => {
+            if (loading && !loading.classList.contains('hidden')) {
+                console.log('GameDistribution超时自动隐藏加载提示');
+                loading.classList.add('hidden');
+            }
+        }, 10000); // 10秒后自动隐藏
+        
+        return;
+    }
+    
+    // 检测并使用GameMonetize优化模块
+    if (game.source === 'GameMonetize' || game.iframeUrl.includes('gamemonetize.com')) {
+        console.log('检测到GameMonetize游戏，使用标准配置');
+        console.log('iframe当前src:', iframe.src);
+        console.log('准备设置的URL:', game.iframeUrl);
+        
+        // 设置iframe src
+        iframe.src = game.iframeUrl;
+        console.log('已设置iframe.src =', game.iframeUrl);
+        
+        // GameMonetize使用标准sandbox配置
+        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-pointer-lock allow-orientation-lock allow-presentation allow-top-navigation allow-modals');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; fullscreen; gyroscope; payment; microphone; camera; geolocation');
+        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        
+        console.log('GameMonetize iframe配置完成:');
+        console.log('- 最终src:', iframe.src);
+        console.log('- sandbox:', iframe.getAttribute('sandbox'));
+        console.log('- allow:', iframe.getAttribute('allow'));
+        
+        // 检查iframe是否真的在DOM中
+        console.log('iframe父元素:', iframe.parentElement?.id || '无父元素');
+        console.log('iframe是否在文档中:', document.contains(iframe));
+        
+        // 添加GameMonetize iframe加载事件监听
+        iframe.onload = function() {
+            console.log('GameMonetize iframe已加载完成');
+            if (loading) {
+                loading.classList.add('hidden');
+                console.log('加载提示已隐藏');
+            }
+            // 成功追踪
+            if (window.Analytics) {
+                Analytics.trackGameMode(game.id, game.title, 'iframe', true);
+            }
+        };
+        
+        iframe.onerror = function(error) {
+            console.log('GameMonetize iframe加载出错:', error);
+            if (loading && window.showGameLoadingError) {
+                showGameLoadingError(game, loading, 'load_error');
+            }
+        };
+        
+        // 设置超时隐藏加载提示
+        setTimeout(() => {
+            if (loading && !loading.classList.contains('hidden')) {
+                console.log('GameMonetize超时自动隐藏加载提示');
+                loading.classList.add('hidden');
+            }
+        }, 8000); // 8秒后自动隐藏
+        
+        return;
+    }
+    
+    // 非GamePix/GameDistribution/GameMonetize游戏使用标准配置
     iframe.src = game.iframeUrl;
     // 对所有游戏放宽sandbox限制，避免阻止游戏平台的JavaScript运行
     iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-pointer-lock allow-orientation-lock allow-presentation allow-top-navigation allow-modals');

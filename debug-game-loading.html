@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏加载调试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+        }
+        .debug-section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .log {
+            background: black;
+            color: lime;
+            font-family: monospace;
+            padding: 15px;
+            border-radius: 5px;
+            height: 300px;
+            overflow-y: auto;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 游戏加载问题调试</h1>
+    
+    <div class="debug-section">
+        <h2>1. 数据加载测试</h2>
+        <button class="btn" onclick="testDataLoading()">测试games.json加载</button>
+        <button class="btn" onclick="testGameById('body-drop-3d-gamepix')">查找指定游戏</button>
+        <div id="dataResult" style="margin-top: 10px;"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>2. JavaScript函数测试</h2>
+        <button class="btn" onclick="testFunctions()">测试关键函数</button>
+        <div id="funcResult" style="margin-top: 10px;"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>3. 实时调试日志</h2>
+        <div class="log" id="debugLog">等待调试开始...<br></div>
+    </div>
+
+    <!-- 加载实际的游戏脚本 -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/games.js"></script>
+
+    <script>
+        function log(message) {
+            const debugLog = document.getElementById('debugLog');
+            const timestamp = new Date().toLocaleTimeString();
+            debugLog.innerHTML += `[${timestamp}] ${message}<br>`;
+            debugLog.scrollTop = debugLog.scrollHeight;
+            console.log(`[Debug] ${message}`);
+        }
+
+        async function testDataLoading() {
+            log('开始测试数据加载...');
+            
+            try {
+                // 测试直接fetch
+                const response = await fetch('/data/games.json');
+                log(`Fetch响应状态: ${response.status}`);
+                
+                const data = await response.json();
+                log(`JSON解析成功，游戏数量: ${data.games ? data.games.length : '未找到games数组'}`);
+                
+                document.getElementById('dataResult').innerHTML = `
+                    <div style="color: green;">✅ 数据加载成功</div>
+                    <div>游戏总数: ${data.games?.length || 0}</div>
+                    <div>第一个游戏ID: ${data.games?.[0]?.id || '无'}</div>
+                `;
+                
+                // 测试loadGameData函数
+                if (typeof loadGameData === 'function') {
+                    log('测试loadGameData函数...');
+                    await loadGameData();
+                    log(`loadGameData完成，window.gamesData: ${window.gamesData ? '已设置' : '未设置'}`);
+                } else {
+                    log('❌ loadGameData函数不存在');
+                }
+                
+            } catch (error) {
+                log(`❌ 数据加载失败: ${error.message}`);
+                document.getElementById('dataResult').innerHTML = `
+                    <div style="color: red;">❌ 数据加载失败</div>
+                    <div>${error.message}</div>
+                `;
+            }
+        }
+
+        async function testGameById(gameId) {
+            log(`查找游戏: ${gameId}`);
+            
+            try {
+                // 先确保数据加载了
+                if (!window.gamesData) {
+                    log('数据未加载，先加载数据...');
+                    await loadGameData();
+                }
+                
+                // 测试getGameById函数
+                if (typeof getGameById === 'function') {
+                    const game = getGameById(gameId);
+                    log(`getGameById结果: ${game ? `找到游戏 ${game.title}` : '未找到游戏'}`);
+                    
+                    if (game) {
+                        log(`游戏详情: 标题=${game.title}, URL=${game.iframeUrl}`);
+                        document.getElementById('dataResult').innerHTML += `
+                            <div style="color: green; margin-top: 10px;">✅ 找到游戏</div>
+                            <div>ID: ${game.id}</div>
+                            <div>标题: ${game.title}</div>
+                            <div>iframe URL: ${game.iframeUrl}</div>
+                            <div>来源: ${game.source}</div>
+                        `;
+                    }
+                } else {
+                    log('❌ getGameById函数不存在');
+                }
+                
+            } catch (error) {
+                log(`❌ 查找游戏失败: ${error.message}`);
+            }
+        }
+
+        function testFunctions() {
+            log('测试JavaScript函数可用性...');
+            
+            const functions = [
+                'loadGameData',
+                'getGameById', 
+                'loadGamePage',
+                'updateGamePageContent',
+                'loadGameIframe'
+            ];
+            
+            let result = '';
+            functions.forEach(funcName => {
+                const exists = typeof window[funcName] === 'function';
+                log(`${funcName}: ${exists ? '✅ 存在' : '❌ 不存在'}`);
+                result += `<div>${funcName}: ${exists ? '✅' : '❌'}</div>`;
+            });
+            
+            document.getElementById('funcResult').innerHTML = result;
+        }
+
+        // 模拟游戏页面的初始化过程
+        function simulateGamePageInit() {
+            log('=== 模拟游戏页面初始化过程 ===');
+            
+            const gameId = 'body-drop-3d-gamepix';
+            log(`模拟URL参数: ?id=${gameId}`);
+            
+            // 模拟game.html的初始化逻辑
+            if (gameId) {
+                log('开始调用loadGamePage...');
+                if (typeof loadGamePage === 'function') {
+                    loadGamePage(gameId).then(() => {
+                        log('loadGamePage完成');
+                    }).catch(error => {
+                        log(`loadGamePage失败: ${error.message}`);
+                    });
+                } else {
+                    log('❌ loadGamePage函数不存在');
+                }
+            } else {
+                log('❌ 未找到游戏ID');
+            }
+        }
+
+        // 页面加载完成后开始调试
+        window.addEventListener('load', function() {
+            log('调试页面已加载');
+            log('JavaScript文件加载状态检查...');
+            
+            // 检查关键变量和函数
+            log(`window.gamesData: ${window.gamesData ? '已设置' : '未设置'}`);
+            
+            // 自动开始一些基础测试
+            setTimeout(() => {
+                testFunctions();
+                testDataLoading();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

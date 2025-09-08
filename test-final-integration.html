@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Integration Test - US Game Hub</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+        .test-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .game-preview {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .game-preview h4 {
+            margin: 0 0 10px 0;
+            color: #4a9eff;
+        }
+        .game-info {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .success { background: #4caf50; }
+        .pending { background: #ff9800; }
+        .error { background: #f44336; }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .btn-primary {
+            background: #4a9eff;
+            color: white;
+        }
+        .btn-test {
+            background: #28a745;
+            color: white;
+        }
+        .btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+        .analytics-log {
+            background: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            padding: 15px;
+            border-radius: 8px;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4a9eff;
+        }
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="header">
+            <h1>🎮 Final Integration Test</h1>
+            <p>Testing 49 verified GamePix games with enhanced GA tracking</p>
+        </div>
+
+        <div class="stats-summary">
+            <div class="stat-card">
+                <div class="stat-number" id="total-games">49</div>
+                <div>Total Games</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="tested-games">0</div>
+                <div>Games Tested</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="working-games">0</div>
+                <div>Working Games</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="success-rate">0%</div>
+                <div>Success Rate</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔧 System Integration Tests</h2>
+            <div class="test-grid">
+                <div class="game-preview">
+                    <h4>Data Loading Test</h4>
+                    <div class="game-info">
+                        Testing games.json loading with 49 GamePix games
+                    </div>
+                    <span class="status pending" id="data-status">Pending</span>
+                    <button class="btn btn-test" onclick="testDataLoading()">Test Data</button>
+                </div>
+
+                <div class="game-preview">
+                    <h4>GA Analytics Test</h4>
+                    <div class="game-info">
+                        Testing Google Analytics event tracking
+                    </div>
+                    <span class="status pending" id="ga-status">Pending</span>
+                    <button class="btn btn-test" onclick="testAnalytics()">Test GA</button>
+                </div>
+
+                <div class="game-preview">
+                    <h4>GamePix Iframe Test</h4>
+                    <div class="game-info">
+                        Testing enhanced iframe configuration
+                    </div>
+                    <span class="status pending" id="iframe-status">Pending</span>
+                    <button class="btn btn-test" onclick="testIframeConfig()">Test Config</button>
+                </div>
+
+                <div class="game-preview">
+                    <h4>Error Handling Test</h4>
+                    <div class="game-info">
+                        Testing graceful error handling and fallback
+                    </div>
+                    <span class="status pending" id="error-status">Pending</span>
+                    <button class="btn btn-test" onclick="testErrorHandling()">Test Errors</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎲 Game Compatibility Tests</h2>
+            <p>Testing first 10 games from the validated set:</p>
+            <div class="test-grid" id="games-grid">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-primary" onclick="testAllGames()">Test All Featured Games</button>
+                <button class="btn btn-test" onclick="runFullSiteTest()">Full Website Test</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Analytics Activity Log</h2>
+            <div class="analytics-log" id="analytics-log">
+                Waiting for tests to begin...<br>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the actual game scripts -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/games.js"></script>
+
+    <script>
+        // Test state
+        let testResults = {
+            totalGames: 49,
+            testedGames: 0,
+            workingGames: 0,
+            failedGames: 0
+        };
+
+        // Analytics log function
+        function logAnalytics(message) {
+            const log = document.getElementById('analytics-log');
+            const timestamp = new Date().toLocaleTimeString();
+            log.innerHTML += `[${timestamp}] ${message}<br>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // Override console.log to capture Analytics logs
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            if (args[0] && args[0].toString().includes('Analytics')) {
+                logAnalytics(args.join(' '));
+            }
+        };
+
+        // Update stats display
+        function updateStats() {
+            document.getElementById('tested-games').textContent = testResults.testedGames;
+            document.getElementById('working-games').textContent = testResults.workingGames;
+            const successRate = testResults.testedGames > 0 ? 
+                Math.round((testResults.workingGames / testResults.testedGames) * 100) : 0;
+            document.getElementById('success-rate').textContent = successRate + '%';
+        }
+
+        // Test data loading
+        async function testDataLoading() {
+            const statusEl = document.getElementById('data-status');
+            statusEl.textContent = 'Testing...';
+            statusEl.className = 'status pending';
+
+            try {
+                const response = await fetch('/data/games.json');
+                const data = await response.json();
+                
+                if (data && data.games && data.games.length === 49) {
+                    statusEl.textContent = `✓ Loaded ${data.games.length} games`;
+                    statusEl.className = 'status success';
+                    
+                    logAnalytics(`Data loading success: ${data.games.length} GamePix games loaded`);
+                    
+                    // Load featured games for testing
+                    loadFeaturedGamesForTest(data.games.slice(0, 10));
+                } else {
+                    throw new Error('Invalid data structure');
+                }
+            } catch (error) {
+                statusEl.textContent = '✗ Failed';
+                statusEl.className = 'status error';
+                logAnalytics(`Data loading error: ${error.message}`);
+            }
+        }
+
+        // Test Analytics integration
+        function testAnalytics() {
+            const statusEl = document.getElementById('ga-status');
+            statusEl.textContent = 'Testing...';
+            statusEl.className = 'status pending';
+
+            try {
+                // Test if Analytics is available
+                if (typeof Analytics === 'undefined') {
+                    throw new Error('Analytics object not found');
+                }
+
+                // Test various Analytics functions
+                Analytics.trackGameStart('test-game-id', 'Test Game', 'action');
+                Analytics.trackCategoryView('action', 'Action Games', 22);
+                Analytics.trackSearch('test search', 5);
+
+                statusEl.textContent = '✓ GA Integration Working';
+                statusEl.className = 'status success';
+                
+                logAnalytics('Analytics integration test successful');
+                logAnalytics('GA Measurement ID: G-P13WZKJZ3H (preserved)');
+            } catch (error) {
+                statusEl.textContent = '✗ GA Failed';
+                statusEl.className = 'status error';
+                logAnalytics(`Analytics error: ${error.message}`);
+            }
+        }
+
+        // Test iframe configuration
+        function testIframeConfig() {
+            const statusEl = document.getElementById('iframe-status');
+            statusEl.textContent = 'Testing...';
+            statusEl.className = 'status pending';
+
+            try {
+                // Test if GamePixIframe is available
+                if (typeof GamePixIframe === 'undefined') {
+                    throw new Error('GamePixIframe not found');
+                }
+
+                // Create a test iframe configuration
+                const testGame = {
+                    id: 'test-game',
+                    title: 'Test Game',
+                    iframeUrl: 'https://play.gamepix.com/test/embed?sid=1',
+                    source: 'GamePix'
+                };
+
+                const testContainer = document.createElement('div');
+                const iframe = GamePixIframe.createOptimizedIframe(testGame, testContainer);
+
+                // Verify iframe attributes
+                const hasCorrectSandbox = iframe.getAttribute('sandbox').includes('allow-scripts');
+                const hasCorrectAllow = iframe.getAttribute('allow').includes('fullscreen');
+
+                if (hasCorrectSandbox && hasCorrectAllow) {
+                    statusEl.textContent = '✓ Enhanced Iframe Config';
+                    statusEl.className = 'status success';
+                    logAnalytics('GamePix iframe configuration validated');
+                    logAnalytics('Sandbox: allow-scripts allow-same-origin allow-popups allow-forms');
+                    logAnalytics('Allow: accelerometer; autoplay; fullscreen; gyroscope');
+                } else {
+                    throw new Error('Iframe configuration incorrect');
+                }
+            } catch (error) {
+                statusEl.textContent = '✗ Config Failed';
+                statusEl.className = 'status error';
+                logAnalytics(`Iframe configuration error: ${error.message}`);
+            }
+        }
+
+        // Test error handling
+        function testErrorHandling() {
+            const statusEl = document.getElementById('error-status');
+            statusEl.textContent = 'Testing...';
+            statusEl.className = 'status pending';
+
+            try {
+                const testGame = {
+                    id: 'broken-game',
+                    title: 'Broken Game',
+                    source: 'GamePix'
+                };
+
+                const testContainer = document.createElement('div');
+                GamePixIframe.handleLoadingError(testGame, testContainer, 'test_error');
+
+                // Check if error HTML was created
+                if (testContainer.innerHTML.includes('Game Loading Issue')) {
+                    statusEl.textContent = '✓ Error Handling Works';
+                    statusEl.className = 'status success';
+                    logAnalytics('Error handling system working correctly');
+                } else {
+                    throw new Error('Error handler not working');
+                }
+            } catch (error) {
+                statusEl.textContent = '✗ Error Handler Failed';
+                statusEl.className = 'status error';
+                logAnalytics(`Error handling test failed: ${error.message}`);
+            }
+        }
+
+        // Load featured games for testing
+        function loadFeaturedGamesForTest(games) {
+            const gamesGrid = document.getElementById('games-grid');
+            
+            gamesGrid.innerHTML = games.map((game, index) => `
+                <div class="game-preview">
+                    <h4>${game.title}</h4>
+                    <div class="game-info">
+                        Source: ${game.source || 'GamePix'}<br>
+                        Quality: ${(game.quality * 100).toFixed(1)}%<br>
+                        Category: ${game.category}
+                    </div>
+                    <span class="status pending" id="game-status-${index}">Ready</span>
+                    <button class="btn btn-test" onclick="testSingleGame(${index}, '${game.id}', '${game.title}')">
+                        Test Game
+                    </button>
+                    <a href="/game.html?id=${game.id}" class="btn btn-primary" target="_blank">
+                        Play Game
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        // Test single game
+        async function testSingleGame(index, gameId, gameTitle) {
+            const statusEl = document.getElementById(`game-status-${index}`);
+            statusEl.textContent = 'Testing...';
+            statusEl.className = 'status pending';
+
+            testResults.testedGames++;
+
+            try {
+                // Simulate game loading test
+                const gameData = window.gamesData?.games?.find(g => g.id === gameId);
+                if (!gameData) {
+                    throw new Error('Game not found in data');
+                }
+
+                // Test iframe URL accessibility
+                const response = await fetch(gameData.iframeUrl, { method: 'HEAD' });
+                
+                if (response.ok) {
+                    statusEl.textContent = '✓ Working';
+                    statusEl.className = 'status success';
+                    testResults.workingGames++;
+                    
+                    logAnalytics(`Game test success: ${gameTitle} (${response.status})`);
+                    
+                    // Track with Analytics
+                    if (typeof Analytics !== 'undefined') {
+                        Analytics.trackGameMode(gameId, gameTitle, 'iframe', true);
+                    }
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                statusEl.textContent = '✗ Failed';
+                statusEl.className = 'status error';
+                testResults.failedGames++;
+                
+                logAnalytics(`Game test failed: ${gameTitle} - ${error.message}`);
+                
+                // Track failure with Analytics
+                if (typeof Analytics !== 'undefined') {
+                    Analytics.trackError('game_test_failed', error.message, 'test.html', gameId);
+                }
+            }
+
+            updateStats();
+        }
+
+        // Test all featured games
+        async function testAllGames() {
+            logAnalytics('Starting comprehensive game test...');
+            
+            const games = document.querySelectorAll('[onclick^="testSingleGame"]');
+            for (let i = 0; i < games.length; i++) {
+                const button = games[i];
+                button.click();
+                // Small delay between tests
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+        }
+
+        // Run full site test
+        async function runFullSiteTest() {
+            logAnalytics('=== FULL WEBSITE INTEGRATION TEST ===');
+            
+            // Test all components
+            await testDataLoading();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            testAnalytics();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            testIframeConfig();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            testErrorHandling();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // Test games
+            await testAllGames();
+            
+            logAnalytics('=== INTEGRATION TEST COMPLETED ===');
+            logAnalytics(`Final Results: ${testResults.workingGames}/${testResults.testedGames} games working`);
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            logAnalytics('GamePix Integration Test System Ready');
+            logAnalytics('Click buttons above to run individual tests');
+            logAnalytics('Or use "Full Website Test" for comprehensive testing');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL参数测试 - GamePix修复</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+        }
+        .test-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .test-link {
+            display: block;
+            background: rgba(74, 158, 255, 0.2);
+            border: 2px solid #4a9eff;
+            color: #4a9eff;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        .test-link:hover {
+            background: rgba(74, 158, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .status-log {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 15px;
+            border-radius: 8px;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        @media (max-width: 768px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-section">
+            <h1>🔧 GamePix URL参数兼容性测试</h1>
+            <p>测试修复后的游戏页面是否支持多种URL参数格式</p>
+        </div>
+
+        <div class="test-section">
+            <h2>📝 测试链接</h2>
+            <p>点击下面的链接测试不同的URL参数格式：</p>
+            
+            <div class="test-grid">
+                <div>
+                    <h3>✅ 正确的参数格式</h3>
+                    <a href="/game.html?id=body-drop-3d-gamepix" class="test-link" target="_blank">
+                        🎮 标准ID参数: ?id=body-drop-3d-gamepix
+                    </a>
+                    <a href="/game.html?mid=body-drop-3d-gamepix" class="test-link" target="_blank">
+                        🎯 MID参数: ?mid=body-drop-3d-gamepix
+                    </a>
+                    <a href="/game.html?slug=body-drop-3d-gamepix" class="test-link" target="_blank">
+                        🏷️ SLUG参数: ?slug=body-drop-3d-gamepix
+                    </a>
+                </div>
+                
+                <div>
+                    <h3>❌ 错误的参数格式</h3>
+                    <a href="/game.html?gameId=body-drop-3d-gamepix" class="test-link" target="_blank">
+                        ❌ 不支持的参数: ?gameId=body-drop-3d-gamepix
+                    </a>
+                    <a href="/game.html?name=body-drop-3d-gamepix" class="test-link" target="_blank">
+                        ❌ 不支持的参数: ?name=body-drop-3d-gamepix
+                    </a>
+                    <a href="/game.html" class="test-link" target="_blank">
+                        ❌ 无参数（应显示错误页面）
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎲 其他GamePix游戏测试</h2>
+            <div class="test-grid">
+                <div>
+                    <h3>使用 ?id= 参数</h3>
+                    <a href="/game.html?id=dta-6-gamepix" class="test-link" target="_blank">
+                        🎮 DTA 6 游戏
+                    </a>
+                    <a href="/game.html?id=my-sugar-factory-gamepix" class="test-link" target="_blank">
+                        🏭 My Sugar Factory
+                    </a>
+                </div>
+                
+                <div>
+                    <h3>使用 ?mid= 参数</h3>
+                    <a href="/game.html?mid=dta-6-gamepix" class="test-link" target="_blank">
+                        🎮 DTA 6 游戏 (MID)
+                    </a>
+                    <a href="/game.html?mid=my-sugar-factory-gamepix" class="test-link" target="_blank">
+                        🏭 My Sugar Factory (MID)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🖼️ 缩略图显示测试</h2>
+            <p>测试GamePix缩略图在不同环境下的显示：</p>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                <img src="https://img.gamepix.com/games/body-drop-3d/cover/body-drop-3d.png?w=320" 
+                     alt="Body Drop 3D" style="max-width: 200px; border-radius: 8px;">
+                <img src="https://img.gamepix.com/games/dta-6/cover/dta-6.png?w=320" 
+                     alt="DTA 6" style="max-width: 200px; border-radius: 8px;">
+                <img src="https://img.gamepix.com/games/my-sugar-factory/cover/my-sugar-factory.png?w=320" 
+                     alt="My Sugar Factory" style="max-width: 200px; border-radius: 8px;">
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 测试结果记录</h3>
+            <div class="status-log" id="testLog">
+                测试日志将在这里显示...<br>
+                请点击上方链接进行测试<br>
+                <br>
+                预期结果：<br>
+                ✅ ?id=、?mid=、?slug= 参数应该都能正常加载游戏页面<br>
+                ✅ 游戏详情页面应显示完整信息（控制说明、玩法、描述）<br>
+                ✅ GamePix缩略图应该正常显示<br>
+                ❌ 不支持的参数应显示友好的错误页面<br>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 快速诊断</h2>
+            <button onclick="runDiagnostic()" style="
+                background: #28a745;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 16px;
+            ">运行快速诊断</button>
+            <div id="diagnosticResult" style="margin-top: 15px;"></div>
+        </div>
+    </div>
+
+    <script>
+        function log(message) {
+            const testLog = document.getElementById('testLog');
+            const timestamp = new Date().toLocaleTimeString();
+            testLog.innerHTML += `[${timestamp}] ${message}<br>`;
+            testLog.scrollTop = testLog.scrollHeight;
+        }
+
+        async function runDiagnostic() {
+            const result = document.getElementById('diagnosticResult');
+            result.innerHTML = '<div style="color: yellow;">正在运行诊断...</div>';
+            
+            try {
+                // 测试数据文件访问
+                const response = await fetch('/data/games.json');
+                const data = await response.json();
+                
+                let diagnosticHtml = '<div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin-top: 10px;">';
+                
+                if (data && data.games) {
+                    diagnosticHtml += `<div style="color: #28a745;">✅ games.json 访问正常 (${data.games.length} 个游戏)</div>`;
+                    
+                    // 检查GamePix游戏
+                    const gamepixGames = data.games.filter(g => g.source === 'GamePix');
+                    diagnosticHtml += `<div style="color: #28a745;">✅ GamePix游戏数量: ${gamepixGames.length}</div>`;
+                    
+                    // 检查缩略图
+                    const gamesWithThumbnails = data.games.filter(g => g.thumbnailUrl);
+                    diagnosticHtml += `<div style="color: #28a745;">✅ 有缩略图的游戏: ${gamesWithThumbnails.length}</div>`;
+                    
+                    // 显示前3个GamePix游戏
+                    if (gamepixGames.length > 0) {
+                        diagnosticHtml += '<div style="margin-top: 10px;"><strong>前3个GamePix游戏:</strong></div>';
+                        gamepixGames.slice(0, 3).forEach(game => {
+                            diagnosticHtml += `<div style="margin-left: 20px; color: #17a2b8;">• ${game.id} - ${game.title}</div>`;
+                        });
+                    }
+                } else {
+                    diagnosticHtml += '<div style="color: #dc3545;">❌ games.json 格式错误</div>';
+                }
+                
+                diagnosticHtml += '</div>';
+                result.innerHTML = diagnosticHtml;
+                
+                log('诊断完成 - 检查结果显示在诊断区域');
+            } catch (error) {
+                result.innerHTML = `<div style="color: #dc3545;">❌ 诊断失败: ${error.message}</div>`;
+                log(`诊断失败: ${error.message}`);
+            }
+        }
+
+        // 页面加载时的初始化
+        window.addEventListener('load', function() {
+            log('URL参数测试页面已加载');
+            log('当前URL: ' + window.location.href);
+            log('点击上方测试链接验证修复效果');
+        });
+    </script>
+</body>
+</html>

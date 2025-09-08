@@ -1,0 +1,37 @@
+{
+  "failed_games": [
+    {
+      "game": {
+        "id": "super-oliver-world-gamepix",
+        "title": "Super Oliver World",
+        "description": "Guide Oliver through perilous realms filled with traps and foes in Super Oliver World. Smash blocks for surprises, collect coins, and uncover hidden power-ups to outsmart enemies. With retro pixel graphics and strategic gameplay, it\"s an exhilarating journey for arcade enthusiasts seeking thrilli...",
+        "shortDesc": "Guide Oliver through perilous realms filled with traps and foes in Super Oliver ...",
+        "keywords": [
+          "super oliver world",
+          "platformer",
+          "platformer game",
+          "free online game"
+        ],
+        "category": "action",
+        "tags": [
+          "platformer",
+          "desktop-friendly",
+          "high-quality"
+        ],
+        "source": "GamePix",
+        "sourceUrl": "https://gamepix.com",
+        "developer": "GamePix Studios",
+        "attribution": "Powered by GamePix",
+        "iframeUrl": "https://play.gamepix.com/super-oliver-world/embed?sid=1",
+        "thumbnailUrl": "https://img.gamepix.com/games/super-oliver-world/cover/super-oliver-world.png?w=320",
+        "iconUrl": "https://img.gamepix.com/games/super-oliver-world/icon/super-oliver-world.png?w=105",
+        "difficulty": "hard",
+        "rating": 4.7,
+        "featured": false,
+        "quality": 0.87192158,
+        "dateAdded": "2025-09-08T08:40:53Z"
+      },
+      "error": "HTTPSConnectionPool(host='play.gamepix.com', port=443): Max retries exceeded with url: /super-oliver-world/embed?sid=1 (Caused by ProxyError('Cannot connect to proxy.', TimeoutError('_ssl.c:990: The handshake operation timed out')))"
+    }
+  ]
+}

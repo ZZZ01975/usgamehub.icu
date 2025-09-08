@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamePix游戏兼容性测试 - US Game Hub</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .test-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #4a9eff;
+            font-size: 2.5em;
+        }
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .summary-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .summary-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4a9eff;
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        .game-test {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .game-test:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .game-title {
+            margin: 0;
+            color: #4a9eff;
+            font-size: 1.3em;
+        }
+        .game-category {
+            background: #ff6b35;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+        .game-info {
+            margin-bottom: 15px;
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .quality-score {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #333;
+        }
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid #4a9eff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .loading { background: #ff9800; }
+        .success { background: #4caf50; }
+        .error { background: #f44336; }
+        .warning { background: #ff6b35; }
+        .controls {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        .btn-primary {
+            background: #4a9eff;
+            color: white;
+        }
+        .btn-secondary {
+            background: #666;
+            color: white;
+        }
+        .btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+        .test-results {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="header">
+            <h1>🎮 GamePix游戏兼容性测试</h1>
+            <p>测试10个不同类型的GamePix游戏iframe嵌入兼容性</p>
+            <p>从11,616个游戏中精选的代表性游戏样本</p>
+        </div>
+        
+        <div class="summary">
+            <div class="summary-card">
+                <div class="summary-number" id="total-games">10</div>
+                <div>测试游戏总数</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-number" id="loaded-games">0</div>
+                <div>成功加载</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-number" id="failed-games">0</div>
+                <div>加载失败</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-number" id="success-rate">0%</div>
+                <div>成功率</div>
+            </div>
+        </div>
+
+        <div class="game-grid">
+            <!-- Time Master - Escape/Puzzle -->
+            <div class="game-test" data-game-id="time-master">
+                <div class="game-header">
+                    <h3 class="game-title">Time Master</h3>
+                    <span class="game-category">Escape</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.53</span><br>
+                    Orientation: Landscape | Size: 800×600<br>
+                    Genre: Time-control puzzle adventure
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/time-master/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy">
+                    </iframe>
+                    <div class="loading-overlay">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-time-master">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('time-master')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('time-master')">重新加载</button>
+                </div>
+            </div>
+
+            <!-- Shadow Soldier - First Person Shooter -->
+            <div class="game-test" data-game-id="shadow-soldier">
+                <div class="game-header">
+                    <h3 class="game-title">Shadow Soldier</h3>
+                    <span class="game-category">FPS</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.51</span><br>
+                    Orientation: Landscape | Size: 800×600<br>
+                    Genre: First-person shooter action
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/shadow-soldier-revenge-of-the-ruins/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy">
+                    </iframe>
+                    <div class="loading-overlay">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-shadow-soldier">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('shadow-soldier')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('shadow-soldier')">重新加载</button>
+                </div>
+            </div>
+
+            <!-- Vemon Run 3D - Runner -->
+            <div class="game-test" data-game-id="vemon-run-3d">
+                <div class="game-header">
+                    <h3 class="game-title">Vemon Run 3D</h3>
+                    <span class="game-category">Runner</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.49</span><br>
+                    Orientation: All | Size: 800×600<br>
+                    Genre: 3D arcade running adventure
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/vemon-run-3d/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy">
+                    </iframe>
+                    <div class="loading-overlay">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-vemon-run-3d">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('vemon-run-3d')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('vemon-run-3d')">重新加载</button>
+                </div>
+            </div>
+
+            <!-- Jurassic Dinosaur Mech Battle -->
+            <div class="game-test" data-game-id="dinosaur-mech">
+                <div class="game-header">
+                    <h3 class="game-title">Dinosaur Mech Battle</h3>
+                    <span class="game-category">Action</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.47</span><br>
+                    Orientation: All | Size: 800×600<br>
+                    Genre: Mech combat vs dinosaurs
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/jurassic-dinosaur-mech-battle/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy">
+                    </iframe>
+                    <div class="loading-overlay">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-dinosaur-mech">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('dinosaur-mech')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('dinosaur-mech')">重新加载</button>
+                </div>
+            </div>
+
+            <!-- Knife Madness - Portrait Game -->
+            <div class="game-test" data-game-id="knife-madness">
+                <div class="game-header">
+                    <h3 class="game-title">Knife Madness</h3>
+                    <span class="game-category">Casual</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.44</span><br>
+                    Orientation: Portrait | Size: 600×800<br>
+                    Genre: Precision knife throwing
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/knife-madness/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy"
+                        style="height: 400px;">
+                    </iframe>
+                    <div class="loading-overlay" style="height: 400px;">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-knife-madness">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('knife-madness')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('knife-madness')">重新加载</button>
+                </div>
+            </div>
+
+            <!-- Veggie Friends - Educational -->
+            <div class="game-test" data-game-id="veggie-friends">
+                <div class="game-header">
+                    <h3 class="game-title">Veggie Friends</h3>
+                    <span class="game-category">Educational</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.44</span><br>
+                    Orientation: Landscape | Size: 800×600<br>
+                    Genre: Educational vegetable adventure
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/veggie-friends/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy">
+                    </iframe>
+                    <div class="loading-overlay">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-veggie-friends">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('veggie-friends')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('veggie-friends')">重新加载</button>
+                </div>
+            </div>
+
+            <!-- Spell Caster IO -->
+            <div class="game-test" data-game-id="spell-caster-io">
+                <div class="game-header">
+                    <h3 class="game-title">Spell Caster IO</h3>
+                    <span class="game-category">IO</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.39</span><br>
+                    Orientation: All | Size: 800×600<br>
+                    Genre: Multiplayer magic combat
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/spell-caster-io/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy">
+                    </iframe>
+                    <div class="loading-overlay">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-spell-caster-io">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('spell-caster-io')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('spell-caster-io')">重新加载</button>
+                </div>
+            </div>
+
+            <!-- Ludo Star - Board Game -->
+            <div class="game-test" data-game-id="ludo-star">
+                <div class="game-header">
+                    <h3 class="game-title">Ludo Star</h3>
+                    <span class="game-category">Board</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.35</span><br>
+                    Orientation: Landscape | Size: 800×600<br>
+                    Genre: Classic board game
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/ludo-star/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy">
+                    </iframe>
+                    <div class="loading-overlay">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-ludo-star">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('ludo-star')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('ludo-star')">重新加载</button>
+                </div>
+            </div>
+
+            <!-- Fish World - Match-3 -->
+            <div class="game-test" data-game-id="fish-world">
+                <div class="game-header">
+                    <h3 class="game-title">Fish World</h3>
+                    <span class="game-category">Match-3</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.24</span><br>
+                    Orientation: All | Size: 800×600<br>
+                    Genre: Underwater match-3 puzzle
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/fish-world/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy">
+                    </iframe>
+                    <div class="loading-overlay">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-fish-world">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('fish-world')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('fish-world')">重新加载</button>
+                </div>
+            </div>
+
+            <!-- Grass Land - Adventure -->
+            <div class="game-test" data-game-id="grass-land">
+                <div class="game-header">
+                    <h3 class="game-title">Grass Land</h3>
+                    <span class="game-category">Adventure</span>
+                </div>
+                <div class="game-info">
+                    Quality Score: <span class="quality-score">0.56</span><br>
+                    Orientation: Portrait | Size: 600×800<br>
+                    Genre: Exploration adventure
+                </div>
+                <div class="iframe-container">
+                    <iframe 
+                        class="game-iframe"
+                        data-src="https://play.gamepix.com/grass-land/embed?sid=1"
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation"
+                        allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone"
+                        loading="lazy"
+                        style="height: 400px;">
+                    </iframe>
+                    <div class="loading-overlay" style="height: 400px;">
+                        <div class="spinner"></div>
+                        <div>游戏加载中...</div>
+                    </div>
+                </div>
+                <div class="status loading" id="status-grass-land">准备测试...</div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadGame('grass-land')">加载游戏</button>
+                    <button class="btn btn-secondary" onclick="reloadGame('grass-land')">重新加载</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-results">
+            <h2>🔬 测试结果分析</h2>
+            <div class="results-grid">
+                <div>
+                    <h3>成功的游戏</h3>
+                    <ul id="success-list">
+                        <li>等待测试完成...</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>失败的游戏</h3>
+                    <ul id="failed-list">
+                        <li>等待测试完成...</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <h3>建议配置</h3>
+                <p><strong>Sandbox属性：</strong> <code>allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock allow-orientation-lock allow-presentation</code></p>
+                <p><strong>Allow属性：</strong> <code>accelerometer; autoplay; fullscreen; gyroscope; payment; microphone</code></p>
+                <p><strong>建议尺寸：</strong> 横屏游戏800×600，竖屏游戏600×800</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let stats = {
+            loaded: 0,
+            failed: 0,
+            total: 10
+        };
+
+        const games = {
+            'time-master': 'Time Master',
+            'shadow-soldier': 'Shadow Soldier',
+            'vemon-run-3d': 'Vemon Run 3D', 
+            'dinosaur-mech': 'Dinosaur Mech Battle',
+            'knife-madness': 'Knife Madness',
+            'veggie-friends': 'Veggie Friends',
+            'spell-caster-io': 'Spell Caster IO',
+            'ludo-star': 'Ludo Star',
+            'fish-world': 'Fish World',
+            'grass-land': 'Grass Land'
+        };
+
+        const successList = [];
+        const failedList = [];
+
+        function updateStats() {
+            document.getElementById('loaded-games').textContent = stats.loaded;
+            document.getElementById('failed-games').textContent = stats.failed;
+            const successRate = Math.round((stats.loaded / stats.total) * 100);
+            document.getElementById('success-rate').textContent = successRate + '%';
+            
+            // Update result lists
+            document.getElementById('success-list').innerHTML = 
+                successList.length ? successList.map(g => `<li>✅ ${g}</li>`).join('') : '<li>暂无</li>';
+            document.getElementById('failed-list').innerHTML = 
+                failedList.length ? failedList.map(g => `<li>❌ ${g}</li>`).join('') : '<li>暂无</li>';
+        }
+
+        function loadGame(gameId) {
+            const iframe = document.querySelector(`[data-game-id="${gameId}"] iframe`);
+            const loadingOverlay = document.querySelector(`[data-game-id="${gameId}"] .loading-overlay`);
+            const status = document.getElementById(`status-${gameId}`);
+            
+            status.textContent = '加载中...';
+            status.className = 'status loading';
+            
+            // Set iframe source
+            iframe.src = iframe.dataset.src;
+            
+            // Setup load handlers
+            iframe.onload = function() {
+                loadingOverlay.style.display = 'none';
+                status.textContent = '✅ 游戏加载成功！可以正常游玩';
+                status.className = 'status success';
+                
+                stats.loaded++;
+                if (!successList.includes(games[gameId])) {
+                    successList.push(games[gameId]);
+                }
+                updateStats();
+                
+                console.log(`${games[gameId]} loaded successfully`);
+            };
+            
+            iframe.onerror = function() {
+                loadingOverlay.style.display = 'none';
+                status.textContent = '❌ 游戏加载失败';
+                status.className = 'status error';
+                
+                stats.failed++;
+                if (!failedList.includes(games[gameId])) {
+                    failedList.push(games[gameId]);
+                }
+                updateStats();
+                
+                console.error(`${games[gameId]} failed to load`);
+            };
+            
+            // Timeout handler
+            setTimeout(() => {
+                if (iframe.src && loadingOverlay.style.display !== 'none') {
+                    loadingOverlay.style.display = 'none';
+                    status.textContent = '⚠️ 加载超时，但游戏可能仍在后台加载';
+                    status.className = 'status warning';
+                }
+            }, 10000);
+        }
+
+        function reloadGame(gameId) {
+            const iframe = document.querySelector(`[data-game-id="${gameId}"] iframe`);
+            const loadingOverlay = document.querySelector(`[data-game-id="${gameId}"] .loading-overlay`);
+            
+            loadingOverlay.style.display = 'flex';
+            iframe.src = '';
+            setTimeout(() => loadGame(gameId), 500);
+        }
+
+        // Auto-load all games on page load
+        window.addEventListener('load', function() {
+            console.log('Starting GamePix compatibility tests...');
+            
+            // Load games with staggered timing to avoid overwhelming
+            Object.keys(games).forEach((gameId, index) => {
+                setTimeout(() => {
+                    console.log(`Loading ${games[gameId]}...`);
+                    loadGame(gameId);
+                }, index * 2000);
+            });
+        });
+
+        // Monitor iframe messages
+        window.addEventListener('message', function(event) {
+            if (event.origin.includes('gamepix.com')) {
+                console.log('GamePix message:', event.data);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamePix Loading Fix Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .game-frame {
+            width: 100%;
+            height: 500px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .test-btn {
+            padding: 10px 20px;
+            background: #4a9eff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .test-btn:hover {
+            background: #357abd;
+        }
+        .status-log {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 15px;
+            border-radius: 8px;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        .loading-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-section">
+            <h1>🔧 GamePix Loading Fix Test</h1>
+            <p>Testing the fixes for GamePix games stuck in loading state</p>
+        </div>
+
+        <div class="test-section">
+            <h2>🎮 Direct GamePix Game Test</h2>
+            <p>Testing: Body Drop 3D (first GamePix game in database)</p>
+            
+            <div class="game-frame" id="gameContainer">
+                <div class="loading-indicator" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <div>等待测试开始...</div>
+                </div>
+            </div>
+            
+            <button class="test-btn" onclick="testDirectGamePix()">测试 GamePix 直接加载</button>
+            <button class="test-btn" onclick="testViaGamePage()">通过游戏页面测试</button>
+            <button class="test-btn" onclick="clearTest()">清除测试</button>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 测试状态日志</h3>
+            <div class="status-log" id="statusLog">
+                等待测试开始...<br>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load required JS files -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/games.js"></script>
+
+    <script>
+        // Logging function
+        function log(message) {
+            const statusLog = document.getElementById('statusLog');
+            const timestamp = new Date().toLocaleTimeString();
+            statusLog.innerHTML += `[${timestamp}] ${message}<br>`;
+            statusLog.scrollTop = statusLog.scrollHeight;
+            console.log(`[Test] ${message}`);
+        }
+
+        // Test direct GamePix loading with our fixes
+        async function testDirectGamePix() {
+            log('开始测试 GamePix 直接加载...');
+            
+            try {
+                // Load game data first
+                await loadGameData();
+                log('游戏数据加载完成');
+
+                // Get first GamePix game
+                const games = window.gamesData?.games;
+                if (!games || games.length === 0) {
+                    throw new Error('No games found in data');
+                }
+
+                const gamepixGame = games.find(g => g.source === 'GamePix' || g.id.includes('gamepix'));
+                if (!gamepixGame) {
+                    throw new Error('No GamePix games found');
+                }
+
+                log(`找到 GamePix 游戏: ${gamepixGame.title}`);
+                log(`游戏URL: ${gamepixGame.iframeUrl}`);
+
+                // Clear container
+                const container = document.getElementById('gameContainer');
+                container.innerHTML = '<div class="loading-indicator"><div class="spinner"></div><div>正在加载游戏...</div></div>';
+
+                // Test if GamePixIframe is available
+                if (typeof GamePixIframe === 'undefined') {
+                    throw new Error('GamePixIframe not available');
+                }
+                
+                log('GamePixIframe 模块可用，开始创建优化iframe');
+
+                // Use GamePixIframe
+                const iframe = GamePixIframe.createOptimizedIframe(gamepixGame, container);
+                
+                // Add loading timeout for testing
+                let loadTimeout = setTimeout(() => {
+                    log('警告: 游戏加载超时 (15秒)');
+                }, 15000);
+
+                // Override onload to add logging
+                const originalOnload = iframe.onload;
+                iframe.onload = function() {
+                    clearTimeout(loadTimeout);
+                    log('✅ 游戏iframe onload事件触发');
+                    if (originalOnload) originalOnload.call(this);
+                };
+
+                // Override onerror
+                iframe.onerror = function(error) {
+                    clearTimeout(loadTimeout);
+                    log(`❌ 游戏加载错误: ${error}`);
+                };
+
+                // Add iframe to container
+                container.innerHTML = '';
+                container.appendChild(iframe);
+                
+                log('iframe已添加到容器，等待加载完成...');
+
+            } catch (error) {
+                log(`❌ 测试失败: ${error.message}`);
+                console.error('Test failed:', error);
+            }
+        }
+
+        // Test via game.html page
+        function testViaGamePage() {
+            log('通过游戏页面测试...');
+            const testUrl = '/game.html?id=body-drop-3d-gamepix';
+            log(`打开测试URL: ${testUrl}`);
+            window.open(testUrl, '_blank');
+        }
+
+        // Clear test
+        function clearTest() {
+            const container = document.getElementById('gameContainer');
+            const statusLog = document.getElementById('statusLog');
+            
+            container.innerHTML = '<div class="loading-indicator"><div class="spinner"></div><div>等待测试开始...</div></div>';
+            statusLog.innerHTML = '测试已清除，等待新的测试...<br>';
+            
+            log('测试环境已清除');
+        }
+
+        // Initialize
+        log('测试页面已准备就绪');
+        log('本地服务器: http://localhost:3000/test-fixes.html');
+        log('点击"测试 GamePix 直接加载"开始测试修复效果');
+    </script>
+</body>
+</html>

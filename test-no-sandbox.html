@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamePix无Sandbox限制测试</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+        }
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .game-frame {
+            width: 100%;
+            height: 600px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .test-btn {
+            padding: 12px 24px;
+            background: #4a9eff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .test-btn:hover {
+            background: #357abd;
+        }
+        .test-btn.success {
+            background: #28a745;
+        }
+        .test-btn.danger {
+            background: #dc3545;
+        }
+        .status-log {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 15px;
+            border-radius: 8px;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-section">
+            <h1>🔧 GamePix无Sandbox限制测试</h1>
+            <p>测试移除sandbox限制后GamePix游戏是否能正常加载</p>
+        </div>
+
+        <div class="test-section">
+            <h2>🎮 直接GamePix游戏测试</h2>
+            <p><strong>测试游戏:</strong> Body Drop 3D</p>
+            <p><strong>GamePix URL:</strong> https://play.gamepix.com/body-drop-3d/embed?sid=1</p>
+            
+            <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                <button class="test-btn" onclick="testWithoutSandbox()">无Sandbox限制加载</button>
+                <button class="test-btn" onclick="testWithSandbox()">有Sandbox限制对比</button>
+                <button class="test-btn" onclick="clearFrame()">清空测试</button>
+            </div>
+            
+            <div class="game-frame" id="gameFrame">
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #ccc;">
+                    点击上方按钮开始测试
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 对比测试结果</h2>
+            <div class="comparison">
+                <div>
+                    <h3>✅ 无Sandbox限制</h3>
+                    <div id="noSandboxResult" style="padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; min-height: 100px;">
+                        等待测试...
+                    </div>
+                </div>
+                <div>
+                    <h3>❌ 有Sandbox限制</h3>
+                    <div id="sandboxResult" style="padding: 15px; background: rgba(0,0,0,0.3); border-radius: 8px; min-height: 100px;">
+                        等待测试...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔗 实际游戏页面测试</h2>
+            <p>测试修复后的实际游戏页面：</p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="/game.html?id=body-drop-3d-gamepix" target="_blank" class="test-btn">Body Drop 3D (ID)</a>
+                <a href="/game.html?mid=body-drop-3d-gamepix" target="_blank" class="test-btn">Body Drop 3D (MID)</a>
+                <a href="/game.html?id=dta-6-gamepix" target="_blank" class="test-btn">DTA 6 游戏</a>
+                <a href="/game.html?id=my-sugar-factory-gamepix" target="_blank" class="test-btn">My Sugar Factory</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>📋 测试日志</h3>
+            <div class="status-log" id="testLog">
+                GamePix无Sandbox限制测试开始...<br>
+                等待用户操作...<br>
+                <br>
+                预期结果：<br>
+                ✅ 无Sandbox限制：GamePix游戏应该能正常加载和运行<br>
+                ❌ 有Sandbox限制：可能会一直显示加载中或出错<br>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function log(message) {
+            const testLog = document.getElementById('testLog');
+            const timestamp = new Date().toLocaleTimeString();
+            testLog.innerHTML += `[${timestamp}] ${message}<br>`;
+            testLog.scrollTop = testLog.scrollHeight;
+            console.log(`[Test] ${message}`);
+        }
+
+        function testWithoutSandbox() {
+            log('开始测试：无Sandbox限制的GamePix加载');
+            
+            const frame = document.getElementById('gameFrame');
+            const startTime = Date.now();
+            
+            frame.innerHTML = `
+                <iframe 
+                    src="https://play.gamepix.com/body-drop-3d/embed?sid=1" 
+                    style="width: 100%; height: 100%; border: none; border-radius: 8px;"
+                    allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone; camera; geolocation">
+                </iframe>
+            `;
+            
+            // 监听加载状态
+            const iframe = frame.querySelector('iframe');
+            let loaded = false;
+            
+            iframe.onload = function() {
+                const loadTime = Date.now() - startTime;
+                loaded = true;
+                log(`✅ 无Sandbox iframe已加载完成 (${loadTime}ms)`);
+                document.getElementById('noSandboxResult').innerHTML = `
+                    <div style="color: #28a745;">✅ 加载成功</div>
+                    <div>加载时间: ${loadTime}ms</div>
+                    <div>Sandbox: 无限制</div>
+                    <div>状态: iframe onload触发</div>
+                `;
+            };
+            
+            iframe.onerror = function(error) {
+                const loadTime = Date.now() - startTime;
+                log(`❌ 无Sandbox iframe加载失败: ${error}`);
+                document.getElementById('noSandboxResult').innerHTML = `
+                    <div style="color: #dc3545;">❌ 加载失败</div>
+                    <div>加载时间: ${loadTime}ms</div>
+                    <div>错误: ${error}</div>
+                `;
+            };
+            
+            // 5秒后检查状态
+            setTimeout(() => {
+                if (!loaded) {
+                    log('⚠️ 无Sandbox iframe 5秒内未完成加载');
+                    document.getElementById('noSandboxResult').innerHTML = `
+                        <div style="color: #ffc107;">⚠️ 加载中...</div>
+                        <div>超过5秒未完成加载</div>
+                        <div>可能仍在后台加载</div>
+                    `;
+                }
+            }, 5000);
+        }
+
+        function testWithSandbox() {
+            log('开始测试：有Sandbox限制的GamePix加载（对比测试）');
+            
+            const frame = document.getElementById('gameFrame');
+            const startTime = Date.now();
+            
+            frame.innerHTML = `
+                <iframe 
+                    src="https://play.gamepix.com/body-drop-3d/embed?sid=1" 
+                    sandbox="allow-scripts allow-same-origin allow-forms"
+                    style="width: 100%; height: 100%; border: none; border-radius: 8px;"
+                    allow="accelerometer; autoplay; fullscreen; gyroscope; payment; microphone; camera; geolocation">
+                </iframe>
+            `;
+            
+            // 监听加载状态
+            const iframe = frame.querySelector('iframe');
+            let loaded = false;
+            
+            iframe.onload = function() {
+                const loadTime = Date.now() - startTime;
+                loaded = true;
+                log(`⚠️ 有Sandbox iframe已加载 (${loadTime}ms) - 但可能功能受限`);
+                document.getElementById('sandboxResult').innerHTML = `
+                    <div style="color: #ffc107;">⚠️ 可能受限</div>
+                    <div>加载时间: ${loadTime}ms</div>
+                    <div>Sandbox: allow-scripts allow-same-origin allow-forms</div>
+                    <div>状态: iframe onload触发但游戏可能无法运行</div>
+                `;
+            };
+            
+            iframe.onerror = function(error) {
+                const loadTime = Date.now() - startTime;
+                log(`❌ 有Sandbox iframe加载失败: ${error}`);
+                document.getElementById('sandboxResult').innerHTML = `
+                    <div style="color: #dc3545;">❌ 加载失败</div>
+                    <div>加载时间: ${loadTime}ms</div>
+                    <div>错误: ${error}</div>
+                `;
+            };
+            
+            // 5秒后检查状态
+            setTimeout(() => {
+                if (!loaded) {
+                    log('❌ 有Sandbox iframe 5秒内未完成加载');
+                    document.getElementById('sandboxResult').innerHTML = `
+                        <div style="color: #dc3545;">❌ 超时</div>
+                        <div>超过5秒未完成加载</div>
+                        <div>Sandbox限制可能阻止了加载</div>
+                    `;
+                }
+            }, 5000);
+        }
+
+        function clearFrame() {
+            const frame = document.getElementById('gameFrame');
+            frame.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #ccc;">
+                    测试区域已清空
+                </div>
+            `;
+            document.getElementById('noSandboxResult').innerHTML = '等待测试...';
+            document.getElementById('sandboxResult').innerHTML = '等待测试...';
+            log('测试区域已清空');
+        }
+
+        // 页面加载时初始化
+        window.addEventListener('load', function() {
+            log('GamePix无Sandbox限制测试页面已加载');
+            log('当前测试环境: ' + window.location.href);
+            log('点击按钮开始测试不同的iframe配置');
+        });
+    </script>
+</body>
+</html>

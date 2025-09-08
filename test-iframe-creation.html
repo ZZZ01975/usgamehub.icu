@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试iframe创建流程</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #1a1a1a;
+            color: #0f0;
+            padding: 20px;
+        }
+        .test-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .test-btn:hover {
+            background: #0056b3;
+        }
+        #log {
+            background: #000;
+            padding: 15px;
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+        #gameContainer {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #0f0;
+            margin-top: 20px;
+            position: relative;
+        }
+        #gameContainer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 iframe创建流程测试</h1>
+    
+    <div>
+        <button class="test-btn" onclick="testDirectLoad()">直接测试GamePix加载</button>
+        <button class="test-btn" onclick="testGamePageFlow()">模拟游戏页面流程</button>
+        <button class="test-btn" onclick="clearLog()">清空日志</button>
+    </div>
+    
+    <div id="log">等待测试开始...</div>
+    
+    <div id="gameContainer"></div>
+    
+    <!-- 加载实际的JS文件 -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/games.js"></script>
+    
+    <script>
+        function log(msg, type = 'info') {
+            const logEl = document.getElementById('log');
+            const time = new Date().toLocaleTimeString();
+            const prefix = type === 'error' ? '❌' : type === 'success' ? '✅' : '📝';
+            logEl.innerHTML += `[${time}] ${prefix} ${msg}\n`;
+            logEl.scrollTop = logEl.scrollHeight;
+            console.log(`[Test] ${msg}`);
+        }
+        
+        function clearLog() {
+            document.getElementById('log').innerHTML = '日志已清空\n';
+        }
+        
+        async function testDirectLoad() {
+            log('=== 开始直接加载测试 ===', 'info');
+            
+            const container = document.getElementById('gameContainer');
+            container.innerHTML = '';
+            
+            // 测试游戏数据
+            const testGame = {
+                id: 'body-drop-3d-gamepix',
+                title: 'Body Drop 3D',
+                iframeUrl: 'https://play.gamepix.com/body-drop-3d/embed?sid=1',
+                source: 'GamePix',
+                playCount: undefined // 故意设置为undefined测试formatNumber
+            };
+            
+            log('测试游戏数据: ' + JSON.stringify(testGame, null, 2));
+            
+            // 测试formatNumber
+            try {
+                const formatted = formatNumber(testGame.playCount);
+                log('formatNumber测试成功: undefined -> ' + formatted, 'success');
+            } catch (e) {
+                log('formatNumber错误: ' + e.message, 'error');
+                return;
+            }
+            
+            // 创建iframe
+            log('创建iframe元素...');
+            const iframe = document.createElement('iframe');
+            iframe.id = 'testGameIframe';
+            
+            log('设置iframe属性...');
+            iframe.src = testGame.iframeUrl;
+            iframe.setAttribute('allow', 'accelerometer; autoplay; fullscreen; gyroscope; payment; microphone; camera; geolocation');
+            iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+            
+            log('将iframe添加到容器...');
+            container.appendChild(iframe);
+            
+            log('iframe已添加到DOM', 'success');
+            log('iframe.src = ' + iframe.src);
+            log('iframe在文档中: ' + document.contains(iframe));
+            
+            // 监听加载事件
+            iframe.onload = () => {
+                log('iframe onload事件触发!', 'success');
+            };
+            
+            iframe.onerror = (e) => {
+                log('iframe onerror事件: ' + e, 'error');
+            };
+        }
+        
+        async function testGamePageFlow() {
+            log('=== 模拟游戏页面完整流程 ===', 'info');
+            
+            // 模拟URL参数
+            const gameId = 'body-drop-3d-gamepix';
+            log('模拟gameId: ' + gameId);
+            
+            // 加载游戏数据
+            log('调用loadGameData()...');
+            try {
+                await loadGameData();
+                log('游戏数据加载成功', 'success');
+                log('总游戏数: ' + (window.gamesData?.games?.length || 0));
+            } catch (e) {
+                log('加载游戏数据失败: ' + e.message, 'error');
+                return;
+            }
+            
+            // 查找游戏
+            log('调用getGameById("' + gameId + '")...');
+            const game = getGameById(gameId);
+            
+            if (game) {
+                log('找到游戏: ' + game.title, 'success');
+                log('游戏URL: ' + game.iframeUrl);
+                log('游戏来源: ' + game.source);
+                
+                // 测试updateGamePageContent
+                log('测试updateGamePageContent...');
+                try {
+                    // 创建必要的DOM元素
+                    if (!document.getElementById('gameIframeWrapper')) {
+                        const wrapper = document.createElement('div');
+                        wrapper.id = 'gameIframeWrapper';
+                        wrapper.innerHTML = '<iframe id="gameIframe"></iframe>';
+                        document.getElementById('gameContainer').appendChild(wrapper);
+                    }
+                    
+                    // 调用loadGameIframe
+                    log('调用loadGameIframe()...');
+                    loadGameIframe(game);
+                    
+                    log('loadGameIframe执行完成', 'success');
+                    
+                    // 检查iframe
+                    const iframe = document.getElementById('gameIframe');
+                    if (iframe && iframe.src) {
+                        log('iframe创建成功!', 'success');
+                        log('iframe.src = ' + iframe.src);
+                    } else {
+                        log('iframe未创建或src未设置', 'error');
+                    }
+                    
+                } catch (e) {
+                    log('执行出错: ' + e.message, 'error');
+                    console.error(e);
+                }
+                
+            } else {
+                log('未找到游戏ID: ' + gameId, 'error');
+            }
+        }
+        
+        window.addEventListener('load', () => {
+            log('测试页面已加载，可以开始测试');
+        });
+    </script>
+</body>
+</html>

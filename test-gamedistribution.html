@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameDistribution Test - US Game Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .game-test {
+            margin: 20px 0;
+            padding: 20px;
+            background: #2d2d2d;
+            border-radius: 8px;
+        }
+        .game-title {
+            margin: 0 0 10px 0;
+            color: #4a9eff;
+        }
+        .game-info {
+            margin-bottom: 15px;
+            color: #ccc;
+            font-size: 14px;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 8px;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .loading { background: #ff9800; }
+        .success { background: #4caf50; }
+        .error { background: #f44336; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎮 GameDistribution Integration Test</h1>
+        <p>Testing iframe compatibility with GameDistribution games platform</p>
+        
+        <!-- Test Game 1: Summer Rider 3D -->
+        <div class="game-test">
+            <h3 class="game-title">Summer Rider 3D</h3>
+            <div class="game-info">
+                Game ID: 3ff5df9f5d0248fd9dcd70e2cc253de5<br>
+                Category: Action/Racing<br>
+                URL: https://html5.gamedistribution.com/3ff5df9f5d0248fd9dcd70e2cc253de5/
+            </div>
+            <iframe 
+                id="game1"
+                src="https://html5.gamedistribution.com/3ff5df9f5d0248fd9dcd70e2cc253de5/?gd_sdk_referrer_url=https://usgamehub.icu/test"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-pointer-lock allow-forms"
+            ></iframe>
+            <div id="status1" class="status loading">Loading game...</div>
+        </div>
+
+        <!-- Test Game 2: Another GD Game -->
+        <div class="game-test">
+            <h3 class="game-title">Test Game 2 (Add another GD game ID here)</h3>
+            <div class="game-info">
+                Placeholder for second test game<br>
+                This will be updated with actual GameDistribution game
+            </div>
+            <div style="height: 500px; background: #444; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999;">
+                Second test game will be added here
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Monitor iframe loading
+        function setupGameMonitoring(iframeId, statusId) {
+            const iframe = document.getElementById(iframeId);
+            const status = document.getElementById(statusId);
+            
+            iframe.onload = function() {
+                console.log(`${iframeId} loaded successfully`);
+                status.textContent = '✅ Game loaded successfully!';
+                status.className = 'status success';
+            };
+            
+            iframe.onerror = function() {
+                console.error(`${iframeId} failed to load`);
+                status.textContent = '❌ Game failed to load';
+                status.className = 'status error';
+            };
+        }
+
+        // Test iframe communication
+        window.addEventListener('message', function(event) {
+            console.log('Received message from game iframe:', event);
+            
+            // GameDistribution specific events
+            if (event.origin === 'https://html5.gamedistribution.com') {
+                console.log('GameDistribution event:', event.data);
+            }
+        });
+
+        // Initialize monitoring
+        setupGameMonitoring('game1', 'status1');
+        
+        // Log test results
+        setTimeout(() => {
+            console.log('=== GameDistribution Test Results ===');
+            console.log('Game 1 Status:', document.getElementById('status1').textContent);
+            
+            // Test iframe accessibility
+            try {
+                const iframe = document.getElementById('game1');
+                console.log('Iframe accessible:', !!iframe.contentWindow);
+            } catch (e) {
+                console.log('Iframe cross-origin restrictions applied (expected)');
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

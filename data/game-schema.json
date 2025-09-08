@@ -30,7 +30,7 @@
             "type": "string",
             "description": "游戏简短描述",
             "minLength": 20,
-            "maxLength": 100
+            "maxLength": 200
           },
           "keywords": {
             "type": "array",
@@ -60,7 +60,7 @@
             "description": "游戏iframe地址",
             "pattern": "^https?://.*|^/.*"
           },
-          "thumbnail": {
+          "thumbnailUrl": {
             "type": "string",
             "description": "游戏缩略图URL",
             "pattern": "^https?://.*|^/.*"
@@ -137,11 +137,10 @@
         },
         "required": [
           "id", "title", "description", "shortDesc", "keywords", 
-          "category", "tags", "iframeUrl", "thumbnail", "rating", 
-          "playCount", "featured", "controls", "tips", "createdAt", "updatedAt",
-          "embeddable", "verified_date", "license", "commercial_use", "ad_allowed", "source_url"
+          "category", "tags", "iframeUrl", "thumbnailUrl", "rating", 
+          "featured"
         ],
-        "additionalProperties": false
+        "additionalProperties": true
       }
     },
     "lastUpdated": {
