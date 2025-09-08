@@ -130,11 +130,6 @@ function createCategoryCard(category) {
     const gameCount = window.gamesData ? 
         window.gamesData.games.filter(game => game.category === category.id).length : 0;
     
-    // 跳过没有游戏的分类
-    if (gameCount === 0) {
-        return '';
-    }
-    
     // 使用英文数据或i18n翻译
     const categoryName = window.i18n ? 
         window.i18n.t(`categories.${category.id}`) : 
