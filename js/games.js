@@ -565,14 +565,25 @@ function updateGamePageContent(game) {
         iframeUrl: game.iframeUrl
     });
     
-    // 更新页面标题和meta信息
-    document.title = `${game.title} | US Game Hub`;
+    // 更新页面标题和meta信息 - 优化SEO
+    const categoryName = getCategoryName(game.category);
+    document.title = `Play ${game.title} Online Free - ${categoryName} Game | GameVault`;
     
     const metaDescription = document.getElementById('gameDescription');
     const metaKeywords = document.getElementById('gameKeywords');
+    const canonicalUrl = document.getElementById('canonicalUrl');
     
-    if (metaDescription) metaDescription.content = game.description;
+    if (metaDescription) {
+        // 优化SEO描述 - 包含关键词和号召性用语
+        const shortDesc = game.description.substring(0, 120);
+        metaDescription.content = `Play ${game.title} online free! ${shortDesc}... No download required - instant ${categoryName.toLowerCase()} gameplay at GameVault.`;
+    }
     if (metaKeywords) metaKeywords.content = game.keywords.join(', ');
+    
+    // 设置canonical URL - 确保使用正确的域名
+    if (canonicalUrl) {
+        canonicalUrl.href = `https://usgamehub.icu/game.html?id=${game.id}`;
+    }
     
     // 更新页面内容
     console.log('准备更新页面元素，playCount值:', game.playCount);
@@ -1041,7 +1052,21 @@ function updateCategoryPageContent(category) {
     const categoryDescription = category.descriptionEn || category.description;
     const gameCount = getGamesByCategory(category.id).length;
     
-    document.title = `${categoryName} | US Game Hub`;
+    // 优化分类页面SEO标题
+    document.title = `${categoryName} Games - Play ${gameCount} Free Online Games | GameVault`;
+    
+    // 设置canonical URL
+    const canonicalUrl = document.getElementById('canonicalUrl');
+    if (canonicalUrl) {
+        canonicalUrl.href = `https://usgamehub.icu/category.html?cat=${category.id}`;
+    }
+    
+    // 优化分类页面Meta描述
+    const metaDescription = document.getElementById('categoryDescription');
+    if (metaDescription) {
+        const shortDesc = categoryDescription.substring(0, 100);
+        metaDescription.content = `Play ${gameCount} free ${categoryName.toLowerCase()} games online! ${shortDesc}... No downloads required - instant browser gameplay at GameVault.`;
+    }
     
     const elements = {
         categoryIcon: getCategoryIcon(category.id),

@@ -7,107 +7,363 @@
     <!-- Homepage -->
     <url>
         <loc>https://usgamehub.icu/</loc>
-        <lastmod>2025-01-07</lastmod>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
-    <!-- Category Page -->
+    <!-- Category Pages -->
     <url>
-        <loc>https://usgamehub.icu/category.html</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/category.html?cat=puzzle</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
-    
-    <!-- Static Pages -->
     <url>
-        <loc>https://usgamehub.icu/about.html</loc>
-        <lastmod>2025-01-07</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <loc>https://usgamehub.icu/category.html?cat=action</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
-    
     <url>
-        <loc>https://usgamehub.icu/privacy.html</loc>
-        <lastmod>2025-01-07</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.4</priority>
+        <loc>https://usgamehub.icu/category.html?cat=multiplayer</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
-    
-    <!-- Current Games - Dynamic based on games.json -->
     <url>
-        <loc>https://usgamehub.icu/game.html?id=monster-survivors</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/category.html?cat=cards</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/category.html?cat=sports</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/category.html?cat=strategy</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
+    <!-- Static Pages -->
     <url>
-        <loc>https://usgamehub.icu/game.html?id=2048-game</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/privacy.html</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <!-- Game Pages -->
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=body-drop-3d-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=my-sugar-factory-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=mr-santa-run-2-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=gem-clicker-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=squad-tower-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=bomber-friends-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=run-gun-robots-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=robot-band-find-the-differences-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=stickman-troll-thief-puzzle-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=garten-of-banban-3-game-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=ring-fall-puzzle-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=hook-master-mafia-city-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=poppy-playtime-chapter-3-puzzle-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=thief-puzzle-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=happy-color-sort-puzzle-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=floppy-pipe-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=frozen-sam-1-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=shoe-race-1-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=makeover-run-1-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=ropeman-3d-1-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=merge-dragons-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
-    
     <url>
-        <loc>https://usgamehub.icu/game.html?id=bubble-shooter</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/game.html?id=spider-evolution-runner-game-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
-    
     <url>
-        <loc>https://usgamehub.icu/game.html?id=endless-runner</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/game.html?id=popcorn-race-3d-1-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
-    
     <url>
-        <loc>https://usgamehub.icu/game.html?id=racing-car</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/game.html?id=runner-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
-    
-    <!-- Additional popular games from current games.json -->
     <url>
-        <loc>https://usgamehub.icu/game.html?id=racing-rivals</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/game.html?id=long-neck-run-1-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.7</priority>
     </url>
-    
     <url>
-        <loc>https://usgamehub.icu/game.html?id=2048-legacy-gd</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/game.html?id=3d-laane-runner-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.7</priority>
     </url>
-    
     <url>
-        <loc>https://usgamehub.icu/game.html?id=car-racing-3d</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/game.html?id=worm-hunt-snake-game-io-zone-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.7</priority>
     </url>
-    
     <url>
-        <loc>https://usgamehub.icu/game.html?id=soccer-physics</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/game.html?id=archers-io-1-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.7</priority>
     </url>
-    
     <url>
-        <loc>https://usgamehub.icu/game.html?id=stick-war-legacy</loc>
-        <lastmod>2025-01-07</lastmod>
+        <loc>https://usgamehub.icu/game.html?id=cube-zone-master-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.7</priority>
     </url>
-    
-    <!-- Placeholder for new games to be added -->
-    <!-- These will be automatically updated after games.json is updated -->
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=hole-io-2-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=dead-aim-skibidi-toilets-attack-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=frontline-assault-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=fps-sniper-shooting-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=super-billy-boy-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=baby-chicco-adventures-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=parmesan-partisan-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=epic-duck-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=injection-invasion-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=moto-x3m-spooky-land-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=drift-boss-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=penalty-kick-wiz-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=ultimate-flying-car-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=little-alchemy-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=abc-halloween-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=pirate-paradise-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=funny-shooter-2-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=three-cups-game-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=hoops-and-fruits-gamepix</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=buckshot-roulette-gd</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=catch-the-goose-gd</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://usgamehub.icu/game.html?id=pixelcraft-animal-school-gm</loc>
+        <lastmod>2025-09-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
     
 </urlset>
