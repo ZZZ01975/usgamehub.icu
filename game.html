@@ -167,9 +167,9 @@
                                 id="gameIframe"
                                 src=""
                                 title="Game Player"
-                                sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-orientation-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"
+                                sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-orientation-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-top-navigation allow-modals"
                                 loading="lazy"
-                                allow="fullscreen; autoplay; camera; microphone; gyroscope; accelerometer; payment; display-capture"
+                                allow="fullscreen; autoplay; camera; microphone; gyroscope; accelerometer; payment; display-capture; geolocation"
                                 class="game-iframe">
                             </iframe>
                             <div class="game-loading" id="gameLoading">
@@ -315,11 +315,19 @@
     <script>
         // Initialize game page
         document.addEventListener('DOMContentLoaded', function() {
-            const gameId = new URLSearchParams(window.location.search).get('id');
+            const urlParams = new URLSearchParams(window.location.search);
+            // 支持多种URL参数格式: id, mid, slug
+            const gameId = urlParams.get('id') || urlParams.get('mid') || urlParams.get('slug');
+            
+            console.log('游戏页面初始化，URL参数:', window.location.search);
+            console.log('解析得到的gameId:', gameId);
+            
             if (gameId) {
                 loadGamePage(gameId);
             } else {
-                window.location.href = '/';
+                console.error('未找到有效的游戏ID参数 (id/mid/slug)');
+                // 显示友好的错误页面而不是直接跳转
+                showGameNotFoundError();
             }
         });
     </script>

@@ -8,6 +8,14 @@ function getUrlParameter(name) {
 
 // 格式化数字（如播放次数）
 function formatNumber(num) {
+    // 处理undefined、null或非数字值
+    if (num === undefined || num === null || isNaN(num)) {
+        return '0';
+    }
+    
+    // 确保num是数字类型
+    num = Number(num);
+    
     if (num >= 1000000) {
         return (num / 1000000).toFixed(1) + 'M';
     } else if (num >= 1000) {
@@ -33,8 +41,19 @@ function generateStars(rating) {
 
 // 创建游戏卡片HTML
 function createGameCard(game) {
-    // 使用真实缩略图，fallback到占位符
-    const thumbnailUrl = game.thumbnailUrl || game.iconUrl || '/assets/images/game-placeholder.jpg';
+    // 使用真实缩略图，确保HTTPS兼容性，fallback到占位符
+    let thumbnailUrl = game.thumbnailUrl || game.iconUrl || '/assets/images/game-placeholder.jpg';
+    
+    // 确保HTTPS兼容性和优化参数 - 对于GamePix图片
+    if (thumbnailUrl && thumbnailUrl.includes('img.gamepix.com')) {
+        // 确保使用HTTPS
+        thumbnailUrl = thumbnailUrl.replace('http://', 'https://');
+        // 优化缩略图尺寸参数
+        if (!thumbnailUrl.includes('?w=')) {
+            thumbnailUrl += '?w=400';
+        }
+    }
+    
     const hasRealImage = game.thumbnailUrl || game.iconUrl;
     
     return `

@@ -7,8 +7,8 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   
-  # Content Security Policy (iframe-optimized for GameDistribution)
-  Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; style-src 'self' 'unsafe-inline' https: data:; font-src 'self' https: data:; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:; frame-src 'self' https: data:; child-src 'self' https: data: blob:; worker-src 'self' blob:; connect-src 'self' https: data: blob: wss: ws:; object-src 'self' https: data:;
+  # Content Security Policy (优化支持GamePix和GameDistribution)
+  Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; style-src 'self' 'unsafe-inline' https: data:; font-src 'self' https: data:; img-src 'self' https://img.gamepix.com https://*.gamepix.com https://html5.gamedistribution.com https://*.gamedistribution.com https: data: blob:; media-src 'self' https: data: blob:; frame-src 'self' https://play.gamepix.com https://*.gamepix.com https://html5.gamedistribution.com https://*.gamedistribution.com https: data:; child-src 'self' https: data: blob:; worker-src 'self' blob:; connect-src 'self' https: data: blob: wss: ws:; object-src 'self' https: data:;
   
   # Performance Headers
   Cache-Control: public, max-age=31536000, immutable
