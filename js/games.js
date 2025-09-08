@@ -290,41 +290,16 @@ function renderFeaturedCarousel() {
                 ">${getCategoryIcon(game.category)}</div>
             `}
             
-            <div class="carousel-content" style="position: relative; z-index: 10;">
-                <div class="game-source-tag" style="
-                    display: inline-block;
-                    background: rgba(255,255,255,0.2);
-                    color: white;
-                    padding: 2px 8px;
-                    border-radius: 4px;
-                    font-size: 0.75rem;
-                    margin-bottom: 8px;
-                    backdrop-filter: blur(10px);
-                ">Powered by ${game.source || 'Partner'}</div>
+            <div class="carousel-content">
+                <div class="game-source-tag">Powered by ${game.source || 'Partner'}</div>
                 
-                <h3 class="carousel-title" style="
-                    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-                    margin-bottom: 8px;
-                ">${game.title}</h3>
+                <h3 class="carousel-title">${game.title}</h3>
                 
-                <p style="
-                    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-                    margin-bottom: 16px;
-                    line-height: 1.4;
-                ">${game.shortDesc}</p>
+                <p class="carousel-description">${game.shortDesc}</p>
                 
                 <div class="carousel-actions">
                     <a href="/game.html?id=${game.id}" 
                        class="btn btn-primary carousel-play-btn" 
-                       style="
-                           background: rgba(76, 175, 80, 0.9);
-                           backdrop-filter: blur(10px);
-                           border: none;
-                           padding: 12px 24px;
-                           font-weight: 600;
-                           text-shadow: none;
-                           transition: all 0.3s ease;
-                       "
                        data-i18n="buttons.playNow">🎮 Play Now</a>
                 </div>
             </div>

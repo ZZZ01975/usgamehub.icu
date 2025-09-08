@@ -489,11 +489,43 @@ h4 { font-size: 1.25rem; }
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.carousel-content p {
+.carousel-content p,
+.carousel-description {
     font-size: 1rem;
     margin-bottom: var(--spacing-sm);
     opacity: 0.9;
     line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.game-source-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.carousel-actions {
+    margin-top: var(--spacing-md);
+}
+
+.carousel-play-btn {
+    background: rgba(76, 175, 80, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border: none !important;
+    padding: 12px 24px !important;
+    font-weight: 600;
+    text-shadow: none !important;
+    transition: all 0.3s ease;
+}
+
+.carousel-play-btn:hover {
+    background: rgba(56, 142, 60, 0.95) !important;
+    transform: translateY(-2px);
 }
 
 .carousel-btn {
