@@ -76,7 +76,8 @@ body {
     font-family: var(--font-primary);
     line-height: 1.6;
     color: var(--text-primary);
-    background-color: var(--bg-dark);
+    background: linear-gradient(180deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
@@ -846,10 +847,11 @@ h4 { font-size: 1.25rem; }
 
 /* 页脚 */
 .footer {
-    background: var(--text-dark) !important;
+    background: linear-gradient(135deg, #1e3a8a 0%, #312e81 40%, #4c1d95 80%, #5b21b6 100%) !important;
     color: white !important;
     padding: var(--spacing-xl) 0 var(--spacing-lg);
     margin-top: var(--spacing-xl);
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .footer-content {
@@ -902,8 +904,9 @@ h4 { font-size: 1.25rem; }
 .footer-bottom {
     text-align: center;
     padding-top: var(--spacing-lg);
-    border-top: 1px solid #424242;
-    color: #BDBDBD;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.8);
+    background: transparent;
 }
 
 /* 辅助类 */
