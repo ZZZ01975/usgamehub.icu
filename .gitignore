@@ -49,6 +49,12 @@ lhci_reports/
 test-games-script.js
 *.tmp
 
+# Large database and CSV files
+GameDistribution/
+*.sql
+*.csv
+*Database*.sql
+
 # Keep important documentation and images for the project
 !README.md
 !progress_log.md
